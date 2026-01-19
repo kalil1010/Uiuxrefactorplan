@@ -1,0 +1,343 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+  
+  /* ZokaiHub Brand Colors - Light Mode */
+  --background: #ffffff;
+  --foreground: #222222;
+  
+  /* Brand Primary Colors */
+  --brand-purple: #6556C6;
+  --brand-deep-purple: #8D4700;
+  --brand-magenta: #D20EC1;
+  --brand-pink: #C1004C;
+  --brand-coral: #F04050;
+  --brand-yellow: #FFC600;
+  
+  /* Brand Secondary Colors */
+  --brand-gray: #636569;
+  --brand-black: #222222;
+  --brand-dark-purple: #4C2748;
+  --brand-light-pink: #F6DADJ;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #6556C6 0%, #D20EC1 50%, #F04050 75%, #FFC600 100%);
+  --gradient-purple-pink: linear-gradient(135deg, #6556C6 0%, #D20EC1 100%);
+  --gradient-pink-coral: linear-gradient(135deg, #D20EC1 0%, #F04050 100%);
+  --gradient-coral-yellow: linear-gradient(135deg, #F04050 0%, #FFC600 100%);
+  
+  /* Semantic Colors */
+  --card: #ffffff;
+  --card-foreground: #222222;
+  --popover: #ffffff;
+  --popover-foreground: #222222;
+  --primary: #6556C6;
+  --primary-foreground: #ffffff;
+  --secondary: #F6F6F7;
+  --secondary-foreground: #222222;
+  --muted: #F6F6F7;
+  --muted-foreground: #636569;
+  --accent: #D20EC1;
+  --accent-foreground: #ffffff;
+  --destructive: #C1004C;
+  --destructive-foreground: #ffffff;
+  --border: rgba(0, 0, 0, 0.08);
+  --input: rgba(0, 0, 0, 0.08);
+  --input-background: #F6F6F7;
+  --switch-background: #E5E5E7;
+  --ring: #6556C6;
+  
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Border Radius */
+  --radius: 0.75rem;
+  
+  /* Sidebar */
+  --sidebar: #ffffff;
+  --sidebar-foreground: #222222;
+  --sidebar-primary: #6556C6;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #F6F6F7;
+  --sidebar-accent-foreground: #222222;
+  --sidebar-border: rgba(0, 0, 0, 0.08);
+  --sidebar-ring: #6556C6;
+  
+  /* Charts */
+  --chart-1: #6556C6;
+  --chart-2: #D20EC1;
+  --chart-3: #F04050;
+  --chart-4: #FFC600;
+  --chart-5: #636569;
+}
+
+.dark {
+  --background: #0A0A0B;
+  --foreground: #F6F6F7;
+  
+  --card: #1A1A1C;
+  --card-foreground: #F6F6F7;
+  --popover: #1A1A1C;
+  --popover-foreground: #F6F6F7;
+  --primary: #6556C6;
+  --primary-foreground: #ffffff;
+  --secondary: #2A2A2C;
+  --secondary-foreground: #F6F6F7;
+  --muted: #2A2A2C;
+  --muted-foreground: #A0A0A3;
+  --accent: #D20EC1;
+  --accent-foreground: #ffffff;
+  --destructive: #F04050;
+  --destructive-foreground: #ffffff;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.1);
+  --input-background: #2A2A2C;
+  --switch-background: #3A3A3C;
+  --ring: #6556C6;
+  
+  --sidebar: #0A0A0B;
+  --sidebar-foreground: #F6F6F7;
+  --sidebar-primary: #6556C6;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #2A2A2C;
+  --sidebar-accent-foreground: #F6F6F7;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: #6556C6;
+  
+  --chart-1: #6556C6;
+  --chart-2: #D20EC1;
+  --chart-3: #F04050;
+  --chart-4: #FFC600;
+  --chart-5: #A0A0A3;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  
+  /* Brand Colors */
+  --color-brand-purple: var(--brand-purple);
+  --color-brand-magenta: var(--brand-magenta);
+  --color-brand-pink: var(--brand-pink);
+  --color-brand-coral: var(--brand-coral);
+  --color-brand-yellow: var(--brand-yellow);
+  --color-brand-gray: var(--brand-gray);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/**
+ * Base typography with ZokaiHub brand styling
+ */
+@layer base {
+  :where(:not(:has([class*=' text-']), :not(:has([class^='text-'])))) {
+    h1 {
+      font-size: var(--text-4xl);
+      font-weight: var(--font-weight-bold);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: var(--text-3xl);
+      font-weight: var(--font-weight-bold);
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+    }
+
+    h3 {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-weight-semibold);
+      line-height: 1.4;
+    }
+
+    h4 {
+      font-size: var(--text-xl);
+      font-weight: var(--font-weight-semibold);
+      line-height: 1.4;
+    }
+
+    label {
+      font-size: var(--text-sm);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    button {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    input {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+}
+
+/* Gradient Text Utility */
+@layer utilities {
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .gradient-text-purple-pink {
+    background: var(--gradient-purple-pink);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .gradient-bg {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-bg-purple-pink {
+    background: var(--gradient-purple-pink);
+  }
+  
+  .gradient-bg-pink-coral {
+    background: var(--gradient-pink-coral);
+  }
+  
+  .gradient-bg-coral-yellow {
+    background: var(--gradient-coral-yellow);
+  }
+}
+
+/* Animations */
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-in-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Hide scrollbar utility */
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Safe area padding for mobile devices */
+@layer utilities {
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+}
