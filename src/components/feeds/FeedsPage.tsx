@@ -3,6 +3,12 @@ import { Button } from '../ui/button';
 import { Card } from '../ui/card';
 import { LogoFull } from '../Logo';
 import { LanguageSwitcher } from '../LanguageSwitcher';
+import AIHubPage from '../ai-hub/AIHubPage';
+import MyClosetPage from '../closet/MyClosetPage';
+import ProfilePage from '../profile/ProfilePage';
+import MessagesPage from '../messages/MessagesPage';
+import ExplorePage from '../explore/ExplorePage';
+import SettingsPage from '../settings/SettingsPage';
 import {
   Home,
   Compass,
@@ -29,7 +35,7 @@ interface FeedsPageProps {
 }
 
 export default function FeedsPage({ onSignOut }: FeedsPageProps) {
-  const [activeTab, setActiveTab] = useState<'home' | 'explore' | 'closet' | 'ai' | 'profile'>('home');
+  const [activeTab, setActiveTab] = useState<'home' | 'explore' | 'closet' | 'ai' | 'profile' | 'messages' | 'settings'>('home');
 
   // Mock feed data
   const feedPosts = [
@@ -87,13 +93,16 @@ export default function FeedsPage({ onSignOut }: FeedsPageProps) {
             <Button variant="ghost" size="icon" className="h-9 w-9 sm:h-10 sm:w-10">
               <Search className="w-4 h-4 sm:w-5 sm:h-5" />
             </Button>
+            <Button variant="ghost" size="icon" className="h-9 w-9 sm:h-10 sm:w-10" onClick={() => setActiveTab('messages')}>
+              <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5" />
+            </Button>
             <Button variant="ghost" size="icon" className="h-9 w-9 sm:h-10 sm:w-10">
               <Bell className="w-4 h-4 sm:w-5 sm:h-5" />
             </Button>
             <div className="hidden sm:block">
               <LanguageSwitcher />
             </div>
-            <Button variant="ghost" size="icon" onClick={onSignOut} className="h-9 w-9 sm:h-10 sm:w-10">
+            <Button variant="ghost" size="icon" onClick={() => setActiveTab('settings')} className="h-9 w-9 sm:h-10 sm:w-10">
               <Settings className="w-4 h-4 sm:w-5 sm:h-5" />
             </Button>
           </div>
@@ -102,7 +111,7 @@ export default function FeedsPage({ onSignOut }: FeedsPageProps) {
 
       <div className="flex pt-14 sm:pt-16 pb-16 lg:pb-0">
         {/* Sidebar Navigation - Desktop */}
-        <aside className="hidden lg:block w-64 fixed left-0 top-14 sm:top-16 bottom-0 border-r p-4 overflow-y-auto">
+        <aside className="hidden lg:block w-64 fixed left-0 top-14 sm:top-16 bottom-0 border-r p-4 overflow-y-auto bg-background">
           <nav className="space-y-2">
             <Button
               variant={activeTab === 'home' ? 'secondary' : 'ghost'}
@@ -143,6 +152,22 @@ export default function FeedsPage({ onSignOut }: FeedsPageProps) {
             >
               <User className="w-5 h-5 mr-3" />
               Profile
+            </Button>
+            <Button
+              variant={activeTab === 'messages' ? 'secondary' : 'ghost'}
+              className="w-full justify-start"
+              onClick={() => setActiveTab('messages')}
+            >
+              <MessageCircle className="w-5 h-5 mr-3" />
+              Messages
+            </Button>
+            <Button
+              variant={activeTab === 'settings' ? 'secondary' : 'ghost'}
+              className="w-full justify-start"
+              onClick={() => setActiveTab('settings')}
+            >
+              <Settings className="w-5 h-5 mr-3" />
+              Settings
             </Button>
           </nav>
 

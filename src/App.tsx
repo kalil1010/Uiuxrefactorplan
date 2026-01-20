@@ -1,12 +1,15 @@
 import React from 'react';
 import './lib/suppress-warnings';
+import { ThemeProvider } from './lib/theme-provider';
 import { Button } from './components/ui/button';
 import { Card } from './components/ui/card';
 import { Logo, LogoIcon, LogoFull } from './components/Logo';
 import { LanguageSwitcher } from './components/LanguageSwitcher';
+import { ThemeToggle } from './components/ThemeToggle';
 import SignIn from './components/auth/SignIn';
 import SignUp from './components/auth/SignUp';
-import FeedsPage from './components/feeds/FeedsPage';
+import FeedsPageWrapper from './components/feeds/FeedsPageWrapper';
+import StyleSetup from './components/onboarding/StyleSetup';
 import { 
   Sparkles, 
   Shirt, 
@@ -25,7 +28,7 @@ import {
 } from 'lucide-react';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = React.useState<'landing' | 'signin' | 'signup' | 'feeds'>('landing');
+  const [currentPage, setCurrentPage] = React.useState<'landing' | 'signin' | 'signup' | 'feeds' | 'style-setup'>('landing');
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
@@ -38,6 +41,11 @@ export default function App() {
   // Handle sign up
   const handleSignUp = () => {
     setIsAuthenticated(true);
+    setCurrentPage('style-setup'); // Show onboarding first
+  };
+
+  // Handle onboarding complete
+  const handleOnboardingComplete = () => {
     setCurrentPage('feeds');
   };
 
@@ -49,20 +57,42 @@ export default function App() {
 
   // Show feeds if authenticated
   if (isAuthenticated && currentPage === 'feeds') {
-    return <FeedsPage onSignOut={handleSignOut} />;
+    return (
+      <ThemeProvider>
+        <FeedsPageWrapper onSignOut={handleSignOut} />
+      </ThemeProvider>
+    );
   }
 
   // Show authentication pages
   if (currentPage === 'signin') {
-    return <SignIn onNavigate={setCurrentPage} onSignIn={handleSignIn} />;
+    return (
+      <ThemeProvider>
+        <SignIn onNavigate={setCurrentPage} onSignIn={handleSignIn} />
+      </ThemeProvider>
+    );
   }
 
   if (currentPage === 'signup') {
-    return <SignUp onNavigate={setCurrentPage} onSignUp={handleSignUp} />;
+    return (
+      <ThemeProvider>
+        <SignUp onNavigate={setCurrentPage} onSignUp={handleSignUp} />
+      </ThemeProvider>
+    );
+  }
+
+  // Show style setup page
+  if (currentPage === 'style-setup') {
+    return (
+      <ThemeProvider>
+        <StyleSetup onComplete={handleOnboardingComplete} onNavigate={setCurrentPage} />
+      </ThemeProvider>
+    );
   }
 
   // Landing page
   return (
+    <ThemeProvider>
     <div className="min-h-screen bg-background">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 glass border-b">
@@ -82,6 +112,7 @@ export default function App() {
             {/* CTA Buttons */}
             <div className="flex items-center gap-3">
               <LanguageSwitcher />
+              <ThemeToggle />
               <Button variant="ghost" className="hidden md:inline-flex" onClick={() => setCurrentPage('signin')}>
                 Sign In
               </Button>
@@ -421,5 +452,6 @@ export default function App() {
         </div>
       </footer>
     </div>
+    </ThemeProvider>
   );
 }
