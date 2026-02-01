@@ -3,6 +3,7 @@ import { Button } from '../ui/button';
 import { Card } from '../ui/card';
 import { Input } from '../ui/input';
 import { Textarea } from '../ui/textarea';
+import { MultiWheelPickerModal } from '../ui/wheel-picker';
 import { 
   ArrowRight, 
   ArrowLeft,
@@ -30,6 +31,7 @@ interface StyleSetupProps {
 
 export default function StyleSetup({ onComplete, onNavigate }: StyleSetupProps) {
   const [currentStep, setCurrentStep] = useState(0);
+  const [isBirthdayPickerOpen, setIsBirthdayPickerOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     username: '',
@@ -289,75 +291,64 @@ export default function StyleSetup({ onComplete, onNavigate }: StyleSetupProps) 
               <p className="text-muted-foreground">This helps us recommend age-appropriate styles</p>
             </div>
 
-            {/* iOS Style Wheel Picker */}
+            {/* iOS Style Wheel Picker Button */}
             <div className="max-w-md mx-auto">
-              <div className="flex gap-2 justify-center items-center">
-                {/* Month Picker */}
-                <div className="flex-1 relative">
-                  <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute top-1/2 left-0 right-0 h-12 -translate-y-1/2 border-y-2 border-primary/20 bg-primary/5" />
-                  </div>
-                  <select
-                    value={formData.birthMonth}
-                    onChange={(e) => updateField('birthMonth', parseInt(e.target.value))}
-                    className="w-full h-64 text-center text-lg font-medium bg-transparent border-0 focus:outline-none cursor-pointer appearance-none"
-                    size={9}
-                  >
-                    {months.map((month, i) => (
-                      <option key={i} value={i} className="py-2">
-                        {month}
-                      </option>
-                    ))}
-                  </select>
+              <button
+                onClick={() => setIsBirthdayPickerOpen(true)}
+                className="w-full p-8 rounded-2xl border-2 border-primary bg-primary/10 hover:bg-primary/15 transition-all mb-4 shadow-lg hover:shadow-xl"
+              >
+                <div className="text-center">
+                  <Calendar className="w-12 h-12 mx-auto mb-4 text-primary" />
+                  <p className="text-sm text-muted-foreground mb-2">Selected Birthday</p>
+                  <p className="text-3xl font-bold">
+                    {months[formData.birthMonth]} {formData.birthDay}, {formData.birthYear}
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-2">
+                    Age: {calculateAge()} years old
+                  </p>
+                  <p className="text-xs text-primary mt-3">Tap to change</p>
                 </div>
+              </button>
 
-                {/* Day Picker */}
-                <div className="flex-1 relative">
-                  <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute top-1/2 left-0 right-0 h-12 -translate-y-1/2 border-y-2 border-primary/20 bg-primary/5" />
-                  </div>
-                  <select
-                    value={formData.birthDay}
-                    onChange={(e) => updateField('birthDay', parseInt(e.target.value))}
-                    className="w-full h-64 text-center text-lg font-medium bg-transparent border-0 focus:outline-none cursor-pointer appearance-none"
-                    size={9}
-                  >
-                    {days.map((day) => (
-                      <option key={day} value={day} className="py-2">
-                        {day}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                {/* Year Picker */}
-                <div className="flex-1 relative">
-                  <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute top-1/2 left-0 right-0 h-12 -translate-y-1/2 border-y-2 border-primary/20 bg-primary/5" />
-                  </div>
-                  <select
-                    value={formData.birthYear}
-                    onChange={(e) => updateField('birthYear', parseInt(e.target.value))}
-                    className="w-full h-64 text-center text-lg font-medium bg-transparent border-0 focus:outline-none cursor-pointer appearance-none"
-                    size={9}
-                  >
-                    {years.map((year) => (
-                      <option key={year} value={year} className="py-2">
-                        {year}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              {/* Selected Date Display */}
-              <div className="mt-6 text-center">
-                <p className="text-sm text-muted-foreground mb-2">Selected Birthday:</p>
-                <p className="text-xl font-semibold">
-                  {months[formData.birthMonth]} {formData.birthDay}, {formData.birthYear}
-                </p>
-              </div>
+              {calculateAge() < 13 && (
+                <Card className="p-4 border-destructive/50 bg-destructive/10">
+                  <p className="text-sm text-destructive">
+                    ⚠️ You must be at least 13 years old to use ZokaiHub
+                  </p>
+                </Card>
+              )}
             </div>
+
+            {/* Birthday Picker Modal */}
+            <MultiWheelPickerModal
+              isOpen={isBirthdayPickerOpen}
+              onClose={() => setIsBirthdayPickerOpen(false)}
+              wheels={[
+                {
+                  id: 'month',
+                  options: months.map((month, i) => ({ value: String(i), label: month })),
+                  value: String(formData.birthMonth),
+                },
+                {
+                  id: 'day',
+                  options: days.map((day) => ({ value: String(day), label: String(day) })),
+                  value: String(formData.birthDay),
+                },
+                {
+                  id: 'year',
+                  options: years.map((year) => ({ value: String(year), label: String(year) })),
+                  value: String(formData.birthYear),
+                },
+              ]}
+              onChange={(wheelId, value) => {
+                if (wheelId === 'month') updateField('birthMonth', parseInt(value));
+                if (wheelId === 'day') updateField('birthDay', parseInt(value));
+                if (wheelId === 'year') updateField('birthYear', parseInt(value));
+              }}
+              onDone={() => {}}
+              title="Select Birthday"
+              height={220}
+            />
           </div>
         );
 

@@ -5,6 +5,7 @@ import { Card } from '../ui/card';
 import { Textarea } from '../ui/textarea';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { Badge } from '../ui/badge';
+import { WheelPickerModal } from '../ui/wheel-picker';
 
 interface CreatePostModalProps {
   isOpen: boolean;
@@ -15,8 +16,30 @@ export function CreatePostModal({ isOpen, onClose }: CreatePostModalProps) {
   const [postText, setPostText] = useState('');
   const [privacy, setPrivacy] = useState<'public' | 'followers' | 'private'>('public');
   const [selectedImages, setSelectedImages] = useState<string[]>([]);
+  const [isPrivacyPickerOpen, setIsPrivacyPickerOpen] = useState(false);
 
   if (!isOpen) return null;
+
+  const privacyOptions = [
+    { value: 'public', label: 'Public' },
+    { value: 'followers', label: 'Followers' },
+    { value: 'private', label: 'Private' },
+  ];
+
+  const getPrivacyIcon = () => {
+    switch (privacy) {
+      case 'public':
+        return <Globe className="w-3 h-3" />;
+      case 'followers':
+        return <Users className="w-3 h-3" />;
+      case 'private':
+        return <Lock className="w-3 h-3" />;
+    }
+  };
+
+  const getPrivacyLabel = () => {
+    return privacyOptions.find(opt => opt.value === privacy)?.label || 'Public';
+  };
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
@@ -40,8 +63,14 @@ export function CreatePostModal({ isOpen, onClose }: CreatePostModalProps) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fade-in">
-      <Card className="w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col animate-scale-in">
+    <div 
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/50 backdrop-blur-sm animate-fade-in"
+      onClick={onClose}
+    >
+      <Card 
+        className="w-full sm:max-w-2xl max-h-[95vh] sm:max-h-[90vh] overflow-hidden flex flex-col animate-slide-up sm:animate-scale-in rounded-t-2xl sm:rounded-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b">
           <h2 className="text-xl font-bold">Create Post</h2>
@@ -61,17 +90,11 @@ export function CreatePostModal({ isOpen, onClose }: CreatePostModalProps) {
             <div className="flex-1">
               <p className="font-semibold">Your Name</p>
               <button
-                onClick={() => {
-                  const options: Array<'public' | 'followers' | 'private'> = ['public', 'followers', 'private'];
-                  const currentIndex = options.indexOf(privacy);
-                  const nextIndex = (currentIndex + 1) % options.length;
-                  setPrivacy(options[nextIndex]);
-                }}
+                onClick={() => setIsPrivacyPickerOpen(true)}
                 className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
-                {privacy === 'public' && <><Globe className="w-3 h-3" /> Public</>}
-                {privacy === 'followers' && <><Users className="w-3 h-3" /> Followers</>}
-                {privacy === 'private' && <><Lock className="w-3 h-3" /> Private</>}
+                {getPrivacyIcon()}
+                {getPrivacyLabel()}
               </button>
             </div>
           </div>
@@ -168,6 +191,16 @@ export function CreatePostModal({ isOpen, onClose }: CreatePostModalProps) {
           </div>
         </div>
       </Card>
+
+      {/* Privacy Picker Modal */}
+      <WheelPickerModal
+        isOpen={isPrivacyPickerOpen}
+        onClose={() => setIsPrivacyPickerOpen(false)}
+        options={privacyOptions}
+        value={privacy}
+        onChange={(value) => setPrivacy(value as 'public' | 'followers' | 'private')}
+        title="Post Privacy"
+      />
     </div>
   );
 }

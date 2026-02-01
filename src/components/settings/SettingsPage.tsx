@@ -4,6 +4,7 @@ import { Card } from '../ui/card';
 import { Input } from '../ui/input';
 import { Switch } from '../ui/switch';
 import { ThemeToggleInline } from '../ThemeToggle';
+import { WheelPickerModal } from '../ui/wheel-picker';
 import { 
   User, 
   Bell, 
@@ -18,7 +19,9 @@ import {
   Sparkles,
   Users,
   Crown,
-  Zap
+  Zap,
+  Store,
+  Video
 } from 'lucide-react';
 
 interface SettingsPageProps {
@@ -26,7 +29,8 @@ interface SettingsPageProps {
 }
 
 export default function SettingsPage({ onSignOut }: SettingsPageProps) {
-  const [userRole, setUserRole] = useState<'user' | 'creator'>('user');
+  const [userRole, setUserRole] = useState<'user' | 'creator' | 'vendor' | 'owner'>('user');
+  const [isRolePickerOpen, setIsRolePickerOpen] = useState(false);
   const [notifications, setNotifications] = useState({
     likes: true,
     comments: true,
@@ -35,9 +39,65 @@ export default function SettingsPage({ onSignOut }: SettingsPageProps) {
     aiUpdates: false
   });
 
-  const handleRoleSwitch = (newRole: 'user' | 'creator') => {
-    setUserRole(newRole);
-    // You can add additional logic here for role switching
+  const roleOptions = [
+    { value: 'user', label: 'User Mode' },
+    { value: 'creator', label: 'Creator Mode' },
+    { value: 'vendor', label: 'Vendor Mode' },
+    { value: 'owner', label: 'Owner Mode' },
+  ];
+
+  const handleRoleSwitch = (newRole: string) => {
+    setUserRole(newRole as 'user' | 'creator' | 'vendor' | 'owner');
+  };
+
+  const getRoleIcon = () => {
+    switch (userRole) {
+      case 'user':
+        return <User className="w-8 h-8 text-primary" />;
+      case 'creator':
+        return <Sparkles className="w-8 h-8 text-primary" />;
+      case 'vendor':
+        return <Store className="w-8 h-8 text-primary" />;
+      case 'owner':
+        return <Crown className="w-8 h-8 text-primary" />;
+    }
+  };
+
+  const getRoleLabel = () => {
+    return roleOptions.find(opt => opt.value === userRole)?.label || 'User Mode';
+  };
+
+  const getRoleBenefits = () => {
+    switch (userRole) {
+      case 'creator':
+        return [
+          '✓ Advanced analytics dashboard',
+          '✓ Monetization tools',
+          '✓ Priority support',
+          '✓ Custom branding options'
+        ];
+      case 'vendor':
+        return [
+          '✓ Product management dashboard',
+          '✓ Order tracking & fulfillment',
+          '✓ Sales analytics',
+          '✓ Customer insights'
+        ];
+      case 'owner':
+        return [
+          '✓ Platform-wide analytics',
+          '✓ User & vendor management',
+          '✓ Content moderation tools',
+          '✓ System monitoring'
+        ];
+      default:
+        return [
+          '✓ Browse and share fashion',
+          '✓ AI styling recommendations',
+          '✓ Digital closet management',
+          '✓ Social features'
+        ];
+    }
   };
 
   return (
@@ -51,55 +111,56 @@ export default function SettingsPage({ onSignOut }: SettingsPageProps) {
             <div>
               <h3 className="text-lg font-semibold mb-1">Account Mode</h3>
               <p className="text-sm text-muted-foreground">
-                Switch between user and creator mode
+                Tap to switch between different modes
               </p>
             </div>
-            <Crown className="w-8 h-8 text-primary" />
+            {getRoleIcon()}
           </div>
           
-          <div className="grid grid-cols-2 gap-3">
-            <button
-              onClick={() => handleRoleSwitch('user')}
-              className={`p-4 rounded-lg border-2 transition-all ${
-                userRole === 'user'
-                  ? 'border-primary bg-primary/10'
-                  : 'border-border hover:border-primary/50'
-              }`}
-            >
-              <User className="w-6 h-6 mx-auto mb-2" />
-              <h4 className="font-semibold mb-1">User Mode</h4>
-              <p className="text-xs text-muted-foreground">Browse and share fashion</p>
-            </button>
-
-            <button
-              onClick={() => handleRoleSwitch('creator')}
-              className={`p-4 rounded-lg border-2 transition-all ${
-                userRole === 'creator'
-                  ? 'border-primary bg-primary/10'
-                  : 'border-border hover:border-primary/50'
-              }`}
-            >
-              <Sparkles className="w-6 h-6 mx-auto mb-2" />
-              <h4 className="font-semibold mb-1">Creator Mode</h4>
-              <p className="text-xs text-muted-foreground">Analytics & monetization</p>
-            </button>
-          </div>
-
-          {userRole === 'creator' && (
-            <div className="mt-4 p-4 rounded-lg bg-primary/5 border border-primary/20">
-              <div className="flex items-center gap-2 mb-2">
-                <Zap className="w-4 h-4 text-primary" />
-                <h4 className="font-semibold text-sm">Creator Benefits</h4>
+          {/* Current Role Display */}
+          <button
+            onClick={() => setIsRolePickerOpen(true)}
+            className="w-full p-4 rounded-lg border-2 border-primary bg-primary/10 hover:bg-primary/15 transition-all mb-3"
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                {getRoleIcon()}
+                <div className="text-left">
+                  <h4 className="font-semibold">{getRoleLabel()}</h4>
+                  <p className="text-xs text-muted-foreground">Tap to change mode</p>
+                </div>
               </div>
-              <ul className="text-sm text-muted-foreground space-y-1">
-                <li>✓ Advanced analytics dashboard</li>
-                <li>✓ Monetization tools</li>
-                <li>✓ Priority support</li>
-                <li>✓ Custom branding options</li>
-              </ul>
+              <ChevronRight className="w-5 h-5 text-muted-foreground" />
             </div>
-          )}
+          </button>
+
+          {/* Role Benefits */}
+          <div className="p-4 rounded-lg bg-primary/5 border border-primary/20">
+            <div className="flex items-center gap-2 mb-2">
+              <Zap className="w-4 h-4 text-primary" />
+              <h4 className="font-semibold text-sm">
+                {userRole === 'user' ? 'User Benefits' : 
+                 userRole === 'creator' ? 'Creator Benefits' : 
+                 userRole === 'vendor' ? 'Vendor Benefits' : 'Owner Benefits'}
+              </h4>
+            </div>
+            <ul className="text-sm text-muted-foreground space-y-1">
+              {getRoleBenefits().map((benefit, idx) => (
+                <li key={idx}>{benefit}</li>
+              ))}
+            </ul>
+          </div>
         </Card>
+
+        {/* Role Picker Modal */}
+        <WheelPickerModal
+          isOpen={isRolePickerOpen}
+          onClose={() => setIsRolePickerOpen(false)}
+          options={roleOptions}
+          value={userRole}
+          onChange={handleRoleSwitch}
+          title="Select Mode"
+        />
 
         {/* Account Settings */}
         <div className="space-y-6">

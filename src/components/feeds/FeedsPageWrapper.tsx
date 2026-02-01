@@ -102,94 +102,98 @@ export default function FeedsPageWrapper({ onSignOut }: FeedsPageWrapperProps) {
       </nav>
 
       <div className="flex pt-14 sm:pt-16 pb-16 lg:pb-0">
-        {/* Sidebar Navigation - Desktop */}
-        <aside className="hidden lg:block w-64 fixed left-0 top-14 sm:top-16 bottom-0 border-r p-4 overflow-y-auto bg-background z-40">
-          <nav className="space-y-2">
-            <Button
-              variant={activeTab === 'home' ? 'secondary' : 'ghost'}
-              className="w-full justify-start"
-              onClick={() => setActiveTab('home')}
+        {/* Desktop Sidebar */}
+        <aside className="hidden md:block w-64 fixed left-0 top-14 sm:top-16 bottom-0 border-r bg-background overflow-y-auto z-40">
+          <div className="p-4 space-y-4">
+            {/* New Post Button */}
+            <Button 
+              className="w-full gradient-bg text-white"
+              onClick={() => setIsCreatePostOpen(true)}
             >
-              <Home className="w-5 h-5 mr-3" />
-              Home Feed
-            </Button>
-            <Button
-              variant={activeTab === 'explore' ? 'secondary' : 'ghost'}
-              className="w-full justify-start"
-              onClick={() => setActiveTab('explore')}
-            >
-              <Compass className="w-5 h-5 mr-3" />
-              Explore
-            </Button>
-            <Button
-              variant={activeTab === 'closet' ? 'secondary' : 'ghost'}
-              className="w-full justify-start"
-              onClick={() => setActiveTab('closet')}
-            >
-              <Shirt className="w-5 h-5 mr-3" />
-              My Closet
-            </Button>
-            <Button
-              variant={activeTab === 'ai' ? 'secondary' : 'ghost'}
-              className="w-full justify-start"
-              onClick={() => setActiveTab('ai')}
-            >
-              <Sparkles className="w-5 h-5 mr-3" />
-              AI Stylist Hub
-            </Button>
-            <Button
-              variant={activeTab === 'profile' ? 'secondary' : 'ghost'}
-              className="w-full justify-start"
-              onClick={() => setActiveTab('profile')}
-            >
-              <User className="w-5 h-5 mr-3" />
-              Profile
-            </Button>
-            <Button
-              variant={activeTab === 'messages' ? 'secondary' : 'ghost'}
-              className="w-full justify-start"
-              onClick={() => setActiveTab('messages')}
-            >
-              <MessageCircle className="w-5 h-5 mr-3" />
-              Messages
-            </Button>
-            <Button
-              variant={activeTab === 'settings' ? 'secondary' : 'ghost'}
-              className="w-full justify-start"
-              onClick={() => setActiveTab('settings')}
-            >
-              <Settings className="w-5 h-5 mr-3" />
-              Settings
-            </Button>
-          </nav>
-
-          <div className="mt-6">
-            <Button className="w-full gradient-bg border-0" onClick={() => setIsCreatePostOpen(true)}>
               <Plus className="w-5 h-5 mr-2" />
               New Post
             </Button>
-          </div>
 
-          {/* Quick Stats - Only show on home */}
-          {activeTab === 'home' && (
-            <Card className="mt-6 p-4">
-              <h3 className="font-semibold mb-3">Today's Weather</h3>
-              <div className="flex items-center gap-3 mb-3">
-                <Cloud className="w-8 h-8 text-primary" />
-                <div>
-                  <div className="text-2xl font-bold">72°F</div>
-                  <div className="text-xs text-muted-foreground">Partly Cloudy</div>
-                </div>
-              </div>
-              <Button variant="outline" size="sm" className="w-full">
-                View Outfit Suggestions
+            <nav className="space-y-2">
+              <Button
+                variant={activeTab === 'home' ? 'secondary' : 'ghost'}
+                className="w-full justify-start"
+                onClick={() => setActiveTab('home')}
+              >
+                <Home className="w-5 h-5 mr-3" />
+                Home Feed
               </Button>
-            </Card>
-          )}
+              <Button
+                variant={activeTab === 'explore' ? 'secondary' : 'ghost'}
+                className="w-full justify-start"
+                onClick={() => setActiveTab('explore')}
+              >
+                <Compass className="w-5 h-5 mr-3" />
+                Explore
+              </Button>
+              <Button
+                variant={activeTab === 'closet' ? 'secondary' : 'ghost'}
+                className="w-full justify-start"
+                onClick={() => setActiveTab('closet')}
+              >
+                <Shirt className="w-5 h-5 mr-3" />
+                My Closet
+              </Button>
+              <Button
+                variant={activeTab === 'ai' ? 'secondary' : 'ghost'}
+                className="w-full justify-start"
+                onClick={() => setActiveTab('ai')}
+              >
+                <Sparkles className="w-5 h-5 mr-3" />
+                AI Stylist Hub
+              </Button>
+              <Button
+                variant={activeTab === 'profile' ? 'secondary' : 'ghost'}
+                className="w-full justify-start"
+                onClick={() => setActiveTab('profile')}
+              >
+                <User className="w-5 h-5 mr-3" />
+                Profile
+              </Button>
+              <Button
+                variant={activeTab === 'messages' ? 'secondary' : 'ghost'}
+                className="w-full justify-start"
+                onClick={() => setActiveTab('messages')}
+              >
+                <MessageCircle className="w-5 h-5 mr-3" />
+                Messages
+              </Button>
+              <Button
+                variant={activeTab === 'settings' ? 'secondary' : 'ghost'}
+                className="w-full justify-start"
+                onClick={() => setActiveTab('settings')}
+              >
+                <Settings className="w-5 h-5 mr-3" />
+                Settings
+              </Button>
+            </nav>
+
+            {/* Quick Stats - Only show on home */}
+            {activeTab === 'home' && (
+              <Card className="mt-6 p-4">
+                <h3 className="font-semibold mb-3">Today's Weather</h3>
+                <div className="flex items-center gap-3 mb-3">
+                  <Cloud className="w-8 h-8 text-primary" />
+                  <div>
+                    <div className="text-2xl font-bold">72°F</div>
+                    <div className="text-xs text-muted-foreground">Partly Cloudy</div>
+                  </div>
+                </div>
+                <Button variant="outline" size="sm" className="w-full">
+                  View Outfit Suggestions
+                </Button>
+              </Card>
+            )}
+          </div>
         </aside>
 
         {/* Main Content Area */}
-        <main className={`flex-1 ${isFullWidthPage ? 'lg:ml-64' : 'lg:ml-64 lg:mr-80'} min-h-[calc(100vh-3.5rem)] sm:min-h-[calc(100vh-4rem)] overflow-y-auto`}>
+        <main className={`flex-1 md:ml-64 ${isFullWidthPage ? '' : 'lg:pr-80'} min-h-[calc(100vh-3.5rem)] sm:min-h-[calc(100vh-4rem)] overflow-y-auto`}>
           {renderPageContent()}
         </main>
 

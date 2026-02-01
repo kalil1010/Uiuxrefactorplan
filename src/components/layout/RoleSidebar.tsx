@@ -88,85 +88,106 @@ export function RoleSidebar({
   const items = roleMenus[role];
 
   return (
-    <div className={cn(
-      "h-full bg-card border-r border-border flex flex-col transition-all duration-300",
-      collapsed ? "w-16" : "w-64"
-    )}>
-      {/* Logo/Brand */}
-      <div className="h-16 border-b border-border flex items-center px-4">
-        {!collapsed && (
-          <span className="gradient-text-purple-pink font-bold text-xl">
-            ZokaiHub
-          </span>
-        )}
-        {collapsed && (
-          <span className="gradient-text-purple-pink font-bold text-2xl">
-            Z
-          </span>
-        )}
-      </div>
-
-      {/* Navigation Items */}
-      <nav className="flex-1 p-4 space-y-2 overflow-y-auto">
-        {items.map((item) => {
-          const Icon = item.icon;
-          const isActive = activeItem === item.href;
-          
-          return (
-            <button
-              key={item.href}
-              onClick={() => onItemClick?.(item.href)}
-              className={cn(
-                "w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all",
-                "hover:bg-accent/10 group relative",
-                isActive && "bg-primary text-primary-foreground before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1 before:bg-primary before:rounded-r",
-                !isActive && "text-muted-foreground hover:text-foreground"
-              )}
-            >
-              <Icon className={cn("w-5 h-5 flex-shrink-0", isActive && "text-primary-foreground")} />
-              {!collapsed && (
-                <span className="font-medium">{item.label}</span>
-              )}
-              {collapsed && (
-                <div className="absolute left-full ml-2 px-2 py-1 bg-popover border border-border rounded-md shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-50">
-                  <span className="text-sm">{item.label}</span>
-                </div>
-              )}
-            </button>
-          );
-        })}
-      </nav>
-
-      {/* Role Switcher */}
-      <div className="p-4 border-t border-border">
-        <button
-          onClick={() => {
-            const roles = ['customer', 'vendor', 'owner', 'star'];
-            const currentIndex = roles.indexOf(role);
-            const nextRole = roles[(currentIndex + 1) % roles.length];
-            onRoleChange?.(nextRole);
-          }}
-          className={cn(
-            "w-full flex items-center gap-3 px-4 py-3 rounded-lg",
-            "bg-accent/10 hover:bg-accent/20 transition-all group"
-          )}
-        >
-          <div className="w-8 h-8 rounded-full gradient-bg-purple-pink flex items-center justify-center flex-shrink-0">
-            <span className="text-white text-sm font-bold">
-              {roleLabels[role][0]}
-            </span>
+    <>
+      {/* Mobile Overlay */}
+      {!collapsed && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+          onClick={() => onItemClick?.('toggle-sidebar')}
+        />
+      )}
+      
+      {/* Sidebar */}
+      <div className={cn(
+        "fixed lg:relative h-full bg-card border-r border-border flex flex-col transition-all duration-300 z-50",
+        "lg:translate-x-0",
+        collapsed ? "w-16 -translate-x-full lg:translate-x-0" : "w-64 translate-x-0"
+      )}>
+        {/* Logo/Brand */}
+        <div className="h-16 border-b border-border flex items-center px-4 justify-between">
+          <div>
+            {!collapsed && (
+              <span className="gradient-text-purple-pink font-bold text-xl">
+                ZokaiHub
+              </span>
+            )}
+            {collapsed && (
+              <span className="gradient-text-purple-pink font-bold text-2xl">
+                Z
+              </span>
+            )}
           </div>
-          {!collapsed && (
-            <>
-              <div className="flex-1 text-left">
-                <p className="text-sm font-medium">Switch Role</p>
-                <p className="text-xs text-muted-foreground">{roleLabels[role]}</p>
-              </div>
-              <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:translate-x-1 transition-transform" />
-            </>
-          )}
-        </button>
+          {/* Close button for mobile */}
+          <button
+            className="lg:hidden p-2 hover:bg-accent/10 rounded-lg"
+            onClick={() => onItemClick?.('toggle-sidebar')}
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Navigation Items */}
+        <nav className="flex-1 p-4 space-y-2 overflow-y-auto">
+          {items.map((item) => {
+            const Icon = item.icon;
+            const isActive = activeItem === item.href;
+            
+            return (
+              <button
+                key={item.href}
+                onClick={() => onItemClick?.(item.href)}
+                className={cn(
+                  "w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all",
+                  "hover:bg-accent/10 group relative",
+                  isActive && "bg-primary text-primary-foreground before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1 before:bg-primary before:rounded-r",
+                  !isActive && "text-muted-foreground hover:text-foreground"
+                )}
+              >
+                <Icon className={cn("w-5 h-5 flex-shrink-0", isActive && "text-primary-foreground")} />
+                {!collapsed && (
+                  <span className="font-medium">{item.label}</span>
+                )}
+                {collapsed && (
+                  <div className="absolute left-full ml-2 px-2 py-1 bg-popover border border-border rounded-md shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-50">
+                    <span className="text-sm">{item.label}</span>
+                  </div>
+                )}
+              </button>
+            );
+          })}
+        </nav>
+
+        {/* Role Switcher */}
+        <div className="p-4 border-t border-border">
+          <button
+            onClick={() => {
+              const roles = ['customer', 'vendor', 'owner', 'star'];
+              const currentIndex = roles.indexOf(role);
+              const nextRole = roles[(currentIndex + 1) % roles.length];
+              onRoleChange?.(nextRole);
+            }}
+            className={cn(
+              "w-full flex items-center gap-3 px-4 py-3 rounded-lg",
+              "bg-accent/10 hover:bg-accent/20 transition-all group"
+            )}
+          >
+            <div className="w-8 h-8 rounded-full gradient-bg-purple-pink flex items-center justify-center flex-shrink-0">
+              <span className="text-white text-sm font-bold">
+                {roleLabels[role][0]}
+              </span>
+            </div>
+            {!collapsed && (
+              <>
+                <div className="flex-1 text-left">
+                  <p className="text-sm font-medium">Switch Role</p>
+                  <p className="text-xs text-muted-foreground">{roleLabels[role]}</p>
+                </div>
+                <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:translate-x-1 transition-transform" />
+              </>
+            )}
+          </button>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
