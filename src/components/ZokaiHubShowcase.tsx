@@ -41,6 +41,12 @@ import CheckoutPage from './checkout/CheckoutPage';
 import ImageGeneratorPage from './tools/ImageGeneratorPage';
 import CreateCommunityPage from './social/CreateCommunityPage';
 import CommunityDetailPage from './social/CommunityDetailPage';
+import CollectionDetailPage from './social/CollectionDetailPage';
+import ChallengeDetailPage from './challenges/ChallengeDetailPage';
+import ProfileViewPage from './profile/ProfileViewPage';
+import ClosetMixerPage from './closet/ClosetMixerPage';
+import HashtagPage from './feeds/HashtagPage';
+import ContactPage from './contact/ContactPage';
 import { ImageCropExamplesPage } from './examples/ImageCropExamplesPage';
 
 type DemoView = 
@@ -63,6 +69,12 @@ type DemoView =
   | 'checkout'
   | 'create-community'
   | 'community-detail'
+  | 'collection-detail'
+  | 'challenge-detail'
+  | 'profile-view'
+  | 'closet-mixer'
+  | 'hashtag'
+  | 'contact'
   | 'image-crop-examples'
   | 'not-found';
 
@@ -99,6 +111,12 @@ export function ZokaiHubShowcase() {
         {currentView === 'checkout' && <CheckoutPage />}
         {currentView === 'create-community' && <CreateCommunityPage />}
         {currentView === 'community-detail' && <CommunityDetailPage />}
+        {currentView === 'collection-detail' && <CollectionDetailPage />}
+        {currentView === 'challenge-detail' && <ChallengeDetailPage />}
+        {currentView === 'profile-view' && <ProfileViewPage />}
+        {currentView === 'closet-mixer' && <ClosetMixerPage />}
+        {currentView === 'hashtag' && <HashtagPage />}
+        {currentView === 'contact' && <ContactPage />}
         {currentView === 'image-crop-examples' && <ImageCropExamplesPage />}
         {currentView === 'not-found' && <NotFoundPage />}
       </div>
@@ -608,6 +626,114 @@ export function ZokaiHubShowcase() {
 
             <Card 
               className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={() => setCurrentView('collection-detail')}
+            >
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full gradient-bg-coral-yellow flex items-center justify-center mb-4">
+                  <Bookmark className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>Collection Detail</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  View details of a specific fashion collection
+                </p>
+                <Button variant="outline" className="w-full">View Page</Button>
+              </CardContent>
+            </Card>
+
+            <Card 
+              className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={() => setCurrentView('challenge-detail')}
+            >
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full gradient-bg-coral-yellow flex items-center justify-center mb-4">
+                  <Trophy className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>Challenge Detail</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  View details of a specific fashion challenge
+                </p>
+                <Button variant="outline" className="w-full">View Page</Button>
+              </CardContent>
+            </Card>
+
+            <Card 
+              className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={() => setCurrentView('profile-view')}
+            >
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full gradient-bg-coral-yellow flex items-center justify-center mb-4">
+                  <Users className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>Profile View</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  View and manage your profile
+                </p>
+                <Button variant="outline" className="w-full">View Page</Button>
+              </CardContent>
+            </Card>
+
+            <Card 
+              className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={() => setCurrentView('closet-mixer')}
+            >
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full gradient-bg-coral-yellow flex items-center justify-center mb-4">
+                  <Shirt className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>Closet Mixer</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Mix and match items from your closet
+                </p>
+                <Button variant="outline" className="w-full">View Page</Button>
+              </CardContent>
+            </Card>
+
+            <Card 
+              className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={() => setCurrentView('hashtag')}
+            >
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full gradient-bg-coral-yellow flex items-center justify-center mb-4">
+                  <Sparkles className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>Hashtag</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Explore posts by hashtag
+                </p>
+                <Button variant="outline" className="w-full">View Page</Button>
+              </CardContent>
+            </Card>
+
+            <Card 
+              className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={() => setCurrentView('contact')}
+            >
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full gradient-bg-coral-yellow flex items-center justify-center mb-4">
+                  <Sparkles className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>Contact</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Contact us for support and inquiries
+                </p>
+                <Button variant="outline" className="w-full">View Page</Button>
+              </CardContent>
+            </Card>
+
+            <Card 
+              className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
               onClick={() => setCurrentView('image-crop-examples')}
             >
               <CardHeader>
@@ -704,6 +830,12 @@ export function ZokaiHubShowcase() {
                     <Badge variant="outline">Checkout</Badge>
                     <Badge variant="outline">Create Community</Badge>
                     <Badge variant="outline">Community Detail</Badge>
+                    <Badge variant="outline">Collection Detail</Badge>
+                    <Badge variant="outline">Challenge Detail</Badge>
+                    <Badge variant="outline">Profile View</Badge>
+                    <Badge variant="outline">Closet Mixer</Badge>
+                    <Badge variant="outline">Hashtag</Badge>
+                    <Badge variant="outline">Contact</Badge>
                     <Badge variant="outline">Image Crop Examples</Badge>
                     <Badge variant="outline">404 Page</Badge>
                   </div>

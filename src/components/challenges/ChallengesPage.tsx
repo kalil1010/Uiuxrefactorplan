@@ -194,6 +194,11 @@ export function ChallengesPage() {
             <Card 
               key={challenge.id}
               className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer overflow-hidden"
+              onClick={() => {
+                // In a real app, this would navigate to challenge detail
+                console.log('Navigate to challenge:', challenge.id);
+                alert(`View ${challenge.title} challenge (challenge-detail page)`);
+              }}
             >
               {/* Cover Image */}
               <div className="relative h-48 overflow-hidden">

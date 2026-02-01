@@ -10,7 +10,8 @@ import {
   MoreVertical,
   Eye,
   Edit,
-  Trash2
+  Trash2,
+  FileText
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -29,6 +30,14 @@ import {
   DropdownMenuTrigger 
 } from '@/components/ui/dropdown-menu';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { ProductsTab } from './vendor/ProductsTab';
+import { OrdersTab } from './vendor/OrdersTab';
+import { CustomersTab } from './vendor/CustomersTab';
+import { AnalyticsTab } from './vendor/AnalyticsTab';
+import { ReviewsTab } from './vendor/ReviewsTab';
+import { PromotionsTab } from './vendor/PromotionsTab';
+import { SupportTab } from './vendor/SupportTab';
+import { SettingsTab } from './vendor/SettingsTab';
 
 const revenueData = [
   { month: 'Jan', revenue: 4200 },
@@ -73,31 +82,36 @@ export function VendorDashboard() {
     }
   };
 
-  return (
-    <div className="flex h-screen bg-background overflow-hidden">
-      {/* Sidebar */}
-      <RoleSidebar
-        role="vendor"
-        activeItem={activeItem}
-        collapsed={sidebarCollapsed}
-        onItemClick={setActiveItem}
-      />
-
-      {/* Main Content */}
-      <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Top Bar */}
-        <TopBar
-          title="Atlas Dashboard"
-          onMenuClick={() => setSidebarCollapsed(!sidebarCollapsed)}
-        />
-
-        {/* Content Area */}
-        <main className="flex-1 overflow-y-auto p-6">
-          {/* Background Orbs */}
-          <div className="fixed top-0 right-0 w-96 h-96 bg-brand-purple/20 rounded-full blur-3xl pointer-events-none" />
-          <div className="fixed bottom-0 left-1/3 w-96 h-96 bg-accent/20 rounded-full blur-3xl pointer-events-none" />
-
-          <div className="max-w-7xl mx-auto space-y-6 relative z-10">
+  const renderContent = () => {
+    switch (activeItem) {
+      case '/vendor/products':
+        return <ProductsTab />;
+      
+      case '/vendor/orders':
+        return <OrdersTab />;
+      
+      case '/vendor/customers':
+        return <CustomersTab />;
+      
+      case '/vendor/analytics':
+        return <AnalyticsTab />;
+      
+      case '/vendor/reviews':
+        return <ReviewsTab />;
+      
+      case '/vendor/promotions':
+        return <PromotionsTab />;
+      
+      case '/vendor/support':
+        return <SupportTab />;
+      
+      case '/vendor/settings':
+        return <SettingsTab />;
+      
+      case '/vendor/dashboard':
+      default:
+        return (
+          <>
             {/* Stats Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <Card className="hover:shadow-lg transition-shadow">
@@ -296,6 +310,37 @@ export function VendorDashboard() {
                 </CardContent>
               </Card>
             </div>
+          </>
+        );
+    }
+  };
+
+  return (
+    <div className="flex h-screen bg-background overflow-hidden">
+      {/* Sidebar */}
+      <RoleSidebar
+        role="vendor"
+        activeItem={activeItem}
+        collapsed={sidebarCollapsed}
+        onItemClick={setActiveItem}
+      />
+
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col overflow-hidden">
+        {/* Top Bar */}
+        <TopBar
+          title="Atlas Dashboard"
+          onMenuClick={() => setSidebarCollapsed(!sidebarCollapsed)}
+        />
+
+        {/* Content Area */}
+        <main className="flex-1 overflow-y-auto p-6">
+          {/* Background Orbs */}
+          <div className="fixed top-0 right-0 w-96 h-96 bg-brand-purple/20 rounded-full blur-3xl pointer-events-none" />
+          <div className="fixed bottom-0 left-1/3 w-96 h-96 bg-accent/20 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="max-w-7xl mx-auto space-y-6 relative z-10">
+            {renderContent()}
           </div>
         </main>
       </div>

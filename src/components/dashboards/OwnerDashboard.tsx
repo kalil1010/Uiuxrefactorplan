@@ -23,6 +23,8 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+import { UsersTab } from './owner/UsersTab';
+import { VendorsTab } from './owner/VendorsTab';
 
 const userGrowthData = [
   { month: 'Jan', users: 12400 },
@@ -76,31 +78,37 @@ export function OwnerDashboard() {
     }
   };
 
-  return (
-    <div className="flex h-screen bg-background overflow-hidden">
-      {/* Sidebar */}
-      <RoleSidebar
-        role="owner"
-        activeItem={activeItem}
-        collapsed={sidebarCollapsed}
-        onItemClick={setActiveItem}
-      />
-
-      {/* Main Content */}
-      <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Top Bar */}
-        <TopBar
-          title="Downtown Platform"
-          onMenuClick={() => setSidebarCollapsed(!sidebarCollapsed)}
-        />
-
-        {/* Content Area */}
-        <main className="flex-1 overflow-y-auto p-6">
-          {/* Background Orbs */}
-          <div className="fixed top-0 left-1/4 w-96 h-96 bg-brand-magenta/20 rounded-full blur-3xl pointer-events-none" />
-          <div className="fixed bottom-0 right-1/4 w-96 h-96 bg-brand-coral/20 rounded-full blur-3xl pointer-events-none" />
-
-          <div className="max-w-7xl mx-auto space-y-6 relative z-10">
+  const renderContent = () => {
+    switch (activeItem) {
+      case '/owner/users':
+        return <UsersTab />;
+      
+      case '/owner/vendors':
+        return <VendorsTab />;
+      
+      case '/owner/content':
+      case '/owner/reports':
+      case '/owner/monitoring':
+      case '/owner/messages':
+      case '/owner/settings':
+        return (
+          <Card className="glass-effect">
+            <CardContent className="p-12 text-center">
+              <FileText className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
+              <h3 className="text-2xl font-bold mb-2">
+                {activeItem.split('/').pop()?.charAt(0).toUpperCase() + activeItem.split('/').pop()?.slice(1)}
+              </h3>
+              <p className="text-muted-foreground">
+                This section is coming soon. Stay tuned for updates!
+              </p>
+            </CardContent>
+          </Card>
+        );
+      
+      case '/owner/dashboard':
+      default:
+        return (
+          <>
             {/* Stats Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <Card className="hover:shadow-lg transition-shadow">
@@ -327,6 +335,37 @@ export function OwnerDashboard() {
                 </CardContent>
               </Card>
             </div>
+          </>
+        );
+    }
+  };
+
+  return (
+    <div className="flex h-screen bg-background overflow-hidden">
+      {/* Sidebar */}
+      <RoleSidebar
+        role="owner"
+        activeItem={activeItem}
+        collapsed={sidebarCollapsed}
+        onItemClick={setActiveItem}
+      />
+
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col overflow-hidden">
+        {/* Top Bar */}
+        <TopBar
+          title="Downtown Platform"
+          onMenuClick={() => setSidebarCollapsed(!sidebarCollapsed)}
+        />
+
+        {/* Content Area */}
+        <main className="flex-1 overflow-y-auto p-6">
+          {/* Background Orbs */}
+          <div className="fixed top-0 left-1/4 w-96 h-96 bg-brand-magenta/20 rounded-full blur-3xl pointer-events-none" />
+          <div className="fixed bottom-0 right-1/4 w-96 h-96 bg-brand-coral/20 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="max-w-7xl mx-auto space-y-6 relative z-10">
+            {renderContent()}
           </div>
         </main>
       </div>

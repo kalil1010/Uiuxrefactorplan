@@ -166,6 +166,11 @@ export function CollectionsPage() {
             <Card 
               key={collection.id}
               className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer overflow-hidden"
+              onClick={() => {
+                // In a real app, this would navigate to collection detail
+                console.log('Navigate to collection:', collection.id);
+                alert(`View ${collection.title} collection (collection-detail page)`);
+              }}
             >
               {/* Cover Image */}
               <div className="relative aspect-[3/2] overflow-hidden">
