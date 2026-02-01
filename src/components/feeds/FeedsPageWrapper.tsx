@@ -12,6 +12,7 @@ import ExplorePage from '../explore/ExplorePage';
 import SettingsPage from '../settings/SettingsPage';
 import SearchModal from '../search/SearchModal';
 import NotificationsPanel from '../notifications/NotificationsPanel';
+import { CreatePostModal } from '../posts/CreatePostModal';
 import MainContent from './MainContent';
 import {
   Home,
@@ -35,6 +36,7 @@ export default function FeedsPageWrapper({ onSignOut }: FeedsPageWrapperProps) {
   const [activeTab, setActiveTab] = useState<'home' | 'explore' | 'closet' | 'ai' | 'profile' | 'messages' | 'settings'>('home');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+  const [isCreatePostOpen, setIsCreatePostOpen] = useState(false);
 
   // Render different pages based on active tab
   const renderPageContent = () => {
@@ -162,7 +164,7 @@ export default function FeedsPageWrapper({ onSignOut }: FeedsPageWrapperProps) {
           </nav>
 
           <div className="mt-6">
-            <Button className="w-full gradient-bg border-0">
+            <Button className="w-full gradient-bg border-0" onClick={() => setIsCreatePostOpen(true)}>
               <Plus className="w-5 h-5 mr-2" />
               New Post
             </Button>
@@ -187,7 +189,7 @@ export default function FeedsPageWrapper({ onSignOut }: FeedsPageWrapperProps) {
         </aside>
 
         {/* Main Content Area */}
-        <main className={`flex-1 ${isFullWidthPage ? 'lg:ml-64' : 'lg:ml-64 lg:mr-80'} h-[calc(100vh-3.5rem)] sm:h-[calc(100vh-4rem)] overflow-hidden`}>
+        <main className={`flex-1 ${isFullWidthPage ? 'lg:ml-64' : 'lg:ml-64 lg:mr-80'} min-h-[calc(100vh-3.5rem)] sm:min-h-[calc(100vh-4rem)] overflow-y-auto`}>
           {renderPageContent()}
         </main>
 
@@ -285,6 +287,7 @@ export default function FeedsPageWrapper({ onSignOut }: FeedsPageWrapperProps) {
             variant="ghost"
             size="icon"
             className="gradient-bg border-0"
+            onClick={() => setIsCreatePostOpen(true)}
           >
             <Plus className="w-6 h-6 text-white" />
           </Button>
@@ -306,6 +309,9 @@ export default function FeedsPageWrapper({ onSignOut }: FeedsPageWrapperProps) {
           </Button>
         </div>
       </nav>
+
+      {/* Create Post Modal */}
+      <CreatePostModal isOpen={isCreatePostOpen} onClose={() => setIsCreatePostOpen(false)} />
     </div>
   );
 }

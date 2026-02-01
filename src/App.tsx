@@ -10,6 +10,7 @@ import SignIn from './components/auth/SignIn';
 import SignUp from './components/auth/SignUp';
 import FeedsPageWrapper from './components/feeds/FeedsPageWrapper';
 import StyleSetup from './components/onboarding/StyleSetup';
+import { ZokaiHubShowcase } from './components/ZokaiHubShowcase';
 import { 
   Sparkles, 
   Shirt, 
@@ -28,7 +29,7 @@ import {
 } from 'lucide-react';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = React.useState<'landing' | 'signin' | 'signup' | 'feeds' | 'style-setup'>('landing');
+  const [currentPage, setCurrentPage] = React.useState<'landing' | 'signin' | 'signup' | 'feeds' | 'style-setup' | 'showcase'>('landing');
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
@@ -54,6 +55,24 @@ export default function App() {
     setIsAuthenticated(false);
     setCurrentPage('landing');
   };
+
+  // Show showcase page
+  if (currentPage === 'showcase') {
+    return (
+      <ThemeProvider>
+        <div className="fixed top-4 left-4 z-50 flex gap-2">
+          <Button
+            onClick={() => setCurrentPage('landing')}
+            variant="outline"
+            className="glass shadow-lg"
+          >
+            ← Back to Landing
+          </Button>
+        </div>
+        <ZokaiHubShowcase />
+      </ThemeProvider>
+    );
+  }
 
   // Show feeds if authenticated
   if (isAuthenticated && currentPage === 'feeds') {
@@ -94,6 +113,18 @@ export default function App() {
   return (
     <ThemeProvider>
     <div className="min-h-screen bg-background">
+      {/* Floating Buttons */}
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+        <Button
+          size="lg"
+          onClick={() => setCurrentPage('showcase')}
+          className="gradient-bg text-white shadow-2xl hover:scale-105 transition-transform"
+        >
+          <Sparkles className="w-5 h-5 mr-2" />
+          View Design System
+        </Button>
+      </div>
+
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 glass border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
