@@ -99,9 +99,9 @@ export function ZokaiHubShowcase() {
         {currentView === 'marketplace' && <MarketplacePage />}
         {currentView === 'product-detail' && <ProductDetailPage />}
         {currentView === 'vendor-shop' && <VendorShopPage />}
-        {currentView === 'collections' && <CollectionsPage />}
+        {currentView === 'collections' && <CollectionsPage onCollectionClick={() => setCurrentView('collection-detail')} />}
         {currentView === 'communities' && <CommunitiesPage />}
-        {currentView === 'challenges' && <ChallengesPage />}
+        {currentView === 'challenges' && <ChallengesPage onChallengeClick={() => setCurrentView('challenge-detail')} />}
         {currentView === 'outfit-generator' && <OutfitGeneratorPage />}
         {currentView === 'color-analyzer' && <ColorAnalyzerPage />}
         {currentView === 'image-generator' && <ImageGeneratorPage />}

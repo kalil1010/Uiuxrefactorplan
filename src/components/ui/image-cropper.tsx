@@ -175,7 +175,7 @@ export function ImageCropper({
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-hidden">
+      <DialogContent className="max-w-4xl max-h-[90vh] flex flex-col">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <Crop className="w-5 h-5" />
@@ -186,7 +186,7 @@ export function ImageCropper({
           </DialogDescription>
         </DialogHeader>
 
-        <div className="space-y-4">
+        <div className="space-y-4 overflow-y-auto flex-1 pr-2">
           {/* Image Preview Area */}
           <div 
             ref={containerRef}

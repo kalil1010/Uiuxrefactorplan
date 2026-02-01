@@ -88,7 +88,11 @@ const collections = [
   },
 ];
 
-export function CollectionsPage() {
+interface CollectionsPageProps {
+  onCollectionClick?: (collection: typeof collections[0]) => void;
+}
+
+export function CollectionsPage({ onCollectionClick }: CollectionsPageProps) {
   const [filter, setFilter] = useState<'all' | 'my' | 'saved'>('all');
 
   const filteredCollections = collections.filter(collection => {
@@ -167,9 +171,13 @@ export function CollectionsPage() {
               key={collection.id}
               className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer overflow-hidden"
               onClick={() => {
-                // In a real app, this would navigate to collection detail
-                console.log('Navigate to collection:', collection.id);
-                alert(`View ${collection.title} collection (collection-detail page)`);
+                if (onCollectionClick) {
+                  onCollectionClick(collection);
+                } else {
+                  // Fallback for standalone usage
+                  console.log('Navigate to collection:', collection.id);
+                  alert(`View ${collection.title} collection (collection-detail page)`);
+                }
               }}
             >
               {/* Cover Image */}

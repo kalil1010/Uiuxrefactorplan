@@ -82,7 +82,11 @@ const challenges = [
   },
 ];
 
-export function ChallengesPage() {
+interface ChallengesPageProps {
+  onChallengeClick?: (challenge: typeof challenges[0]) => void;
+}
+
+export function ChallengesPage({ onChallengeClick }: ChallengesPageProps) {
   const [filter, setFilter] = useState<'active' | 'upcoming' | 'past'>('active');
 
   const filteredChallenges = challenges.filter(challenge => challenge.status === filter);
@@ -195,9 +199,13 @@ export function ChallengesPage() {
               key={challenge.id}
               className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer overflow-hidden"
               onClick={() => {
-                // In a real app, this would navigate to challenge detail
-                console.log('Navigate to challenge:', challenge.id);
-                alert(`View ${challenge.title} challenge (challenge-detail page)`);
+                if (onChallengeClick) {
+                  onChallengeClick(challenge);
+                } else {
+                  // Fallback for standalone usage
+                  console.log('Navigate to challenge:', challenge.id);
+                  alert(`View ${challenge.title} challenge (challenge-detail page)`);
+                }
               }}
             >
               {/* Cover Image */}
