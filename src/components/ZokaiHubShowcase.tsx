@@ -40,6 +40,7 @@ import WishlistPage from './wishlist/WishlistPage';
 import CheckoutPage from './checkout/CheckoutPage';
 import ImageGeneratorPage from './tools/ImageGeneratorPage';
 import CreateCommunityPage from './social/CreateCommunityPage';
+import CommunityDetailPage from './social/CommunityDetailPage';
 import { ImageCropExamplesPage } from './examples/ImageCropExamplesPage';
 
 type DemoView = 
@@ -61,6 +62,7 @@ type DemoView =
   | 'wishlist'
   | 'checkout'
   | 'create-community'
+  | 'community-detail'
   | 'image-crop-examples'
   | 'not-found';
 
@@ -96,6 +98,7 @@ export function ZokaiHubShowcase() {
         {currentView === 'wishlist' && <WishlistPage />}
         {currentView === 'checkout' && <CheckoutPage />}
         {currentView === 'create-community' && <CreateCommunityPage />}
+        {currentView === 'community-detail' && <CommunityDetailPage />}
         {currentView === 'image-crop-examples' && <ImageCropExamplesPage />}
         {currentView === 'not-found' && <NotFoundPage />}
       </div>
@@ -587,6 +590,24 @@ export function ZokaiHubShowcase() {
 
             <Card 
               className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={() => setCurrentView('community-detail')}
+            >
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full gradient-bg-coral-yellow flex items-center justify-center mb-4">
+                  <Users className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>Community Detail</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  View details of a specific fashion community
+                </p>
+                <Button variant="outline" className="w-full">View Page</Button>
+              </CardContent>
+            </Card>
+
+            <Card 
+              className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
               onClick={() => setCurrentView('image-crop-examples')}
             >
               <CardHeader>
@@ -682,6 +703,7 @@ export function ZokaiHubShowcase() {
                     <Badge variant="outline">Wishlist</Badge>
                     <Badge variant="outline">Checkout</Badge>
                     <Badge variant="outline">Create Community</Badge>
+                    <Badge variant="outline">Community Detail</Badge>
                     <Badge variant="outline">Image Crop Examples</Badge>
                     <Badge variant="outline">404 Page</Badge>
                   </div>
