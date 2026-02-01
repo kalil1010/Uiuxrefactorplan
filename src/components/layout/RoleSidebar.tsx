@@ -18,7 +18,11 @@ import {
   DollarSign,
   Video,
   ChevronRight,
-  LayoutDashboard
+  LayoutDashboard,
+  Activity,
+  MessageSquare,
+  Star,
+  Megaphone
 } from 'lucide-react';
 import { cn } from '@/components/ui/utils';
 
@@ -27,6 +31,7 @@ interface SidebarItem {
   label: string;
   href: string;
   active?: boolean;
+  badge?: string;
 }
 
 interface RoleSidebarProps {
@@ -49,9 +54,12 @@ const roleMenus = {
   ],
   vendor: [
     { icon: LayoutDashboard, label: 'Dashboard', href: '/vendor/dashboard' },
-    { icon: Package, label: 'Products', href: '/vendor/products' },
+    { icon: Package, label: 'Products', href: '/vendor/products', badge: '12' },
     { icon: ShoppingCart, label: 'Orders', href: '/vendor/orders' },
+    { icon: Users, label: 'Customers', href: '/vendor/customers' },
     { icon: BarChart3, label: 'Analytics', href: '/vendor/analytics' },
+    { icon: Star, label: 'Reviews', href: '/vendor/reviews' },
+    { icon: Megaphone, label: 'Promotions', href: '/vendor/promotions' },
     { icon: HelpCircle, label: 'Support', href: '/vendor/support' },
     { icon: Settings, label: 'Settings', href: '/vendor/settings' },
   ],
@@ -61,6 +69,8 @@ const roleMenus = {
     { icon: Store, label: 'Vendors', href: '/owner/vendors' },
     { icon: FileText, label: 'Content', href: '/owner/content' },
     { icon: Flag, label: 'Reports', href: '/owner/reports' },
+    { icon: Activity, label: 'Monitoring', href: '/owner/monitoring' },
+    { icon: MessageSquare, label: 'Messages', href: '/owner/messages' },
     { icon: Settings, label: 'Settings', href: '/owner/settings' },
   ],
   star: [
@@ -137,15 +147,22 @@ export function RoleSidebar({
                 key={item.href}
                 onClick={() => onItemClick?.(item.href)}
                 className={cn(
-                  "w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all",
-                  "hover:bg-accent/10 group relative",
+                  "w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all relative",
+                  "hover:bg-accent/10 group",
                   isActive && "bg-primary text-primary-foreground before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1 before:bg-primary before:rounded-r",
                   !isActive && "text-muted-foreground hover:text-foreground"
                 )}
               >
                 <Icon className={cn("w-5 h-5 flex-shrink-0", isActive && "text-primary-foreground")} />
                 {!collapsed && (
-                  <span className="font-medium">{item.label}</span>
+                  <>
+                    <span className="font-medium flex-1 text-left">{item.label}</span>
+                    {item.badge && (
+                      <span className="px-1.5 py-0.5 bg-red-500 text-white text-xs rounded-full min-w-[20px] text-center">
+                        {item.badge}
+                      </span>
+                    )}
+                  </>
                 )}
                 {collapsed && (
                   <div className="absolute left-full ml-2 px-2 py-1 bg-popover border border-border rounded-md shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-50">

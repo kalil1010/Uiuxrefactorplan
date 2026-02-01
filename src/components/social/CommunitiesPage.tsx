@@ -100,9 +100,15 @@ export function CommunitiesPage() {
       <div className="max-w-7xl mx-auto p-6 relative z-10">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-5xl font-bold mb-4">
-            <span className="gradient-text-purple-pink">Communities</span>
-          </h1>
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
+            <h1 className="text-5xl font-bold">
+              <span className="gradient-text-purple-pink">Communities</span>
+            </h1>
+            <Button className="gradient-bg-purple-pink">
+              <Plus className="w-4 h-4 mr-2" />
+              Create Community
+            </Button>
+          </div>
           <p className="text-xl text-muted-foreground">
             Connect with like-minded fashion enthusiasts
           </p>
@@ -143,11 +149,6 @@ export function CommunitiesPage() {
               Discover
             </Button>
           </div>
-
-          <Button className="gradient-bg text-white">
-            <Plus className="w-4 h-4 mr-2" />
-            Create Community
-          </Button>
         </div>
 
         {/* Trending Badge */}

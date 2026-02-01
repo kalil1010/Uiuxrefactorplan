@@ -34,6 +34,13 @@ import { ChallengesPage } from './challenges/ChallengesPage';
 import { OutfitGeneratorPage } from './tools/OutfitGeneratorPage';
 import { ColorAnalyzerPage } from './tools/ColorAnalyzerPage';
 import { NotFoundPage } from './utility/NotFoundPage';
+import PostDetailPage from './feeds/PostDetailPage';
+import SavedPage from './saved/SavedPage';
+import WishlistPage from './wishlist/WishlistPage';
+import CheckoutPage from './checkout/CheckoutPage';
+import ImageGeneratorPage from './tools/ImageGeneratorPage';
+import CreateCommunityPage from './social/CreateCommunityPage';
+import { ImageCropExamplesPage } from './examples/ImageCropExamplesPage';
 
 type DemoView = 
   | 'showcase'
@@ -48,6 +55,13 @@ type DemoView =
   | 'challenges'
   | 'outfit-generator'
   | 'color-analyzer'
+  | 'image-generator'
+  | 'post-detail'
+  | 'saved'
+  | 'wishlist'
+  | 'checkout'
+  | 'create-community'
+  | 'image-crop-examples'
   | 'not-found';
 
 export function ZokaiHubShowcase() {
@@ -76,6 +90,13 @@ export function ZokaiHubShowcase() {
         {currentView === 'challenges' && <ChallengesPage />}
         {currentView === 'outfit-generator' && <OutfitGeneratorPage />}
         {currentView === 'color-analyzer' && <ColorAnalyzerPage />}
+        {currentView === 'image-generator' && <ImageGeneratorPage />}
+        {currentView === 'post-detail' && <PostDetailPage />}
+        {currentView === 'saved' && <SavedPage />}
+        {currentView === 'wishlist' && <WishlistPage />}
+        {currentView === 'checkout' && <CheckoutPage />}
+        {currentView === 'create-community' && <CreateCommunityPage />}
+        {currentView === 'image-crop-examples' && <ImageCropExamplesPage />}
         {currentView === 'not-found' && <NotFoundPage />}
       </div>
     );
@@ -458,6 +479,132 @@ export function ZokaiHubShowcase() {
 
             <Card 
               className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={() => setCurrentView('image-generator')}
+            >
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full gradient-bg-coral-yellow flex items-center justify-center mb-4">
+                  <Sparkles className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>Image Generator</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Create custom fashion images with AI
+                </p>
+                <Button variant="outline" className="w-full">View Page</Button>
+              </CardContent>
+            </Card>
+
+            <Card 
+              className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={() => setCurrentView('post-detail')}
+            >
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full gradient-bg-purple-pink flex items-center justify-center mb-4">
+                  <MessageCircle className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>Post Detail</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  View detailed posts from the community
+                </p>
+                <Button variant="outline" className="w-full">View Page</Button>
+              </CardContent>
+            </Card>
+
+            <Card 
+              className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={() => setCurrentView('saved')}
+            >
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full gradient-bg-pink-coral flex items-center justify-center mb-4">
+                  <Bookmark className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>Saved Items</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Manage your saved fashion items
+                </p>
+                <Button variant="outline" className="w-full">View Page</Button>
+              </CardContent>
+            </Card>
+
+            <Card 
+              className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={() => setCurrentView('wishlist')}
+            >
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full gradient-bg-coral-yellow flex items-center justify-center mb-4">
+                  <Heart className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>Wishlist</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Add items to your wishlist for later
+                </p>
+                <Button variant="outline" className="w-full">View Page</Button>
+              </CardContent>
+            </Card>
+
+            <Card 
+              className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={() => setCurrentView('checkout')}
+            >
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full gradient-bg-purple-pink flex items-center justify-center mb-4">
+                  <ShoppingBag className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>Checkout</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Complete your purchase with ease
+                </p>
+                <Button variant="outline" className="w-full">View Page</Button>
+              </CardContent>
+            </Card>
+
+            <Card 
+              className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={() => setCurrentView('create-community')}
+            >
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full gradient-bg-coral-yellow flex items-center justify-center mb-4">
+                  <Users className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>Create Community</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Create and manage your own fashion community
+                </p>
+                <Button variant="outline" className="w-full">View Page</Button>
+              </CardContent>
+            </Card>
+
+            <Card 
+              className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={() => setCurrentView('image-crop-examples')}
+            >
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full gradient-bg-coral-yellow flex items-center justify-center mb-4">
+                  <Sparkles className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>Image Crop Examples</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Explore image cropping examples
+                </p>
+                <Button variant="outline" className="w-full">View Page</Button>
+              </CardContent>
+            </Card>
+
+            <Card 
+              className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
               onClick={() => setCurrentView('not-found')}
             >
               <CardHeader>
@@ -529,6 +676,13 @@ export function ZokaiHubShowcase() {
                     <Badge variant="outline">Challenges</Badge>
                     <Badge variant="outline">Outfit Generator</Badge>
                     <Badge variant="outline">Color Analyzer</Badge>
+                    <Badge variant="outline">Image Generator</Badge>
+                    <Badge variant="outline">Post Detail</Badge>
+                    <Badge variant="outline">Saved Items</Badge>
+                    <Badge variant="outline">Wishlist</Badge>
+                    <Badge variant="outline">Checkout</Badge>
+                    <Badge variant="outline">Create Community</Badge>
+                    <Badge variant="outline">Image Crop Examples</Badge>
                     <Badge variant="outline">404 Page</Badge>
                   </div>
                 </div>
