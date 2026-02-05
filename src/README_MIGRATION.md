@@ -23,6 +23,10 @@ This repository contains the **complete refactored UI/UX design** for ZokaiHub w
 |----------|---------|
 | **[docs/COMMUNITY_SYSTEM.md](docs/COMMUNITY_SYSTEM.md)** | Community features documentation |
 | **[docs/IMAGE_CROPPING.md](docs/IMAGE_CROPPING.md)** | Image cropping system guide |
+| **[docs/COMMENT_SYSTEM.md](docs/COMMENT_SYSTEM.md)** | Complete comment system guide |
+| **[docs/COMMENT_FEATURES_SUMMARY.md](docs/COMMENT_FEATURES_SUMMARY.md)** | Visual comment features guide |
+| **[docs/RESPONSIVE_DESIGN_AUDIT.md](docs/RESPONSIVE_DESIGN_AUDIT.md)** | Mobile-first responsive design audit |
+| **[docs/COMPREHENSIVE_RESPONSIVE_BROWSER_AUDIT.md](docs/COMPREHENSIVE_RESPONSIVE_BROWSER_AUDIT.md)** | 🆕 Complete responsive & browser compatibility audit |
 | **[guidelines/Guidelines.md](guidelines/Guidelines.md)** | Design system guidelines |
 
 ---
@@ -476,7 +480,11 @@ The migration process is **well-documented** and **straightforward**. You're ess
 | 5 | **[COMPARISON_MATRIX.md](COMPARISON_MATRIX.md)** | Side-by-side comparison |
 | 6 | **[docs/COMMUNITY_SYSTEM.md](docs/COMMUNITY_SYSTEM.md)** | Community features |
 | 7 | **[docs/IMAGE_CROPPING.md](docs/IMAGE_CROPPING.md)** | Image editing system |
-| 8 | **[guidelines/Guidelines.md](guidelines/Guidelines.md)** | Design guidelines |
+| 8 | **[docs/COMMENT_SYSTEM.md](docs/COMMENT_SYSTEM.md)** | Complete comment system guide |
+| 9 | **[docs/COMMENT_FEATURES_SUMMARY.md](docs/COMMENT_FEATURES_SUMMARY.md)** | Visual comment features guide |
+| 10 | **[docs/RESPONSIVE_DESIGN_AUDIT.md](docs/RESPONSIVE_DESIGN_AUDIT.md)** | Mobile-first responsive design audit |
+| 11 | **[docs/COMPREHENSIVE_RESPONSIVE_BROWSER_AUDIT.md](docs/COMPREHENSIVE_RESPONSIVE_BROWSER_AUDIT.md)** | 🆕 Complete responsive & browser compatibility audit |
+| 12 | **[guidelines/Guidelines.md](guidelines/Guidelines.md)** | Design guidelines |
 
 ---
 

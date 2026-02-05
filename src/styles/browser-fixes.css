@@ -1,0 +1,580 @@
+/**
+ * Browser Compatibility Fixes
+ * Comprehensive cross-browser support for ZokaiHub
+ * 
+ * Browsers Supported:
+ * - Chrome/Edge 90+
+ * - Firefox 90+
+ * - Safari 14+
+ * - iOS Safari 14+
+ * - Android Chrome 90+
+ */
+
+/* ============================================
+   1. SAFARI SPECIFIC FIXES
+   ============================================ */
+
+/* Sticky positioning with webkit prefix */
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+/* Backdrop filter support */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Smooth scrolling */
+.smooth-scroll {
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+}
+
+/* Date input appearance */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator,
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  background: transparent;
+  bottom: 0;
+  color: transparent;
+  cursor: pointer;
+  height: auto;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: auto;
+}
+
+/* Autofill styling for webkit browsers */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px hsl(var(--background)) inset;
+  -webkit-text-fill-color: hsl(var(--foreground));
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Search input clear button */
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* iOS Safari safe area insets */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .pb-safe {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+  
+  .pb-safe-only {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  .fixed-bottom-safe {
+    bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Fix iOS input zoom */
+@supports (-webkit-touch-callout: none) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* ============================================
+   2. FIREFOX SPECIFIC FIXES
+   ============================================ */
+
+/* Scrollbar styling */
+.scrollable {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--primary)) hsl(var(--background));
+}
+
+/* Backdrop filter support */
+@-moz-document url-prefix() {
+  .glass-effect {
+    -moz-backdrop-filter: blur(10px);
+  }
+}
+
+/* Number input spin buttons */
+@-moz-document url-prefix() {
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
+
+/* ============================================
+   3. WEBKIT BROWSERS (Chrome, Edge, Safari)
+   ============================================ */
+
+/* Custom scrollbar */
+.scrollable::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.scrollable::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border-radius: 4px;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+  border-radius: 4px;
+}
+
+.scrollable::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.8);
+}
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Number input spin buttons */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* ============================================
+   4. MOBILE BROWSER FIXES
+   ============================================ */
+
+/* Prevent text size adjustment on orientation change */
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Touch action for better scrolling */
+.touch-pan-y {
+  touch-action: pan-y;
+}
+
+.touch-pan-x {
+  touch-action: pan-x;
+}
+
+.touch-manipulation {
+  touch-action: manipulation;
+}
+
+/* Prevent iOS tap highlight */
+.no-tap-highlight {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Fix iOS momentum scrolling */
+.momentum-scroll {
+  -webkit-overflow-scrolling: touch;
+  overflow-y: scroll;
+}
+
+/* ============================================
+   5. VIEWPORT HEIGHT FIXES
+   ============================================ */
+
+/* Modern viewport units with fallbacks */
+.min-h-screen-safe {
+  min-height: 100vh; /* Fallback */
+  min-height: 100dvh; /* Dynamic viewport height */
+}
+
+.h-screen-safe {
+  height: 100vh; /* Fallback */
+  height: 100dvh; /* Dynamic viewport height */
+}
+
+/* Small viewport height (with visible UI) */
+.min-h-screen-small {
+  min-height: 100vh; /* Fallback */
+  min-height: 100svh;
+}
+
+/* Large viewport height (with hidden UI) */
+.min-h-screen-large {
+  min-height: 100vh; /* Fallback */
+  min-height: 100lvh;
+}
+
+/* Support for dynamic viewport height */
+@supports (height: 100dvh) {
+  .supports-dvh {
+    height: 100dvh;
+  }
+  
+  .supports-min-h-dvh {
+    min-height: 100dvh;
+  }
+}
+
+/* ============================================
+   6. FLEXBOX FIXES
+   ============================================ */
+
+/* IE11 flexbox bug fixes (if needed) */
+.flex-ie-fix {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+}
+
+/* Safari flex gap fallback */
+@supports not (gap: 1rem) {
+  .flex-gap-4 > * + * {
+    margin-left: 1rem;
+  }
+  
+  .flex-gap-3 > * + * {
+    margin-left: 0.75rem;
+  }
+  
+  .flex-gap-2 > * + * {
+    margin-left: 0.5rem;
+  }
+}
+
+/* ============================================
+   7. GRID FIXES
+   ============================================ */
+
+/* Safari grid gap fallback */
+@supports not (gap: 1rem) {
+  .grid-gap-4 {
+    grid-gap: 1rem;
+  }
+  
+  .grid-gap-3 {
+    grid-gap: 0.75rem;
+  }
+  
+  .grid-gap-2 {
+    grid-gap: 0.5rem;
+  }
+}
+
+/* ============================================
+   8. TRANSFORM FIXES
+   ============================================ */
+
+/* 3D transform for better performance */
+.transform-gpu {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Prevent transform jitter on Safari */
+.transform-smooth {
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+}
+
+/* ============================================
+   9. ANIMATION FIXES
+   ============================================ */
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Smooth animations with GPU acceleration */
+.animate-smooth {
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000;
+  transform: translate3d(0, 0, 0);
+  transform: translateZ(0);
+}
+
+/* ============================================
+   10. FOCUS VISIBLE FIXES
+   ============================================ */
+
+/* Modern focus-visible with fallbacks */
+.focus-ring:focus {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+.focus-ring:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+/* ============================================
+   11. ASPECT RATIO FALLBACK
+   ============================================ */
+
+/* Aspect ratio fallback for older browsers */
+@supports not (aspect-ratio: 1 / 1) {
+  .aspect-square {
+    position: relative;
+    padding-bottom: 100%;
+  }
+  
+  .aspect-square > * {
+    position: absolute;
+    inset: 0;
+  }
+  
+  .aspect-video {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+  }
+  
+  .aspect-video > * {
+    position: absolute;
+    inset: 0;
+  }
+  
+  .aspect-\[4\/5\] {
+    position: relative;
+    padding-bottom: 125%; /* 4:5 */
+  }
+  
+  .aspect-\[4\/5\] > * {
+    position: absolute;
+    inset: 0;
+  }
+}
+
+/* ============================================
+   12. PRINT STYLES
+   ============================================ */
+
+@media print {
+  /* Hide navigation */
+  nav,
+  .no-print {
+    display: none !important;
+  }
+  
+  /* Ensure content fits */
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  /* Page breaks */
+  .page-break-before {
+    page-break-before: always;
+  }
+  
+  .page-break-after {
+    page-break-after: always;
+  }
+  
+  .page-break-avoid {
+    page-break-inside: avoid;
+  }
+}
+
+/* ============================================
+   13. HIGH CONTRAST MODE
+   ============================================ */
+
+@media (prefers-contrast: high) {
+  :root {
+    --border-width: 2px;
+  }
+  
+  .border {
+    border-width: 2px;
+  }
+  
+  button,
+  a {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+}
+
+/* ============================================
+   14. DARK MODE FIXES
+   ============================================ */
+
+/* Prevent white flash on dark mode */
+@media (prefers-color-scheme: dark) {
+  html {
+    background-color: hsl(var(--background));
+    color-scheme: dark;
+  }
+}
+
+/* ============================================
+   15. FONT RENDERING
+   ============================================ */
+
+/* Better font rendering across browsers */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1;
+  font-kerning: normal;
+}
+
+/* ============================================
+   16. SELECTION STYLING
+   ============================================ */
+
+::selection {
+  background-color: hsl(var(--primary) / 0.3);
+  color: hsl(var(--foreground));
+}
+
+::-moz-selection {
+  background-color: hsl(var(--primary) / 0.3);
+  color: hsl(var(--foreground));
+}
+
+/* ============================================
+   17. PLACEHOLDER STYLING
+   ============================================ */
+
+::placeholder {
+  color: hsl(var(--muted-foreground));
+  opacity: 1;
+}
+
+::-webkit-input-placeholder {
+  color: hsl(var(--muted-foreground));
+  opacity: 1;
+}
+
+::-moz-placeholder {
+  color: hsl(var(--muted-foreground));
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  color: hsl(var(--muted-foreground));
+  opacity: 1;
+}
+
+/* ============================================
+   18. UTILITY CLASSES
+   ============================================ */
+
+/* Hardware acceleration */
+.gpu-accelerated {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Prevent text selection */
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Enable text selection */
+.can-select {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+/* ============================================
+   19. ACCESSIBILITY
+   ============================================ */
+
+/* Skip to main content link */
+.skip-to-main {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 999;
+}
+
+.skip-to-main:focus {
+  left: 0;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  padding: 1rem;
+}
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Focus visible for keyboard users */
+.focus-visible-ring:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+  border-radius: 0.375rem;
+}
+
+/* ============================================
+   20. PERFORMANCE OPTIMIZATIONS
+   ============================================ */
+
+/* Containment for better performance */
+.contain-layout {
+  contain: layout;
+}
+
+.contain-paint {
+  contain: paint;
+}
+
+.contain-strict {
+  contain: strict;
+}
+
+/* Content visibility for better rendering */
+.content-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 500px;
+}
+
+/* ============================================
+   END OF BROWSER FIXES
+   ============================================ */
