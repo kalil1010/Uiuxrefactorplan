@@ -4,6 +4,7 @@ import { Input } from '../ui/input';
 import { Card } from '../ui/card';
 import { Checkbox } from '../ui/checkbox';
 import { LogoFull } from '../Logo';
+import AgreementDialog from './AgreementDialog';
 import { 
   Mail, 
   Lock, 
@@ -24,6 +25,7 @@ interface SignUpProps {
 export default function SignUp({ onNavigate, onSignUp }: SignUpProps) {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [showAgreementDialog, setShowAgreementDialog] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -36,7 +38,15 @@ export default function SignUp({ onNavigate, onSignUp }: SignUpProps) {
     e.preventDefault();
     // Handle sign up logic
     console.log('Sign up:', formData);
-    onSignUp(); // Navigate to feeds
+    
+    // Show agreement dialog after signup
+    setShowAgreementDialog(true);
+  };
+
+  const handleAgreementAccept = () => {
+    setShowAgreementDialog(false);
+    // Now proceed to feeds
+    onSignUp();
   };
 
   const updateField = (field: string, value: string | boolean) => {
@@ -299,6 +309,15 @@ export default function SignUp({ onNavigate, onSignUp }: SignUpProps) {
           </p>
         </div>
       </div>
+
+      {/* Agreement Dialog */}
+      <AgreementDialog
+        open={showAgreementDialog}
+        onAccept={handleAgreementAccept}
+        onCancel={() => setShowAgreementDialog(false)}
+        userName={formData.name}
+        userEmail={formData.email}
+      />
     </div>
   );
 }
