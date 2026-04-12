@@ -18,7 +18,8 @@ import {
   Trophy,
   Shirt,
   Eye,
-  AlertCircle
+  AlertCircle,
+  FileCheck
 } from 'lucide-react';
 
 // Import all components
@@ -48,6 +49,9 @@ import ClosetMixerPage from './closet/ClosetMixerPage';
 import HashtagPage from './feeds/HashtagPage';
 import ContactPage from './contact/ContactPage';
 import { ImageCropExamplesPage } from './examples/ImageCropExamplesPage';
+import AgreementDialog from './auth/AgreementDialog';
+import VirtualStylistStudio from './ai-stylist/VirtualStylistStudio';
+import VirtualStylistMobile from './ai-stylist/VirtualStylistMobile';
 
 type DemoView = 
   | 'showcase'
@@ -76,10 +80,13 @@ type DemoView =
   | 'hashtag'
   | 'contact'
   | 'image-crop-examples'
+  | 'virtual-stylist-studio'
+  | 'virtual-stylist-mobile'
   | 'not-found';
 
 export function ZokaiHubShowcase() {
   const [currentView, setCurrentView] = useState<DemoView>('showcase');
+  const [showAgreementDialog, setShowAgreementDialog] = useState(false);
 
   if (currentView !== 'showcase') {
     return (
@@ -118,6 +125,8 @@ export function ZokaiHubShowcase() {
         {currentView === 'hashtag' && <HashtagPage />}
         {currentView === 'contact' && <ContactPage />}
         {currentView === 'image-crop-examples' && <ImageCropExamplesPage />}
+        {currentView === 'virtual-stylist-studio' && <VirtualStylistStudio />}
+        {currentView === 'virtual-stylist-mobile' && <VirtualStylistMobile />}
         {currentView === 'not-found' && <NotFoundPage />}
       </div>
     );
@@ -752,6 +761,42 @@ export function ZokaiHubShowcase() {
 
             <Card 
               className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={() => setCurrentView('virtual-stylist-studio')}
+            >
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full gradient-bg-coral-yellow flex items-center justify-center mb-4">
+                  <Sparkles className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>Virtual Stylist Studio</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Personalized styling and outfit recommendations
+                </p>
+                <Button variant="outline" className="w-full">View Page</Button>
+              </CardContent>
+            </Card>
+
+            <Card 
+              className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={() => setCurrentView('virtual-stylist-mobile')}
+            >
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full gradient-bg-coral-yellow flex items-center justify-center mb-4">
+                  <Sparkles className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>Virtual Stylist Mobile</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Personalized styling and outfit recommendations for mobile
+                </p>
+                <Button variant="outline" className="w-full">View Page</Button>
+              </CardContent>
+            </Card>
+
+            <Card 
+              className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
               onClick={() => setCurrentView('not-found')}
             >
               <CardHeader>
@@ -765,6 +810,24 @@ export function ZokaiHubShowcase() {
                   Beautiful error page with helpful navigation options
                 </p>
                 <Button variant="outline" className="w-full">View Page</Button>
+              </CardContent>
+            </Card>
+
+            <Card 
+              className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={() => setShowAgreementDialog(true)}
+            >
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full gradient-bg-purple-pink flex items-center justify-center mb-4">
+                  <FileCheck className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>Agreement Dialog</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Post-signup terms agreement with "Accept All" feature
+                </p>
+                <Button variant="outline" className="w-full">View Dialog</Button>
               </CardContent>
             </Card>
           </div>
@@ -837,6 +900,8 @@ export function ZokaiHubShowcase() {
                     <Badge variant="outline">Hashtag</Badge>
                     <Badge variant="outline">Contact</Badge>
                     <Badge variant="outline">Image Crop Examples</Badge>
+                    <Badge variant="outline">Virtual Stylist Studio</Badge>
+                    <Badge variant="outline">Virtual Stylist Mobile</Badge>
                     <Badge variant="outline">404 Page</Badge>
                   </div>
                 </div>
@@ -859,6 +924,22 @@ export function ZokaiHubShowcase() {
           </div>
         </div>
       </div>
+
+      {/* Agreement Dialog */}
+      <AgreementDialog
+        open={showAgreementDialog}
+        onAccept={() => {
+          setShowAgreementDialog(false);
+          // Show success message or redirect
+          alert('Terms accepted! Welcome to ZokaiHub 🎉');
+        }}
+        onCancel={() => {
+          setShowAgreementDialog(false);
+          alert('You must accept the terms to continue.');
+        }}
+        userName="Alex Johnson"
+        userEmail="alex@example.com"
+      />
     </div>
   );
 }

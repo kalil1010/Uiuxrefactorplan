@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Button } from './ui/button';
-import { Card, CardContent } from './ui/card';
-import { Badge } from './ui/badge';
-import { Input } from './ui/input';
+import { Button } from '../ui/button';
+import { Card, CardContent } from '../ui/card';
+import { Badge } from '../ui/badge';
+import { Input } from '../ui/input';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
 import { 
   Scissors, 
   Sparkles, 
@@ -14,33 +15,36 @@ import {
   Download,
   Search,
   Filter,
+  Sliders,
+  RotateCw,
   ZoomIn,
   ZoomOut,
+  Grid3x3,
+  Layers,
+  Eye,
+  EyeOff,
   ChevronLeft,
   ChevronRight,
   CheckCircle2,
   Star,
   TrendingUp,
+  Clock,
+  Palette,
+  User,
+  Image as ImageIcon,
   Plus,
   X,
   ArrowLeft,
   Save,
   ShoppingBag,
   MessageCircle,
-  Lightbulb,
-  Eye,
-  Grid3x3,
-  Layers,
-  EyeOff,
-  User,
-  Image as ImageIcon,
-  RotateCw,
-  Info
+  Info,
+  Lightbulb
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 type ServiceType = 'hair' | 'nails' | 'tryon';
-type Step = 'upload' | 'analyze' | 'browse' | 'preview';
+type Step = 'upload' | 'analyze' | 'browse' | 'preview' | 'finalize';
 
 interface StyleOption {
   id: string;
@@ -53,7 +57,7 @@ interface StyleOption {
   tags: string[];
 }
 
-export default function AIStylistHub() {
+export default function VirtualStylistStudio() {
   const [service, setService] = useState<ServiceType>('hair');
   const [step, setStep] = useState<Step>('upload');
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
@@ -63,9 +67,10 @@ export default function AIStylistHub() {
   const [filterCategory, setFilterCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [compareMode, setCompareMode] = useState(false);
   const [showAnalysis, setShowAnalysis] = useState(false);
 
-  // Hair styles data
+  // Mock data for hair styles
   const hairStyles: StyleOption[] = [
     { id: 'h1', name: 'Long Layers', category: 'Long', image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=400&fit=crop', popularity: 95, matchScore: 98, description: 'Flowing layers with natural movement', tags: ['versatile', 'elegant', 'easy-maintain'] },
     { id: 'h2', name: 'Bob Cut', category: 'Medium', image: 'https://images.unsplash.com/photo-1487412912498-0447578fcca8?w=400&h=400&fit=crop', popularity: 92, matchScore: 94, description: 'Classic bob with modern twist', tags: ['professional', 'chic', 'low-maintenance'] },
@@ -75,7 +80,7 @@ export default function AIStylistHub() {
     { id: 'h6', name: 'Sleek Updo', category: 'Upstyle', image: 'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=400&h=400&fit=crop', popularity: 87, matchScore: 90, description: 'Elegant upstyle for special occasions', tags: ['formal', 'elegant', 'sophisticated'] },
   ];
 
-  // Nail designs data
+  // Mock data for nail designs
   const nailDesigns: StyleOption[] = [
     { id: 'n1', name: 'French Tips', category: 'Classic', image: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&h=400&fit=crop', popularity: 93, matchScore: 95, description: 'Timeless French manicure', tags: ['elegant', 'professional', 'subtle'] },
     { id: 'n2', name: 'Ombre Sunset', category: 'Gradient', image: 'https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=400&h=400&fit=crop', popularity: 91, matchScore: 93, description: 'Gradient sunset colors', tags: ['vibrant', 'artistic', 'summery'] },
@@ -85,7 +90,7 @@ export default function AIStylistHub() {
     { id: 'n6', name: 'Abstract Geo', category: 'Artistic', image: 'https://images.unsplash.com/photo-1515688594390-b649af70d282?w=400&h=400&fit=crop', popularity: 86, matchScore: 89, description: 'Geometric abstract design', tags: ['bold', 'modern', 'unique'] },
   ];
 
-  // Outfits data
+  // Mock data for outfits
   const outfits: StyleOption[] = [
     { id: 'o1', name: 'Summer Dress', category: 'Casual', image: 'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=400&h=400&fit=crop', popularity: 92, matchScore: 96, description: 'Flowy floral sundress', tags: ['casual', 'summery', 'comfortable'] },
     { id: 'o2', name: 'Business Suit', category: 'Formal', image: 'https://images.unsplash.com/photo-1594938291221-94f18cbb5660?w=400&h=400&fit=crop', popularity: 88, matchScore: 91, description: 'Professional blazer and pants', tags: ['professional', 'formal', 'powerful'] },
@@ -135,6 +140,7 @@ export default function AIStylistHub() {
 
   const handleUpload = (mockImage: string) => {
     setUploadedImage(mockImage);
+    // Simulate AI analysis
     setTimeout(() => {
       setStep('analyze');
       setTimeout(() => {
@@ -200,6 +206,7 @@ export default function AIStylistHub() {
                   size="icon"
                   onClick={() => {
                     if (step === 'preview') setStep('browse');
+                    else if (step === 'finalize') setStep('preview');
                     else if (step === 'browse') setStep('upload');
                   }}
                 >
@@ -315,7 +322,7 @@ export default function AIStylistHub() {
                       <span>From Gallery</span>
                     </div>
                   </Button>
-                  <Button variant="outline" className="h-auto py-4" onClick={() => handleUpload('mock-sample')}>
+                  <Button variant="outline" className="h-auto py-4">
                     <div className="flex flex-col items-center gap-2">
                       <User className="w-6 h-6" />
                       <span>Use Sample</span>
@@ -365,8 +372,8 @@ export default function AIStylistHub() {
               {/* Analysis Points */}
               <div className="space-y-3 text-left max-w-md mx-auto">
                 {[
-                  'Detecting features and proportions',
-                  'Analyzing colors and undertones',
+                  'Detecting facial features and proportions',
+                  'Analyzing skin tone and undertones',
                   'Identifying style preferences',
                   'Generating personalized recommendations'
                 ].map((text, idx) => (
@@ -433,6 +440,25 @@ export default function AIStylistHub() {
                     </div>
                   </div>
 
+                  {/* Sort Options */}
+                  <div className="mb-6">
+                    <label className="text-sm font-medium mb-2 block">Sort By</label>
+                    <div className="space-y-1">
+                      <Button variant="ghost" className="w-full justify-start" size="sm">
+                        <Star className="w-4 h-4 mr-2" />
+                        Best Match
+                      </Button>
+                      <Button variant="ghost" className="w-full justify-start" size="sm">
+                        <TrendingUp className="w-4 h-4 mr-2" />
+                        Popular
+                      </Button>
+                      <Button variant="ghost" className="w-full justify-start" size="sm">
+                        <Clock className="w-4 h-4 mr-2" />
+                        Newest
+                      </Button>
+                    </div>
+                  </div>
+
                   {/* My Favorites */}
                   {favorites.size > 0 && (
                     <div>
@@ -472,6 +498,14 @@ export default function AIStylistHub() {
                       >
                         <Layers className="w-4 h-4" />
                       </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => setCompareMode(!compareMode)}
+                      >
+                        {compareMode ? <EyeOff className="w-4 h-4 mr-2" /> : <Eye className="w-4 h-4 mr-2" />}
+                        Compare
+                      </Button>
                     </div>
                   </div>
 
@@ -485,7 +519,8 @@ export default function AIStylistHub() {
                         <div className="flex-1">
                           <h4 className="font-semibold mb-1">AI Analysis Complete</h4>
                           <p className="text-sm text-muted-foreground mb-3">
-                            Based on your features, we've identified styles that will complement you best.
+                            Based on your features, we've identified your face shape as oval with warm undertones. 
+                            These styles will complement you best.
                           </p>
                           <Button size="sm" variant="outline" onClick={() => setShowAnalysis(true)}>
                             <Info className="w-4 h-4 mr-2" />
@@ -626,8 +661,9 @@ export default function AIStylistHub() {
                       </div>
                     </div>
 
-                    {/* Split View */}
+                    {/* Split View - Before/After */}
                     <div className="relative aspect-[3/4] rounded-xl overflow-hidden mb-4">
+                      {/* Your Photo with Applied Style */}
                       <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
                         <div className="text-center">
                           <Wand2 className="w-16 h-16 mx-auto mb-4 text-primary" />
@@ -665,7 +701,7 @@ export default function AIStylistHub() {
                   </Card>
                 </div>
 
-                {/* Right - Style Details */}
+                {/* Right - Style Details & Actions */}
                 <div className="space-y-6">
                   {/* Style Info */}
                   <Card className="p-6">
@@ -699,6 +735,10 @@ export default function AIStylistHub() {
                               <span className="font-semibold">{currentPreview.matchScore}% Match</span>
                             </div>
                           )}
+                          <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                            <TrendingUp className="w-4 h-4" />
+                            <span>{currentPreview.popularity}% popularity</span>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -720,14 +760,17 @@ export default function AIStylistHub() {
                       <Button
                         size="lg"
                         className="gradient-bg border-0"
-                        onClick={() => handleAddToSelection(currentPreview)}
+                        onClick={() => {
+                          handleAddToSelection(currentPreview);
+                          setStep('finalize');
+                        }}
                       >
                         <CheckCircle2 className="w-5 h-5 mr-2" />
                         Select This Style
                       </Button>
                       <Button size="lg" variant="outline">
                         <ShoppingBag className="w-5 h-5 mr-2" />
-                        Book Now
+                        Book Appointment
                       </Button>
                     </div>
                   </Card>
@@ -744,16 +787,16 @@ export default function AIStylistHub() {
                         <div>
                           <p className="font-medium text-sm mb-1">Complements Your Features</p>
                           <p className="text-xs text-muted-foreground">
-                            This style enhances your natural features and proportions
+                            This style enhances your natural bone structure and facial proportions
                           </p>
                         </div>
                       </div>
                       <div className="flex gap-3">
                         <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
                         <div>
-                          <p className="font-medium text-sm mb-1">Matches Your Tone</p>
+                          <p className="font-medium text-sm mb-1">Matches Your Skin Tone</p>
                           <p className="text-xs text-muted-foreground">
-                            Works beautifully with your undertones
+                            The color palette works beautifully with your warm undertones
                           </p>
                         </div>
                       </div>
@@ -762,7 +805,7 @@ export default function AIStylistHub() {
                         <div>
                           <p className="font-medium text-sm mb-1">Suits Your Lifestyle</p>
                           <p className="text-xs text-muted-foreground">
-                            Easy to maintain and versatile
+                            Easy to maintain and versatile for various occasions
                           </p>
                         </div>
                       </div>
@@ -801,7 +844,7 @@ export default function AIStylistHub() {
                   <Card className="p-6 bg-gradient-to-br from-primary/10 to-accent/10 border-primary/20">
                     <h3 className="font-semibold mb-2">Need Expert Advice?</h3>
                     <p className="text-sm text-muted-foreground mb-4">
-                      Chat with our AI stylist or book a consultation
+                      Chat with our AI stylist or book a video consultation with a professional
                     </p>
                     <div className="flex gap-2">
                       <Button size="sm" variant="outline" className="flex-1">
@@ -844,7 +887,7 @@ export default function AIStylistHub() {
                 <p className="font-semibold text-sm">
                   {selectedOptions.length} style{selectedOptions.length > 1 ? 's' : ''} selected
                 </p>
-                <p className="text-xs text-muted-foreground">Ready to save or compare</p>
+                <p className="text-xs text-muted-foreground">Ready to compare or save</p>
               </div>
               <div className="flex gap-2">
                 <Button variant="outline" size="sm">

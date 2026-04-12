@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Plus, Users, TrendingUp, Search } from 'lucide-react';
+import { Plus, Users, TrendingUp, Search, Globe, Lock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -17,7 +17,8 @@ const communities = [
     coverImage: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=600&h=300&fit=crop',
     category: 'Lifestyle',
     isJoined: true,
-    trending: true
+    trending: true,
+    isPrivate: false
   },
   {
     id: 2,
@@ -28,7 +29,8 @@ const communities = [
     coverImage: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=600&h=300&fit=crop',
     category: 'Style',
     isJoined: false,
-    trending: true
+    trending: true,
+    isPrivate: false
   },
   {
     id: 3,
@@ -39,7 +41,8 @@ const communities = [
     coverImage: 'https://images.unsplash.com/photo-1467043237213-65f2da53396f?w=600&h=300&fit=crop',
     category: 'Vintage',
     isJoined: true,
-    trending: false
+    trending: false,
+    isPrivate: true
   },
   {
     id: 4,
@@ -50,7 +53,8 @@ const communities = [
     coverImage: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&h=300&fit=crop',
     category: 'Minimalism',
     isJoined: false,
-    trending: true
+    trending: true,
+    isPrivate: false
   },
   {
     id: 5,
@@ -61,7 +65,8 @@ const communities = [
     coverImage: 'https://images.unsplash.com/photo-1558769132-cb1aea628c8d?w=600&h=300&fit=crop',
     category: 'DIY',
     isJoined: false,
-    trending: false
+    trending: false,
+    isPrivate: true
   },
   {
     id: 6,
@@ -72,7 +77,8 @@ const communities = [
     coverImage: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&h=300&fit=crop',
     category: 'Luxury',
     isJoined: true,
-    trending: false
+    trending: false,
+    isPrivate: false
   },
 ];
 
@@ -177,13 +183,29 @@ export function CommunitiesPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 
-                {/* Trending Badge */}
-                {community.trending && (
-                  <Badge className="absolute top-3 right-3 gradient-bg text-white border-0">
-                    <TrendingUp className="w-3 h-3 mr-1" />
-                    Trending
-                  </Badge>
-                )}
+                {/* Top Right Badges */}
+                <div className="absolute top-3 right-3 flex gap-2">
+                  {/* Private/Public Badge */}
+                  {community.isPrivate ? (
+                    <Badge className="glass border-amber-500/50">
+                      <Lock className="w-3 h-3 mr-1" />
+                      Private
+                    </Badge>
+                  ) : (
+                    <Badge className="glass border-green-500/50">
+                      <Globe className="w-3 h-3 mr-1" />
+                      Public
+                    </Badge>
+                  )}
+                  
+                  {/* Trending Badge */}
+                  {community.trending && (
+                    <Badge className="gradient-bg text-white border-0">
+                      <TrendingUp className="w-3 h-3 mr-1" />
+                      Trending
+                    </Badge>
+                  )}
+                </div>
 
                 {/* Category Badge */}
                 <Badge className="absolute top-3 left-3 glass">
