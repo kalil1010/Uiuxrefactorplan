@@ -19,7 +19,13 @@ import {
   Shirt,
   Eye,
   AlertCircle,
-  FileCheck
+  FileCheck,
+  Home,
+  Search,
+  Settings,
+  Bell,
+  Compass,
+  Mail
 } from 'lucide-react';
 
 // Import all components
@@ -51,7 +57,28 @@ import ContactPage from './contact/ContactPage';
 import { ImageCropExamplesPage } from './examples/ImageCropExamplesPage';
 import AgreementDialog from './auth/AgreementDialog';
 import VirtualStylistStudio from './ai-stylist/VirtualStylistStudio';
-import VirtualStylistMobile from './ai-stylist/VirtualStylistMobile';
+import VirtualStylistMobileSimple from './ai-stylist/VirtualStylistMobileSimple';
+import MobileServiceSelection from './mobile-showcase/MobileServiceSelection';
+import MobileCameraScreen from './mobile-showcase/MobileCameraScreen';
+import MobileAnalyzingScreen from './mobile-showcase/MobileAnalyzingScreen';
+import MobileBrowseScreen from './mobile-showcase/MobileBrowseScreen';
+import MobilePreviewScreen from './mobile-showcase/MobilePreviewScreen';
+import MobileFeedsPage from './mobile-showcase/MobileFeedsPage';
+import MobileExplorePage from './mobile-showcase/MobileExplorePage';
+import MobileClosetPage from './mobile-showcase/MobileClosetPage';
+import MobileMessagesPage from './mobile-showcase/MobileMessagesPage';
+import MobileProfilePage from './mobile-showcase/MobileProfilePage';
+import MobileSettingsPage from './mobile-showcase/MobileSettingsPage';
+import MobileNotificationsPage from './mobile-showcase/MobileNotificationsPage';
+import FeedsPage from './feeds/FeedsPage';
+import ExplorePage from './explore/ExplorePage';
+import MyClosetPage from './closet/MyClosetPage';
+import MessagesPage from './messages/MessagesPage';
+import ProfilePage from './profile/ProfilePage';
+import SettingsPage from './settings/SettingsPage';
+import SearchModal from './search/SearchModal';
+import NotificationsPanel from './notifications/NotificationsPanel';
+import AIStylistHub from './AIStylistHub';
 
 type DemoView = 
   | 'showcase'
@@ -82,6 +109,27 @@ type DemoView =
   | 'image-crop-examples'
   | 'virtual-stylist-studio'
   | 'virtual-stylist-mobile'
+  | 'mobile-service-selection'
+  | 'mobile-camera'
+  | 'mobile-analyzing'
+  | 'mobile-browse'
+  | 'mobile-preview'
+  | 'mobile-feeds'
+  | 'mobile-explore'
+  | 'mobile-closet'
+  | 'mobile-messages-page'
+  | 'mobile-profile'
+  | 'mobile-settings'
+  | 'mobile-notifications'
+  | 'feeds'
+  | 'explore'
+  | 'my-closet'
+  | 'messages'
+  | 'profile'
+  | 'settings'
+  | 'search'
+  | 'notifications'
+  | 'ai-stylist-hub'
   | 'not-found';
 
 export function ZokaiHubShowcase() {
@@ -126,7 +174,28 @@ export function ZokaiHubShowcase() {
         {currentView === 'contact' && <ContactPage />}
         {currentView === 'image-crop-examples' && <ImageCropExamplesPage />}
         {currentView === 'virtual-stylist-studio' && <VirtualStylistStudio />}
-        {currentView === 'virtual-stylist-mobile' && <VirtualStylistMobile />}
+        {currentView === 'virtual-stylist-mobile' && <VirtualStylistMobileSimple />}
+        {currentView === 'mobile-service-selection' && <MobileServiceSelection />}
+        {currentView === 'mobile-camera' && <MobileCameraScreen />}
+        {currentView === 'mobile-analyzing' && <MobileAnalyzingScreen />}
+        {currentView === 'mobile-browse' && <MobileBrowseScreen />}
+        {currentView === 'mobile-preview' && <MobilePreviewScreen />}
+        {currentView === 'mobile-feeds' && <MobileFeedsPage />}
+        {currentView === 'mobile-explore' && <MobileExplorePage />}
+        {currentView === 'mobile-closet' && <MobileClosetPage />}
+        {currentView === 'mobile-messages-page' && <MobileMessagesPage />}
+        {currentView === 'mobile-profile' && <MobileProfilePage />}
+        {currentView === 'mobile-settings' && <MobileSettingsPage />}
+        {currentView === 'mobile-notifications' && <MobileNotificationsPage />}
+        {currentView === 'feeds' && <FeedsPage onSignOut={() => {}} />}
+        {currentView === 'explore' && <ExplorePage />}
+        {currentView === 'my-closet' && <MyClosetPage />}
+        {currentView === 'messages' && <MessagesPage />}
+        {currentView === 'profile' && <ProfilePage onSignOut={() => {}} />}
+        {currentView === 'settings' && <SettingsPage onSignOut={() => {}} />}
+        {currentView === 'search' && <SearchModal isOpen={true} onClose={() => setCurrentView('showcase')} />}
+        {currentView === 'notifications' && <NotificationsPanel isOpen={true} onClose={() => setCurrentView('showcase')} />}
+        {currentView === 'ai-stylist-hub' && <AIStylistHub />}
         {currentView === 'not-found' && <NotFoundPage />}
       </div>
     );
@@ -830,6 +899,258 @@ export function ZokaiHubShowcase() {
                 <Button variant="outline" className="w-full">View Dialog</Button>
               </CardContent>
             </Card>
+
+            <Card 
+              className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={() => setCurrentView('mobile-service-selection')}
+            >
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full gradient-bg-purple-pink flex items-center justify-center mb-4">
+                  <Sparkles className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>Mobile Service Selection</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Select a service for your mobile device
+                </p>
+                <Button variant="outline" className="w-full">View Page</Button>
+              </CardContent>
+            </Card>
+
+            <Card 
+              className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={() => setCurrentView('mobile-camera')}
+            >
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full gradient-bg-purple-pink flex items-center justify-center mb-4">
+                  <Sparkles className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>Mobile Camera</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Capture images with your mobile camera
+                </p>
+                <Button variant="outline" className="w-full">View Page</Button>
+              </CardContent>
+            </Card>
+
+            <Card 
+              className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={() => setCurrentView('mobile-analyzing')}
+            >
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full gradient-bg-purple-pink flex items-center justify-center mb-4">
+                  <Sparkles className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>Mobile Analyzing</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Analyze images on your mobile device
+                </p>
+                <Button variant="outline" className="w-full">View Page</Button>
+              </CardContent>
+            </Card>
+
+            <Card 
+              className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={() => setCurrentView('mobile-browse')}
+            >
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full gradient-bg-purple-pink flex items-center justify-center mb-4">
+                  <Sparkles className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>Mobile Browse</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Browse images on your mobile device
+                </p>
+                <Button variant="outline" className="w-full">View Page</Button>
+              </CardContent>
+            </Card>
+
+            <Card 
+              className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={() => setCurrentView('mobile-preview')}
+            >
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full gradient-bg-purple-pink flex items-center justify-center mb-4">
+                  <Sparkles className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>Mobile Preview</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Preview images on your mobile device
+                </p>
+                <Button variant="outline" className="w-full">View Page</Button>
+              </CardContent>
+            </Card>
+
+            <Card 
+              className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={() => setCurrentView('feeds')}
+            >
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full gradient-bg-purple-pink flex items-center justify-center mb-4">
+                  <Home className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>Feeds</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  View and interact with fashion feeds
+                </p>
+                <Button variant="outline" className="w-full">View Page</Button>
+              </CardContent>
+            </Card>
+
+            <Card 
+              className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={() => setCurrentView('explore')}
+            >
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full gradient-bg-pink-coral flex items-center justify-center mb-4">
+                  <Compass className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>Explore</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Discover new fashion trends and styles
+                </p>
+                <Button variant="outline" className="w-full">View Page</Button>
+              </CardContent>
+            </Card>
+
+            <Card 
+              className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={() => setCurrentView('my-closet')}
+            >
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full gradient-bg-coral-yellow flex items-center justify-center mb-4">
+                  <Shirt className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>My Closet</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Manage and organize your fashion closet
+                </p>
+                <Button variant="outline" className="w-full">View Page</Button>
+              </CardContent>
+            </Card>
+
+            <Card 
+              className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={() => setCurrentView('messages')}
+            >
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full gradient-bg-purple-pink flex items-center justify-center mb-4">
+                  <Mail className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>Messages</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Communicate with friends and followers
+                </p>
+                <Button variant="outline" className="w-full">View Page</Button>
+              </CardContent>
+            </Card>
+
+            <Card 
+              className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={() => setCurrentView('profile')}
+            >
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full gradient-bg-pink-coral flex items-center justify-center mb-4">
+                  <Users className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>Profile</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Edit and view your profile information
+                </p>
+                <Button variant="outline" className="w-full">View Page</Button>
+              </CardContent>
+            </Card>
+
+            <Card 
+              className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={() => setCurrentView('settings')}
+            >
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full gradient-bg-coral-yellow flex items-center justify-center mb-4">
+                  <Settings className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>Settings</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Customize your account settings
+                </p>
+                <Button variant="outline" className="w-full">View Page</Button>
+              </CardContent>
+            </Card>
+
+            <Card 
+              className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={() => setCurrentView('search')}
+            >
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full gradient-bg-purple-pink flex items-center justify-center mb-4">
+                  <Search className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>Search</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Search for products, users, and more
+                </p>
+                <Button variant="outline" className="w-full">View Page</Button>
+              </CardContent>
+            </Card>
+
+            <Card 
+              className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={() => setCurrentView('notifications')}
+            >
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full gradient-bg-pink-coral flex items-center justify-center mb-4">
+                  <Bell className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>Notifications</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  View and manage your notifications
+                </p>
+                <Button variant="outline" className="w-full">View Page</Button>
+              </CardContent>
+            </Card>
+
+            <Card 
+              className="group hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={() => setCurrentView('ai-stylist-hub')}
+            >
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full gradient-bg-purple-pink flex items-center justify-center mb-4">
+                  <Sparkles className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>AI Stylist Hub</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Access a hub of AI-powered styling tools
+                </p>
+                <Button variant="outline" className="w-full">View Page</Button>
+              </CardContent>
+            </Card>
           </div>
         </section>
 
@@ -903,6 +1224,20 @@ export function ZokaiHubShowcase() {
                     <Badge variant="outline">Virtual Stylist Studio</Badge>
                     <Badge variant="outline">Virtual Stylist Mobile</Badge>
                     <Badge variant="outline">404 Page</Badge>
+                    <Badge variant="outline">Mobile Service Selection</Badge>
+                    <Badge variant="outline">Mobile Camera</Badge>
+                    <Badge variant="outline">Mobile Analyzing</Badge>
+                    <Badge variant="outline">Mobile Browse</Badge>
+                    <Badge variant="outline">Mobile Preview</Badge>
+                    <Badge variant="outline">Feeds</Badge>
+                    <Badge variant="outline">Explore</Badge>
+                    <Badge variant="outline">My Closet</Badge>
+                    <Badge variant="outline">Messages</Badge>
+                    <Badge variant="outline">Profile</Badge>
+                    <Badge variant="outline">Settings</Badge>
+                    <Badge variant="outline">Search</Badge>
+                    <Badge variant="outline">Notifications</Badge>
+                    <Badge variant="outline">AI Stylist Hub</Badge>
                   </div>
                 </div>
               </div>

@@ -36,7 +36,6 @@ import {
   ThumbsUp,
   Maximize2
 } from 'lucide-react';
-import { motion, AnimatePresence, PanInfo } from 'motion/react';
 
 type ServiceType = 'hair' | 'nails' | 'tryon';
 type Step = 'service' | 'upload' | 'analyze' | 'browse' | 'preview';
