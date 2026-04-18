@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZokaiHub Mobile Screenshots</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      padding: 60px 20px;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .header h1 {
+      font-size: 48px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #6556C6 0%, #D20EC1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+    }
+
+    .header p {
+      font-size: 20px;
+      color: #666;
+    }
+
+    .screenshots-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .screenshot-card {
+      background: white;
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .screenshot-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    }
+
+    .phone-mockup {
+      position: relative;
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto 20px;
+      aspect-ratio: 9 / 19.5;
+      background: #1a1a1a;
+      border-radius: 36px;
+      padding: 12px;
+      box-shadow: 0 0 0 2px #333, 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .phone-notch {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 140px;
+      height: 28px;
+      background: #1a1a1a;
+      border-radius: 0 0 20px 20px;
+      z-index: 2;
+    }
+
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .screenshot-title {
+      text-align: center;
+      font-size: 20px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    .screenshot-description {
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    /* Screen specific styles */
+    .screen-content {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .status-bar {
+      height: 44px;
+      background: linear-gradient(135deg, #6556C6 0%, #D20EC1 100%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      padding-top: 12px;
+      color: white;
+      font-size: 12px;
+    }
+
+    .screen-header {
+      background: linear-gradient(135deg, #6556C6 0%, #D20EC1 100%);
+      color: white;
+      padding: 16px 20px;
+      font-size: 24px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .screen-body {
+      flex: 1;
+      overflow: hidden;
+      background: #f9f9f9;
+    }
+
+    .feed-item, .explore-item, .closet-item, .message-item, 
+    .notification-item, .settings-item {
+      background: white;
+      margin: 12px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .feed-item img, .explore-item img, .closet-item img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+    }
+
+    .item-content {
+      padding: 12px;
+    }
+
+    .item-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 4px;
+    }
+
+    .item-subtitle {
+      font-size: 12px;
+      color: #666;
+    }
+
+    .gradient-feeds { background: linear-gradient(135deg, #6556C6 0%, #D20EC1 100%); }
+    .gradient-explore { background: linear-gradient(135deg, #D20EC1 0%, #F04050 100%); }
+    .gradient-closet { background: linear-gradient(135deg, #C1004C 0%, #F04050 100%); }
+    .gradient-messages { background: linear-gradient(135deg, #6556C6 0%, #C1004C 100%); }
+    .gradient-profile { background: linear-gradient(135deg, #D20EC1 0%, #6556C6 100%); }
+    .gradient-settings { background: linear-gradient(135deg, #666 0%, #333 100%); }
+    .gradient-notifications { background: linear-gradient(135deg, #F04050 0%, #FFC600 100%); }
+    .gradient-camera { background: linear-gradient(135deg, #1a1a1a 0%, #333 100%); }
+    .gradient-ai { background: linear-gradient(135deg, #6556C6 0%, #D20EC1 50%, #F04050 100%); }
+    .gradient-browse { background: linear-gradient(135deg, #C1004C 0%, #D20EC1 100%); }
+    .gradient-preview { background: linear-gradient(135deg, #F04050 0%, #D20EC1 100%); }
+    .gradient-analyzing { background: linear-gradient(135deg, #6556C6 0%, #FFC600 100%); }
+
+    .bottom-nav {
+      height: 60px;
+      background: white;
+      border-top: 1px solid #eee;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .nav-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #6556C6 0%, #D20EC1 100%);
+    }
+
+    .download-section {
+      text-align: center;
+      margin-top: 60px;
+      padding: 40px;
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .download-btn {
+      display: inline-block;
+      padding: 16px 40px;
+      background: linear-gradient(135deg, #6556C6 0%, #D20EC1 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 16px;
+      margin: 10px;
+      box-shadow: 0 4px 15px rgba(101, 86, 198, 0.4);
+      transition: transform 0.2s ease;
+    }
+
+    .download-btn:hover {
+      transform: scale(1.05);
+    }
+
+    @media print {
+      body {
+        background: white;
+        padding: 20px;
+      }
+      
+      .screenshot-card {
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      .download-section {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>ZokaiHub Mobile Screenshots</h1>
+      <p>Complete mobile experience across all screens</p>
+    </div>
+
+    <div class="screenshots-grid">
+      <!-- 1. Feeds Page -->
+      <div class="screenshot-card">
+        <div class="phone-mockup">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="screen-content">
+              <div class="status-bar">
+                <span>9:41</span>
+                <span>●●●●●</span>
+              </div>
+              <div class="screen-header gradient-feeds">Feeds</div>
+              <div class="screen-body">
+                <div class="feed-item">
+                  <img src="https://images.unsplash.com/photo-1591129299380-3df0213d1e1e?w=400" alt="Feed" />
+                  <div class="item-content">
+                    <div class="item-title">Summer Collection 2024</div>
+                    <div class="item-subtitle">@fashionista • 2h ago</div>
+                  </div>
+                </div>
+                <div class="feed-item">
+                  <div style="height: 120px; background: linear-gradient(135deg, #6556C6 20%, #D20EC1 80%);"></div>
+                  <div class="item-content">
+                    <div class="item-title">Trending Outfits</div>
+                    <div class="item-subtitle">@styleguru • 5h ago</div>
+                  </div>
+                </div>
+              </div>
+              <div class="bottom-nav">
+                <div class="nav-icon"></div>
+                <div class="nav-icon" style="opacity: 0.3;"></div>
+                <div class="nav-icon" style="opacity: 0.3;"></div>
+                <div class="nav-icon" style="opacity: 0.3;"></div>
+                <div class="nav-icon" style="opacity: 0.3;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="screenshot-title">Feeds</div>
+        <div class="screenshot-description">Social feed with posts, stories, and fashion inspiration from the community</div>
+      </div>
+
+      <!-- 2. Explore Page -->
+      <div class="screenshot-card">
+        <div class="phone-mockup">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="screen-content">
+              <div class="status-bar">
+                <span>9:41</span>
+                <span>●●●●●</span>
+              </div>
+              <div class="screen-header gradient-explore">Explore</div>
+              <div class="screen-body">
+                <div class="explore-item">
+                  <img src="https://images.unsplash.com/photo-1591129299380-3df0213d1e1e?w=400" alt="Explore" />
+                  <div class="item-content">
+                    <div class="item-title">Discover New Styles</div>
+                    <div class="item-subtitle">Curated Collections</div>
+                  </div>
+                </div>
+                <div class="explore-item">
+                  <div style="height: 120px; background: linear-gradient(135deg, #D20EC1 20%, #F04050 80%);"></div>
+                  <div class="item-content">
+                    <div class="item-title">Trending Now</div>
+                    <div class="item-subtitle">Popular Items</div>
+                  </div>
+                </div>
+              </div>
+              <div class="bottom-nav">
+                <div class="nav-icon" style="opacity: 0.3;"></div>
+                <div class="nav-icon"></div>
+                <div class="nav-icon" style="opacity: 0.3;"></div>
+                <div class="nav-icon" style="opacity: 0.3;"></div>
+                <div class="nav-icon" style="opacity: 0.3;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="screenshot-title">Explore</div>
+        <div class="screenshot-description">Discover trending styles, popular creators, and fashion inspiration</div>
+      </div>
+
+      <!-- 3. My Closet -->
+      <div class="screenshot-card">
+        <div class="phone-mockup">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="screen-content">
+              <div class="status-bar">
+                <span>9:41</span>
+                <span>●●●●●</span>
+              </div>
+              <div class="screen-header gradient-closet">My Closet</div>
+              <div class="screen-body">
+                <div class="closet-item">
+                  <img src="https://images.unsplash.com/photo-1567182617421-5b55d6bc42e3?w=400" alt="Closet" />
+                  <div class="item-content">
+                    <div class="item-title">Black Leather Jacket</div>
+                    <div class="item-subtitle">Worn 5 times • Winter</div>
+                  </div>
+                </div>
+                <div class="closet-item">
+                  <div style="height: 120px; background: linear-gradient(135deg, #C1004C 20%, #F04050 80%);"></div>
+                  <div class="item-content">
+                    <div class="item-title">Summer Dress</div>
+                    <div class="item-subtitle">Worn 12 times • Summer</div>
+                  </div>
+                </div>
+              </div>
+              <div class="bottom-nav">
+                <div class="nav-icon" style="opacity: 0.3;"></div>
+                <div class="nav-icon" style="opacity: 0.3;"></div>
+                <div class="nav-icon"></div>
+                <div class="nav-icon" style="opacity: 0.3;"></div>
+                <div class="nav-icon" style="opacity: 0.3;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="screenshot-title">My Closet</div>
+        <div class="screenshot-description">Digital wardrobe with wear tracking, categorization, and outfit planning</div>
+      </div>
+
+      <!-- 4. Messages -->
+      <div class="screenshot-card">
+        <div class="phone-mockup">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="screen-content">
+              <div class="status-bar">
+                <span>9:41</span>
+                <span>●●●●●</span>
+              </div>
+              <div class="screen-header gradient-messages">Messages</div>
+              <div class="screen-body">
+                <div class="message-item">
+                  <div class="item-content">
+                    <div class="item-title">Sarah Johnson</div>
+                    <div class="item-subtitle">Love your outfit! 😍 • 2m ago</div>
+                  </div>
+                </div>
+                <div class="message-item">
+                  <div class="item-content">
+                    <div class="item-title">Fashion Group</div>
+                    <div class="item-subtitle">New message • 1h ago</div>
+                  </div>
+                </div>
+                <div class="message-item">
+                  <div class="item-content">
+                    <div class="item-title">Style Expert AI</div>
+                    <div class="item-subtitle">Your styling advice is ready • 3h ago</div>
+                  </div>
+                </div>
+              </div>
+              <div class="bottom-nav">
+                <div class="nav-icon" style="opacity: 0.3;"></div>
+                <div class="nav-icon" style="opacity: 0.3;"></div>
+                <div class="nav-icon" style="opacity: 0.3;"></div>
+                <div class="nav-icon"></div>
+                <div class="nav-icon" style="opacity: 0.3;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="screenshot-title">Messages</div>
+        <div class="screenshot-description">Direct messaging with users, groups, and AI styling assistant</div>
+      </div>
+
+      <!-- 5. Profile -->
+      <div class="screenshot-card">
+        <div class="phone-mockup">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="screen-content">
+              <div class="status-bar">
+                <span>9:41</span>
+                <span>●●●●●</span>
+              </div>
+              <div class="screen-header gradient-profile">Profile</div>
+              <div class="screen-body">
+                <div style="padding: 20px; text-align: center; background: white; margin: 12px; border-radius: 16px;">
+                  <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #D20EC1 0%, #6556C6 100%); margin: 0 auto 12px;"></div>
+                  <div class="item-title" style="margin-bottom: 4px;">@fashionlover</div>
+                  <div class="item-subtitle">Style enthusiast • 234 followers</div>
+                  <div style="display: flex; gap: 20px; justify-content: center; margin-top: 16px; font-size: 12px;">
+                    <div><strong>156</strong><br/>Posts</div>
+                    <div><strong>234</strong><br/>Followers</div>
+                    <div><strong>189</strong><br/>Following</div>
+                  </div>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 12px;">
+                  <div style="aspect-ratio: 1; background: linear-gradient(135deg, #D20EC1 0%, #6556C6 100%); border-radius: 8px;"></div>
+                  <div style="aspect-ratio: 1; background: linear-gradient(135deg, #6556C6 0%, #C1004C 100%); border-radius: 8px;"></div>
+                  <div style="aspect-ratio: 1; background: linear-gradient(135deg, #C1004C 0%, #F04050 100%); border-radius: 8px;"></div>
+                </div>
+              </div>
+              <div class="bottom-nav">
+                <div class="nav-icon" style="opacity: 0.3;"></div>
+                <div class="nav-icon" style="opacity: 0.3;"></div>
+                <div class="nav-icon" style="opacity: 0.3;"></div>
+                <div class="nav-icon" style="opacity: 0.3;"></div>
+                <div class="nav-icon"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="screenshot-title">Profile</div>
+        <div class="screenshot-description">User profile with stats, posts grid, and follower management</div>
+      </div>
+
+      <!-- 6. Settings -->
+      <div class="screenshot-card">
+        <div class="phone-mockup">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="screen-content">
+              <div class="status-bar">
+                <span>9:41</span>
+                <span>●●●●●</span>
+              </div>
+              <div class="screen-header gradient-settings">Settings</div>
+              <div class="screen-body">
+                <div class="settings-item">
+                  <div class="item-content">
+                    <div class="item-title">Account Settings</div>
+                    <div class="item-subtitle">Manage your account</div>
+                  </div>
+                </div>
+                <div class="settings-item">
+                  <div class="item-content">
+                    <div class="item-title">Privacy & Security</div>
+                    <div class="item-subtitle">Control your data</div>
+                  </div>
+                </div>
+                <div class="settings-item">
+                  <div class="item-content">
+                    <div class="item-title">Notifications</div>
+                    <div class="item-subtitle">Manage alerts</div>
+                  </div>
+                </div>
+                <div class="settings-item">
+                  <div class="item-content">
+                    <div class="item-title">Language & Region</div>
+                    <div class="item-subtitle">EN / AR</div>
+                  </div>
+                </div>
+              </div>
+              <div class="bottom-nav">
+                <div class="nav-icon" style="opacity: 0.3;"></div>
+                <div class="nav-icon" style="opacity: 0.3;"></div>
+                <div class="nav-icon" style="opacity: 0.3;"></div>
+                <div class="nav-icon" style="opacity: 0.3;"></div>
+                <div class="nav-icon"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="screenshot-title">Settings</div>
+        <div class="screenshot-description">App settings, preferences, and account management</div>
+      </div>
+
+      <!-- 7. Notifications -->
+      <div class="screenshot-card">
+        <div class="phone-mockup">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="screen-content">
+              <div class="status-bar">
+                <span>9:41</span>
+                <span>●●●●●</span>
+              </div>
+              <div class="screen-header gradient-notifications">Notifications</div>
+              <div class="screen-body">
+                <div class="notification-item">
+                  <div class="item-content">
+                    <div class="item-title">❤️ Sarah liked your post</div>
+                    <div class="item-subtitle">2 minutes ago</div>
+                  </div>
+                </div>
+                <div class="notification-item">
+                  <div class="item-content">
+                    <div class="item-title">👥 New follower: @styleguru</div>
+                    <div class="item-subtitle">1 hour ago</div>
+                  </div>
+                </div>
+                <div class="notification-item">
+                  <div class="item-content">
+                    <div class="item-title">💬 New message from Alex</div>
+                    <div class="item-subtitle">3 hours ago</div>
+                  </div>
+                </div>
+                <div class="notification-item">
+                  <div class="item-content">
+                    <div class="item-title">✨ AI Styling suggestion ready</div>
+                    <div class="item-subtitle">5 hours ago</div>
+                  </div>
+                </div>
+              </div>
+              <div class="bottom-nav">
+                <div class="nav-icon" style="opacity: 0.3;"></div>
+                <div class="nav-icon" style="opacity: 0.3;"></div>
+                <div class="nav-icon" style="opacity: 0.3;"></div>
+                <div class="nav-icon" style="opacity: 0.3;"></div>
+                <div class="nav-icon"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="screenshot-title">Notifications</div>
+        <div class="screenshot-description">Real-time updates, likes, follows, messages, and AI suggestions</div>
+      </div>
+
+      <!-- 8. Camera Screen -->
+      <div class="screenshot-card">
+        <div class="phone-mockup">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="screen-content">
+              <div class="screen-header gradient-camera" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; padding: 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; color: white;">
+                  <div>✕</div>
+                  <div>⚡</div>
+                  <div>⚙</div>
+                </div>
+                <div style="display: flex; justify-content: center; gap: 20px; color: white;">
+                  <div style="width: 60px; height: 60px; border: 4px solid white; border-radius: 50%;"></div>
+                  <div style="width: 40px; height: 40px; background: rgba(255,255,255,0.3); border-radius: 8px; align-self: flex-end;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="screenshot-title">Camera</div>
+        <div class="screenshot-description">Full-screen native camera UI for capturing outfits and items</div>
+      </div>
+
+      <!-- 9. AI Service Selection -->
+      <div class="screenshot-card">
+        <div class="phone-mockup">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="screen-content">
+              <div class="status-bar">
+                <span>9:41</span>
+                <span>●●●●●</span>
+              </div>
+              <div class="screen-header gradient-ai">AI Stylist</div>
+              <div class="screen-body">
+                <div style="padding: 20px;">
+                  <div style="background: white; padding: 24px; border-radius: 20px; margin-bottom: 16px; box-shadow: 0 4px 12px rgba(101, 86, 198, 0.15);">
+                    <div style="font-size: 32px; text-align: center; margin-bottom: 12px;">👗</div>
+                    <div class="item-title" style="text-align: center; margin-bottom: 8px;">Style Analysis</div>
+                    <div class="item-subtitle" style="text-align: center;">Get AI-powered outfit recommendations</div>
+                  </div>
+                  <div style="background: white; padding: 24px; border-radius: 20px; margin-bottom: 16px; box-shadow: 0 4px 12px rgba(210, 14, 193, 0.15);">
+                    <div style="font-size: 32px; text-align: center; margin-bottom: 12px;">📸</div>
+                    <div class="item-title" style="text-align: center; margin-bottom: 8px;">Virtual Try-On</div>
+                    <div class="item-subtitle" style="text-align: center;">See outfits before you buy</div>
+                  </div>
+                  <div style="background: white; padding: 24px; border-radius: 20px; box-shadow: 0 4px 12px rgba(240, 64, 80, 0.15);">
+                    <div style="font-size: 32px; text-align: center; margin-bottom: 12px;">✨</div>
+                    <div class="item-title" style="text-align: center; margin-bottom: 8px;">Outfit Generator</div>
+                    <div class="item-subtitle" style="text-align: center;">Create perfect combinations</div>
+                  </div>
+                </div>
+              </div>
+              <div class="bottom-nav">
+                <div class="nav-icon" style="opacity: 0.3;"></div>
+                <div class="nav-icon" style="opacity: 0.3;"></div>
+                <div class="nav-icon"></div>
+                <div class="nav-icon" style="opacity: 0.3;"></div>
+                <div class="nav-icon" style="opacity: 0.3;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="screenshot-title">AI Service Selection</div>
+        <div class="screenshot-description">Choose from AI styling services and features</div>
+      </div>
+
+      <!-- 10. Browse/Swipe Screen -->
+      <div class="screenshot-card">
+        <div class="phone-mockup">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="screen-content">
+              <div class="status-bar">
+                <span>9:41</span>
+                <span>●●●●●</span>
+              </div>
+              <div class="screen-header gradient-browse">Swipe & Style</div>
+              <div class="screen-body" style="display: flex; align-items: center; justify-content: center; padding: 20px;">
+                <div style="width: 90%; aspect-ratio: 3/4; background: linear-gradient(135deg, #C1004C 0%, #D20EC1 100%); border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); position: relative; overflow: hidden;">
+                  <div style="position: absolute; bottom: 20px; left: 20px; right: 20px; color: white;">
+                    <div style="font-size: 20px; font-weight: 700; margin-bottom: 4px;">Summer Outfit</div>
+                    <div style="font-size: 14px; opacity: 0.9;">Casual & Comfortable</div>
+                  </div>
+                  <div style="position: absolute; bottom: 100px; left: 0; right: 0; display: flex; justify-content: center; gap: 20px;">
+                    <div style="width: 50px; height: 50px; background: rgba(255,255,255,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px;">✕</div>
+                    <div style="width: 50px; height: 50px; background: rgba(255,255,255,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px;">❤️</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="screenshot-title">Swipe & Browse</div>
+        <div class="screenshot-description">Tinder-style swipe interface for outfit discovery and selection</div>
+      </div>
+
+      <!-- 11. Preview Screen -->
+      <div class="screenshot-card">
+        <div class="phone-mockup">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="screen-content">
+              <div class="status-bar">
+                <span>9:41</span>
+                <span>●●●●●</span>
+              </div>
+              <div class="screen-header gradient-preview">Outfit Preview</div>
+              <div class="screen-body">
+                <div style="padding: 20px;">
+                  <div style="width: 100%; aspect-ratio: 3/4; background: linear-gradient(135deg, #F04050 0%, #D20EC1 100%); border-radius: 20px; margin-bottom: 20px; box-shadow: 0 8px 24px rgba(240, 64, 80, 0.2);"></div>
+                  <div style="background: white; padding: 20px; border-radius: 16px; margin-bottom: 12px;">
+                    <div class="item-title" style="margin-bottom: 12px;">Outfit Details</div>
+                    <div class="item-subtitle" style="margin-bottom: 8px;">• Black Blazer</div>
+                    <div class="item-subtitle" style="margin-bottom: 8px;">• White T-Shirt</div>
+                    <div class="item-subtitle">• Blue Jeans</div>
+                  </div>
+                  <div style="display: flex; gap: 12px;">
+                    <div style="flex: 1; padding: 16px; background: linear-gradient(135deg, #6556C6 0%, #D20EC1 100%); border-radius: 50px; text-align: center; color: white; font-weight: 600;">Save</div>
+                    <div style="flex: 1; padding: 16px; background: white; border: 2px solid #D20EC1; border-radius: 50px; text-align: center; color: #D20EC1; font-weight: 600;">Share</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="screenshot-title">Preview</div>
+        <div class="screenshot-description">Full outfit preview with details and save/share options</div>
+      </div>
+
+      <!-- 12. Analyzing Screen -->
+      <div class="screenshot-card">
+        <div class="phone-mockup">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="screen-content">
+              <div class="status-bar">
+                <span>9:41</span>
+                <span>●●●●●</span>
+              </div>
+              <div class="screen-header gradient-analyzing">AI Analyzing</div>
+              <div class="screen-body" style="display: flex; align-items: center; justify-content: center; flex-direction: column; padding: 40px;">
+                <div style="width: 120px; height: 120px; border: 8px solid #6556C6; border-top-color: #FFC600; border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 30px;"></div>
+                <div class="item-title" style="margin-bottom: 12px; text-align: center;">Analyzing Your Style</div>
+                <div class="item-subtitle" style="text-align: center; line-height: 1.6;">
+                  Our AI is processing your images<br/>
+                  and creating personalized<br/>
+                  recommendations...
+                </div>
+                <div style="margin-top: 30px; width: 80%; height: 6px; background: #eee; border-radius: 3px; overflow: hidden;">
+                  <div style="width: 65%; height: 100%; background: linear-gradient(135deg, #6556C6 0%, #FFC600 100%);"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="screenshot-title">AI Analyzing</div>
+        <div class="screenshot-description">AI processing screen with loading animation and progress</div>
+      </div>
+    </div>
+
+    <div class="download-section">
+      <h2 style="margin-bottom: 16px; font-size: 32px;">Download Screenshots</h2>
+      <p style="color: #666; margin-bottom: 30px;">Save these screenshots for documentation, presentations, or app store listings</p>
+      <a href="#" onclick="window.print(); return false;" class="download-btn">Print All Screenshots</a>
+      <a href="#" onclick="alert('Use browser screenshot tools or print to PDF for individual images'); return false;" class="download-btn">Save Individual</a>
+    </div>
+  </div>
+
+  <style>
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</body>
+</html>

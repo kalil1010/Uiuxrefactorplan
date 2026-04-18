@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Two-Factor Authentication Disabled - ZokaiHub</title>
+  <title>Identity Unlinked - ZokaiHub</title>
 </head>
 <body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f5f5f5;">
   <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #f5f5f5; padding: 40px 20px;">
@@ -14,11 +14,11 @@
           <!-- Header -->
           <tr>
             <td style="background: linear-gradient(135deg, #F04050 0%, #C1004C 100%); padding: 40px 30px; text-align: center;">
-              <div style="margin-bottom: 20px;">
-                <h1 style="margin: 0; color: #ffffff; font-size: 32px; font-weight: 700;">ZokaiHub</h1>
+              <div style="margin-bottom: 24px;">
+                <img src="https://imagedelivery.net/_8YEMcbA6RjJpkDKAxFAZA/f087abe5-c47c-47aa-84a9-9d98c795fc00/public" alt="ZokaiHub" style="height: 50px; width: auto; display: inline-block;" />
               </div>
-              <div style="font-size: 48px; margin-bottom: 10px;">⚠️</div>
-              <h2 style="margin: 0; color: #ffffff; font-size: 24px; font-weight: 600;">2FA Disabled</h2>
+              <div style="font-size: 48px; margin-bottom: 10px;">🔓</div>
+              <h2 style="margin: 0; color: #ffffff; font-size: 24px; font-weight: 600;">Identity Unlinked</h2>
             </td>
           </tr>
 
@@ -29,12 +29,12 @@
                 Hello! 👋
               </p>
               <p style="margin: 0 0 20px; color: #333333; font-size: 16px; line-height: 1.6;">
-                Two-factor authentication (2FA) has been disabled on your ZokaiHub account.
+                An identity provider has been removed from your ZokaiHub account.
               </p>
 
               <div style="margin: 25px 0; padding: 25px; background: linear-gradient(135deg, rgba(240, 64, 80, 0.1) 0%, rgba(193, 0, 76, 0.1) 100%); border-radius: 12px; border: 2px solid #F04050;">
                 <p style="margin: 0 0 15px; color: #333333; font-size: 16px; font-weight: 600; text-align: center;">
-                  ⚠️ 2FA Removal Details
+                  🔓 Unlinked Identity Details
                 </p>
                 <table style="width: 100%; border-collapse: collapse;">
                   <tr>
@@ -47,10 +47,10 @@
                   </tr>
                   <tr>
                     <td style="padding: 8px 0; color: #666666; font-size: 14px; border-bottom: 1px solid rgba(240, 64, 80, 0.2);">
-                      <strong>Method Removed:</strong>
+                      <strong>Provider:</strong>
                     </td>
                     <td style="padding: 8px 0; color: #F04050; font-size: 14px; text-align: right; font-weight: 600; border-bottom: 1px solid rgba(240, 64, 80, 0.2); text-decoration: line-through; text-transform: capitalize;">
-                      {{ .Factor }}
+                      {{ .Provider }}
                     </td>
                   </tr>
                   <tr>
@@ -64,43 +64,31 @@
                 </table>
               </div>
 
-              <div style="margin-top: 30px; padding: 25px; background-color: #fff5f5; border-radius: 12px; border: 2px solid #F04050;">
-                <p style="margin: 0 0 15px; color: #C1004C; font-size: 16px; font-weight: 600;">
-                  ⚠️ Security Notice
-                </p>
+              <div style="margin-top: 30px; padding: 20px; background-color: #fffbf5; border-radius: 12px; border-left: 4px solid #FFC600;">
                 <p style="margin: 0; color: #666666; font-size: 14px; line-height: 1.6;">
-                  Your account is now less secure without two-factor authentication. We strongly recommend re-enabling it to protect your account from unauthorized access.
+                  <strong>⚠️ What This Means:</strong><br>
+                  You can no longer sign in to ZokaiHub using your {{ .Provider }} account. You can still access your account using:
                 </p>
-              </div>
-
-              <div style="margin-top: 20px; padding: 20px; background-color: #fffbf5; border-radius: 12px; border-left: 4px solid #FFC600;">
-                <p style="margin: 0 0 10px; color: #333333; font-size: 14px; font-weight: 600;">
-                  💡 Protect Your Account:
-                </p>
-                <ul style="margin: 0; padding-left: 20px; color: #666666; font-size: 14px; line-height: 1.8;">
-                  <li>Use a strong, unique password</li>
-                  <li>Don't share your password with anyone</li>
-                  <li>Be cautious of phishing emails</li>
-                  <li>Consider re-enabling 2FA for maximum security</li>
+                <ul style="margin: 10px 0 0; padding-left: 20px; color: #666666; font-size: 14px; line-height: 1.8;">
+                  <li>Email and password</li>
+                  <li>Magic link</li>
+                  <li>Other linked identity providers (if any)</li>
                 </ul>
               </div>
 
-              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: 25px 0;">
-                <tr>
-                  <td align="center">
-                    <a href="https://zokaihub.com/settings/security" style="display: inline-block; background: linear-gradient(135deg, #6556C6 0%, #D20EC1 100%); color: #ffffff; text-decoration: none; padding: 16px 40px; border-radius: 50px; font-size: 16px; font-weight: 600; box-shadow: 0 4px 15px rgba(101, 86, 198, 0.4);">
-                      Re-Enable 2FA
-                    </a>
-                  </td>
-                </tr>
-              </table>
+              <div style="margin-top: 20px; padding: 20px; background-color: #f0f9ff; border-radius: 12px; border-left: 4px solid #6556C6;">
+                <p style="margin: 0; color: #666666; font-size: 14px; line-height: 1.6;">
+                  <strong>💡 Need to Link Again?</strong><br>
+                  You can always re-link your {{ .Provider }} account from your account settings.
+                </p>
+              </div>
 
               <div style="margin-top: 20px; padding: 20px; background-color: #fff5f5; border-radius: 12px; border: 2px solid #F04050;">
                 <p style="margin: 0; color: #C1004C; font-size: 14px; line-height: 1.6; font-weight: 600;">
-                  ⚠️ Didn't disable 2FA?
+                  ⚠️ Didn't unlink this account?
                 </p>
                 <p style="margin: 10px 0 0; color: #666666; font-size: 14px; line-height: 1.6;">
-                  If you didn't disable two-factor authentication, someone may have unauthorized access to your account. Please contact support immediately:
+                  If you didn't unlink this identity, someone may have unauthorized access to your account. Please secure your account immediately:
                 </p>
                 <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: 15px 0 0;">
                   <tr>

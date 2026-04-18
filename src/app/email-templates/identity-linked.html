@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Two-Factor Authentication Enabled - ZokaiHub</title>
+  <title>Identity Linked - ZokaiHub</title>
 </head>
 <body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f5f5f5;">
   <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #f5f5f5; padding: 40px 20px;">
@@ -13,12 +13,12 @@
           
           <!-- Header -->
           <tr>
-            <td style="background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); padding: 40px 30px; text-align: center;">
-              <div style="margin-bottom: 20px;">
-                <h1 style="margin: 0; color: #ffffff; font-size: 32px; font-weight: 700;">ZokaiHub</h1>
+            <td style="background: linear-gradient(135deg, #6556C6 0%, #D20EC1 100%); padding: 40px 30px; text-align: center;">
+              <div style="margin-bottom: 24px;">
+                <img src="https://imagedelivery.net/_8YEMcbA6RjJpkDKAxFAZA/f087abe5-c47c-47aa-84a9-9d98c795fc00/public" alt="ZokaiHub" style="height: 50px; width: auto; display: inline-block;" />
               </div>
-              <div style="font-size: 48px; margin-bottom: 10px;">🛡️</div>
-              <h2 style="margin: 0; color: #ffffff; font-size: 24px; font-weight: 600;">2FA Enabled</h2>
+              <div style="font-size: 48px; margin-bottom: 10px;">🔗</div>
+              <h2 style="margin: 0; color: #ffffff; font-size: 24px; font-weight: 600;">New Identity Linked</h2>
             </td>
           </tr>
 
@@ -29,28 +29,28 @@
                 Hello! 👋
               </p>
               <p style="margin: 0 0 20px; color: #333333; font-size: 16px; line-height: 1.6;">
-                Great news! Two-factor authentication (2FA) has been successfully enabled on your ZokaiHub account. Your account is now more secure! 🎉
+                A new identity provider has been successfully linked to your ZokaiHub account.
               </p>
 
-              <div style="margin: 25px 0; padding: 25px; background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(22, 163, 74, 0.1) 100%); border-radius: 12px; border: 2px solid #22c55e;">
+              <div style="margin: 25px 0; padding: 25px; background: linear-gradient(135deg, rgba(101, 86, 198, 0.1) 0%, rgba(210, 14, 193, 0.1) 100%); border-radius: 12px; border: 2px solid #6556C6;">
                 <p style="margin: 0 0 15px; color: #333333; font-size: 16px; font-weight: 600; text-align: center;">
-                  🛡️ 2FA Method Details
+                  🔗 Linked Identity Details
                 </p>
                 <table style="width: 100%; border-collapse: collapse;">
                   <tr>
-                    <td style="padding: 8px 0; color: #666666; font-size: 14px; border-bottom: 1px solid rgba(34, 197, 94, 0.2);">
+                    <td style="padding: 8px 0; color: #666666; font-size: 14px; border-bottom: 1px solid rgba(101, 86, 198, 0.2);">
                       <strong>Date & Time:</strong>
                     </td>
-                    <td style="padding: 8px 0; color: #333333; font-size: 14px; text-align: right; border-bottom: 1px solid rgba(34, 197, 94, 0.2);">
+                    <td style="padding: 8px 0; color: #333333; font-size: 14px; text-align: right; border-bottom: 1px solid rgba(101, 86, 198, 0.2);">
                       {{ .SentAt }}
                     </td>
                   </tr>
                   <tr>
-                    <td style="padding: 8px 0; color: #666666; font-size: 14px; border-bottom: 1px solid rgba(34, 197, 94, 0.2);">
-                      <strong>Method:</strong>
+                    <td style="padding: 8px 0; color: #666666; font-size: 14px; border-bottom: 1px solid rgba(101, 86, 198, 0.2);">
+                      <strong>Provider:</strong>
                     </td>
-                    <td style="padding: 8px 0; color: #22c55e; font-size: 14px; text-align: right; font-weight: 600; border-bottom: 1px solid rgba(34, 197, 94, 0.2); text-transform: capitalize;">
-                      {{ .Factor }}
+                    <td style="padding: 8px 0; color: #6556C6; font-size: 14px; text-align: right; font-weight: 600; border-bottom: 1px solid rgba(101, 86, 198, 0.2); text-transform: capitalize;">
+                      {{ .Provider }}
                     </td>
                   </tr>
                   <tr>
@@ -66,29 +66,26 @@
 
               <div style="margin-top: 30px; padding: 20px; background-color: #f0fdf4; border-radius: 12px; border-left: 4px solid #22c55e;">
                 <p style="margin: 0; color: #666666; font-size: 14px; line-height: 1.6;">
-                  <strong>✓ Enhanced Security Active</strong><br>
-                  From now on, you'll need to provide an additional verification code when signing in. This keeps your account safe even if someone knows your password.
+                  <strong>✓ What This Means:</strong><br>
+                  You can now sign in to ZokaiHub using your {{ .Provider }} account in addition to your email and password.
                 </p>
               </div>
 
               <div style="margin-top: 20px; padding: 20px; background-color: #fffbf5; border-radius: 12px; border-left: 4px solid #FFC600;">
-                <p style="margin: 0 0 10px; color: #333333; font-size: 14px; font-weight: 600;">
-                  💡 Next Steps:
+                <p style="margin: 0; color: #666666; font-size: 14px; line-height: 1.6;">
+                  <strong>💡 Benefits:</strong><br>
+                  • Faster sign-in with social authentication<br>
+                  • Keep your account information in sync<br>
+                  • Multiple ways to access your account
                 </p>
-                <ul style="margin: 0; padding-left: 20px; color: #666666; font-size: 14px; line-height: 1.8;">
-                  <li>Save your backup codes in a secure location</li>
-                  <li>Don't share your authentication codes with anyone</li>
-                  <li>Keep your authenticator app updated</li>
-                  <li>Consider adding a backup 2FA method</li>
-                </ul>
               </div>
 
               <div style="margin-top: 20px; padding: 20px; background-color: #fff5f5; border-radius: 12px; border: 2px solid #F04050;">
                 <p style="margin: 0; color: #C1004C; font-size: 14px; line-height: 1.6; font-weight: 600;">
-                  ⚠️ Didn't enable 2FA?
+                  ⚠️ Didn't link this account?
                 </p>
                 <p style="margin: 10px 0 0; color: #666666; font-size: 14px; line-height: 1.6;">
-                  If you didn't enable two-factor authentication, someone may have unauthorized access to your account. Please contact support immediately:
+                  If you didn't link this identity, someone may have unauthorized access to your account. Please secure your account immediately:
                 </p>
                 <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: 15px 0 0;">
                   <tr>
@@ -107,7 +104,7 @@
           <tr>
             <td style="padding: 30px; background-color: #f9f9f9; border-top: 1px solid #eeeeee; text-align: center;">
               <p style="margin: 0 0 10px; color: #999999; font-size: 14px;">
-                Questions? Contact us at <a href="mailto:support@zokaihub.com" style="color: #22c55e; text-decoration: none;">support@zokaihub.com</a>
+                Questions? Contact us at <a href="mailto:support@zokaihub.com" style="color: #6556C6; text-decoration: none;">support@zokaihub.com</a>
               </p>
               <p style="margin: 0; color: #999999; font-size: 12px;">
                 © 2024 ZokaiHub. All rights reserved.
