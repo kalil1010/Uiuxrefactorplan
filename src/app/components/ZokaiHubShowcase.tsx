@@ -79,9 +79,11 @@ import SettingsPage from './settings/SettingsPage';
 import SearchModal from './search/SearchModal';
 import NotificationsPanel from './notifications/NotificationsPanel';
 import AIStylistHub from './AIStylistHub';
+import { MobileScreenshotsPage } from './MobileScreenshotsPage';
 
-type DemoView = 
+type DemoView =
   | 'showcase'
+  | 'mobile-screenshots'
   | 'vendor-dashboard'
   | 'owner-dashboard'
   | 'star-dashboard'
@@ -196,6 +198,7 @@ export function ZokaiHubShowcase() {
         {currentView === 'search' && <SearchModal isOpen={true} onClose={() => setCurrentView('showcase')} />}
         {currentView === 'notifications' && <NotificationsPanel isOpen={true} onClose={() => setCurrentView('showcase')} />}
         {currentView === 'ai-stylist-hub' && <AIStylistHub />}
+        {currentView === 'mobile-screenshots' && <MobileScreenshotsPage />}
         {currentView === 'not-found' && <NotFoundPage />}
       </div>
     );
@@ -228,12 +231,24 @@ export function ZokaiHubShowcase() {
           </p>
 
           {/* Color Palette Display */}
-          <div className="flex justify-center gap-3 mb-12">
+          <div className="flex justify-center gap-3 mb-8">
             <div className="w-16 h-16 rounded-full" style={{ backgroundColor: '#6556C6' }} title="Primary Purple" />
             <div className="w-16 h-16 rounded-full" style={{ backgroundColor: '#D20EC1' }} title="Accent Magenta" />
             <div className="w-16 h-16 rounded-full" style={{ backgroundColor: '#C1004C' }} title="Brand Pink" />
             <div className="w-16 h-16 rounded-full" style={{ backgroundColor: '#F04050' }} title="Brand Coral" />
             <div className="w-16 h-16 rounded-full" style={{ backgroundColor: '#FFC600' }} title="Brand Yellow" />
+          </div>
+
+          {/* Mobile Screenshots Button */}
+          <div className="flex justify-center mb-12">
+            <Button
+              size="lg"
+              className="gradient-bg-pink-coral text-white shadow-xl hover:scale-105 transition-transform"
+              onClick={() => setCurrentView('mobile-screenshots')}
+            >
+              <Eye className="w-5 h-5 mr-2" />
+              View Mobile Screenshots
+            </Button>
           </div>
         </div>
 
