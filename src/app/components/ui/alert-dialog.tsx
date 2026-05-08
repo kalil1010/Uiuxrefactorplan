@@ -6,6 +6,11 @@ import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog@1.1.6";
 import { cn } from "./utils";
 import { buttonVariants } from "./button";
 
+// Optional context — preview shell uses this to portal dialogs inside a phone frame.
+const AlertDialogContainerContext = React.createContext<HTMLElement | null>(null);
+
+export const AlertDialogContainerProvider = AlertDialogContainerContext.Provider;
+
 function AlertDialog({
   ...props
 }: React.ComponentProps<typeof AlertDialogPrimitive.Root>) {
@@ -21,10 +26,16 @@ function AlertDialogTrigger({
 }
 
 function AlertDialogPortal({
+  container,
   ...props
 }: React.ComponentProps<typeof AlertDialogPrimitive.Portal>) {
+  const ctxContainer = React.useContext(AlertDialogContainerContext);
   return (
-    <AlertDialogPrimitive.Portal data-slot="alert-dialog-portal" {...props} />
+    <AlertDialogPrimitive.Portal
+      data-slot="alert-dialog-portal"
+      container={container ?? ctxContainer ?? undefined}
+      {...props}
+    />
   );
 }
 

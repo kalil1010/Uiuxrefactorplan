@@ -305,7 +305,7 @@ export default function MobileProductDetailPage() {
           <ChevronLeft className="w-6 h-6" />
         </Button>
         <h1 className="flex-1 font-semibold text-lg truncate">
-          {product?.title ?? t('rating', { rating: '', reviews: '' }).split('(')[0].trim() || ''}
+          {product?.title ?? ''}
         </h1>
         <Button
           variant="ghost"
