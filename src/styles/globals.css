@@ -22,7 +22,7 @@
   --brand-gray: #636569;
   --brand-black: #222222;
   --brand-dark-purple: #4C2748;
-  --brand-light-pink: #F6DADJ;
+  --brand-light-pink: #f6dadf; /* was invalid hex #F6DADJ */
   
   /* Gradients */
   --gradient-primary: linear-gradient(135deg, #6556C6 0%, #D20EC1 50%, #F04050 75%, #FFC600 100%);

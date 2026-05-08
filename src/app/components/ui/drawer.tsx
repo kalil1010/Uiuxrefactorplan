@@ -5,6 +5,12 @@ import { Drawer as DrawerPrimitive } from "vaul@1.1.2";
 
 import { cn } from "./utils";
 
+// Allows the preview shell to portal drawers inside a phone frame instead of <body>.
+// Production callers ignore this context (no provider == default body portal).
+const DrawerContainerContext = React.createContext<HTMLElement | null>(null);
+
+export const DrawerContainerProvider = DrawerContainerContext.Provider;
+
 function Drawer({
   ...props
 }: React.ComponentProps<typeof DrawerPrimitive.Root>) {
@@ -18,9 +24,17 @@ function DrawerTrigger({
 }
 
 function DrawerPortal({
+  container,
   ...props
 }: React.ComponentProps<typeof DrawerPrimitive.Portal>) {
-  return <DrawerPrimitive.Portal data-slot="drawer-portal" {...props} />;
+  const ctxContainer = React.useContext(DrawerContainerContext);
+  return (
+    <DrawerPrimitive.Portal
+      data-slot="drawer-portal"
+      container={container ?? ctxContainer ?? undefined}
+      {...props}
+    />
+  );
 }
 
 function DrawerClose({

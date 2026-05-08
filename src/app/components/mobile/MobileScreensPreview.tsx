@@ -1,4 +1,6 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
+import { DrawerContainerProvider } from '../ui/drawer';
+import { AlertDialogContainerProvider } from '../ui/alert-dialog';
 import MobileSplashScreen from './MobileSplashScreen';
 import MobileLandingPage from './MobileLandingPage';
 import MobileSignIn from './MobileSignIn';
@@ -397,6 +399,13 @@ export default function MobileScreensPreview() {
     ((typeof window !== 'undefined' && (window as any).__currentLocale) || 'en') as 'en' | 'ar'
   );
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const phoneRef = useRef<HTMLDivElement>(null);
+  const [phoneEl, setPhoneEl] = useState<HTMLElement | null>(null);
+
+  // Set the portal container after first paint so refs are populated
+  useEffect(() => {
+    setPhoneEl(phoneRef.current);
+  }, []);
 
   const groups = useMemo(() => {
     const map = new Map<string, ScreenDef[]>();
@@ -512,13 +521,24 @@ export default function MobileScreensPreview() {
           {/* Phone frame */}
           <div className="relative bg-gray-900 rounded-[44px] p-2 shadow-2xl">
             {/* Notch */}
-            <div className="absolute top-2 left-1/2 -translate-x-1/2 w-32 h-7 bg-gray-900 rounded-b-3xl z-50" />
+            <div className="absolute top-2 left-1/2 -translate-x-1/2 w-32 h-7 bg-gray-900 rounded-b-3xl z-[60]" />
             <div
+              ref={phoneRef}
               className="bg-background rounded-[36px] overflow-hidden relative"
-              style={{ width: 393, height: 852 }}
+              style={{
+                width: 393,
+                height: 852,
+                // translateZ creates a containing block so position:fixed
+                // descendants (BottomNav, sticky CTAs) stay inside the frame.
+                transform: 'translateZ(0)',
+              }}
               key={`${active.id}-${locale}-${theme}`}
             >
-              {active.render()}
+              <DrawerContainerProvider value={phoneEl}>
+                <AlertDialogContainerProvider value={phoneEl}>
+                  {active.render()}
+                </AlertDialogContainerProvider>
+              </DrawerContainerProvider>
             </div>
           </div>
           <p className="text-xs text-gray-400 dark:text-gray-500 mt-3">

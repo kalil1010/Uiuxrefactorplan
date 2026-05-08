@@ -1,6 +1,5 @@
 import React from 'react';
 import { useTranslations } from 'next-intl';
-import Link from 'next/link';
 import { Button } from '../ui/button';
 import { Logo } from '../Logo';
 import { Sparkles, Shirt, Users, TrendingUp } from 'lucide-react';
@@ -119,14 +118,14 @@ export default function MobileLandingPage({ onSignIn, onSignUp }: MobileLandingP
         <p className="text-xs text-muted-foreground text-center mt-4">
           {t.rich('legal', {
             terms: (chunks) => (
-              <Link href="/legal/terms" className="text-primary hover:underline active:underline">
+              <a href="/legal/terms" className="text-primary hover:underline active:underline">
                 {chunks}
-              </Link>
+              </a>
             ),
             privacy: (chunks) => (
-              <Link href="/legal/privacy" className="text-primary hover:underline active:underline">
+              <a href="/legal/privacy" className="text-primary hover:underline active:underline">
                 {chunks}
-              </Link>
+              </a>
             )
           })}
         </p>
