@@ -56,14 +56,14 @@ export default function MobilePreviewScreen() {
           {/* TODO(integration): replace with actual AI result image */}
           <ImageWithFallback
             src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&h=800&fit=crop"
-            alt="AI generated result"
+            alt={t('heroAlt')}
             className="w-full h-full object-cover"
           />
         </div>
 
         {/* Result Details */}
         <div className="px-4 py-6 space-y-4">
-          {/* TODO(integration): replace with actual AI analysis details */}
+          {/* TODO(integration): replace with actual AI analysis details from API */}
           <div>
             <h2 className="font-bold text-xl mb-2">Summer Casual Look</h2>
             <p className="text-muted-foreground">
@@ -74,7 +74,8 @@ export default function MobilePreviewScreen() {
 
           {/* Recommendations */}
           <div>
-            <h3 className="font-semibold mb-3">Styling Tips</h3>
+            <h3 className="font-semibold mb-3">{t('stylingTips.title')}</h3>
+            {/* TODO(integration): replace with actual AI-generated tips */}
             <ul className="space-y-2">
               <li className="flex items-start gap-2">
                 <span className="text-primary">•</span>
@@ -111,7 +112,7 @@ export default function MobilePreviewScreen() {
             {isSaving ? (
               <>
                 <RefreshCw className="w-4 h-4 me-2 animate-spin" />
-                {tCommon('loading')}
+                {t('actions.saving')}
               </>
             ) : (
               <>
@@ -130,7 +131,7 @@ export default function MobilePreviewScreen() {
             {isRegenerating ? (
               <>
                 <RefreshCw className="w-4 h-4 me-2 animate-spin" />
-                {tCommon('loading')}
+                {t('actions.regenerating')}
               </>
             ) : (
               <>

@@ -7,7 +7,6 @@ type CameraMode = 'photo' | 'video' | 'square';
 
 export default function MobileCameraScreen() {
   const t = useTranslations('camera');
-  const tCommon = useTranslations('common');
   const [flashOn, setFlashOn] = useState(false);
   const [mode, setMode] = useState<CameraMode>('photo');
 
@@ -16,7 +15,7 @@ export default function MobileCameraScreen() {
       {/* Camera Preview Placeholder */}
       <div className="absolute inset-0 bg-muted flex items-center justify-center">
         {/* TODO(integration): wire to Capacitor Camera plugin with getUserMedia */}
-        <p className="text-muted-foreground text-sm">Camera Preview</p>
+        <p className="text-muted-foreground text-sm">{t('previewPlaceholder')}</p>
       </div>
 
       {/* Top Controls */}

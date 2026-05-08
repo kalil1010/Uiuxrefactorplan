@@ -449,6 +449,7 @@
     "flipAria": "Flip camera",
     "shutterAria": "Take photo",
     "galleryAria": "Open gallery",
+    "previewPlaceholder": "Camera Preview",
     "modes": {
       "photo": "Photo",
       "video": "Video",
@@ -471,11 +472,17 @@
   },
   "preview": {
     "title": "AI Result",
+    "heroAlt": "AI generated result",
     "actions": {
       "save": "Save",
+      "saving": "Saving...",
       "regenerate": "Regenerate",
+      "regenerating": "Regenerating...",
       "share": "Share",
       "discard": "Discard"
+    },
+    "stylingTips": {
+      "title": "Styling Tips"
     },
     "costHint": "Uses 1 credit",
     "saved": "Saved to your closet",
@@ -495,6 +502,15 @@
     "suggestions": {
       "title": "Suggested Items"
     },
+    "categories": {
+      "tops": "Tops",
+      "bottoms": "Bottoms",
+      "shoes": "Shoes",
+      "accessories": "Accessories",
+      "dresses": "Dresses",
+      "outerwear": "Outerwear"
+    },
+    "matchScoreAria": "Match score: {score} percent",
     "empty": {
       "title": "No Recommendations Yet",
       "description": "Take a photo to get started with AI styling",
@@ -503,6 +519,168 @@
     "error": {
       "title": "Analysis Failed",
       "description": "We couldn't analyze your photo. Please try again.",
+      "retry": "Try Again",
+      "goHome": "Go to AI Hub"
+    }
+  },
+  "browse": {
+    "title": "Browse Outfits",
+    "searchPlaceholder": "Search outfits, styles...",
+    "likeAria": "Like outfit",
+    "unlikeAria": "Unlike outfit",
+    "saveAria": "Save to closet",
+    "unsaveAria": "Remove from closet",
+    "shareAria": "Share outfit",
+    "filters": {
+      "all": "All",
+      "trending": "Trending",
+      "newest": "Newest",
+      "saved": "Saved"
+    },
+    "empty": {
+      "title": "No outfits found",
+      "description": "Try adjusting your filters or search terms",
+      "cta": "Clear Filters"
+    },
+    "error": {
+      "title": "Unable to Load Outfits",
+      "description": "We couldn't load the outfit feed. Please check your connection and try again.",
+      "retry": "Try Again",
+      "goHome": "Go to AI Hub"
+    }
+  },
+  "outfitGenerator": {
+    "title": "Outfit Generator",
+    "subtitle": "Describe your perfect outfit and let AI create it",
+    "promptLabel": "Describe your outfit",
+    "promptPlaceholder": "e.g., A casual summer outfit for brunch with friends",
+    "generate": "Generate Outfit",
+    "generating": "Generating...",
+    "params": {
+      "style": "Style",
+      "occasion": "Occasion",
+      "weather": "Weather",
+      "colors": "Color preference"
+    },
+    "styleOptions": {
+      "casual": "Casual",
+      "formal": "Formal",
+      "streetwear": "Streetwear",
+      "bohemian": "Bohemian",
+      "minimalist": "Minimalist",
+      "sporty": "Sporty"
+    },
+    "occasionOptions": {
+      "work": "Work",
+      "party": "Party",
+      "date": "Date",
+      "weekend": "Weekend",
+      "travel": "Travel",
+      "wedding": "Wedding"
+    },
+    "weatherOptions": {
+      "warm": "Warm",
+      "mild": "Mild",
+      "cold": "Cold",
+      "rainy": "Rainy"
+    },
+    "result": {
+      "title": "Your Generated Outfit",
+      "save": "Save to Closet",
+      "regenerate": "Generate Another",
+      "share": "Share"
+    },
+    "empty": {
+      "title": "Ready to create",
+      "description": "Fill in your preferences above and tap Generate",
+      "cta": "Get Started"
+    },
+    "error": {
+      "title": "Generation Failed",
+      "description": "We couldn't generate an outfit. Please try again.",
+      "retry": "Try Again",
+      "goHome": "Go to AI Hub"
+    }
+  },
+  "colorAnalyzer": {
+    "title": "Color Analyzer",
+    "subtitle": "Discover your perfect color palette based on your skin tone",
+    "entry": {
+      "takePhoto": "Take a Photo",
+      "uploadPhoto": "Upload a Photo",
+      "tip": "For best results, use natural lighting and a clear face shot"
+    },
+    "analyzing": "Analyzing your features...",
+    "result": {
+      "skinTone": "Your Skin Tone",
+      "season": "Your Season",
+      "palette": "Your Best Colors",
+      "avoid": "Colors to Avoid",
+      "tip": "Use these colors in your outfits for a flattering look"
+    },
+    "seasons": {
+      "spring": "Spring",
+      "summer": "Summer",
+      "autumn": "Autumn",
+      "winter": "Winter"
+    },
+    "tones": {
+      "warm": "Warm",
+      "cool": "Cool",
+      "neutral": "Neutral"
+    },
+    "actions": {
+      "saveResults": "Save Results",
+      "tryAgain": "Try Another Photo",
+      "share": "Share Results"
+    },
+    "empty": {
+      "title": "Discover your colors",
+      "description": "Take or upload a photo to begin your color analysis",
+      "cta": "Take Photo"
+    },
+    "error": {
+      "title": "Analysis Failed",
+      "description": "We couldn't analyze your photo. Please ensure good lighting and try again.",
+      "retry": "Try Again",
+      "goHome": "Go to AI Hub"
+    }
+  },
+  "imageGenerator": {
+    "title": "Image Generator",
+    "subtitle": "Generate fashion images from text",
+    "promptLabel": "Describe your image",
+    "promptPlaceholder": "e.g., A model wearing a flowing red dress on a beach at sunset",
+    "generate": "Generate Image",
+    "generating": "Creating your image...",
+    "presetsLabel": "Style presets",
+    "presets": {
+      "editorial": "Editorial",
+      "streetwear": "Streetwear",
+      "runway": "Runway",
+      "vintage": "Vintage",
+      "minimalist": "Minimalist",
+      "avantGarde": "Avant-garde"
+    },
+    "recent": {
+      "title": "Recent Generations",
+      "empty": "Your generated images will appear here"
+    },
+    "result": {
+      "save": "Save",
+      "download": "Download",
+      "share": "Share",
+      "regenerate": "Regenerate"
+    },
+    "costHint": "Uses 2 credits",
+    "empty": {
+      "title": "Start creating",
+      "description": "Type a description above and tap Generate",
+      "cta": "Try a sample prompt"
+    },
+    "error": {
+      "title": "Generation Failed",
+      "description": "We couldn't generate your image. Please try a different prompt.",
       "retry": "Try Again",
       "goHome": "Go to AI Hub"
     }

@@ -15,7 +15,6 @@ type AIService = {
 
 export default function MobileAIHubPage() {
   const t = useTranslations('aiHub');
-  const tCommon = useTranslations('common');
 
   const services: AIService[] = [
     {
@@ -95,7 +94,7 @@ export default function MobileAIHubPage() {
 
               {/* Pro Badge */}
               {service.isPro && (
-                <Badge className="absolute top-3 end-3 gradient-bg text-white border-0 text-xs">
+                <Badge className="absolute top-3 end-3 gradient-bg text-primary-foreground border-0 text-xs">
                   {t('proBadge')}
                 </Badge>
               )}
