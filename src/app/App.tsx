@@ -11,11 +11,12 @@ import SignUp from './components/auth/SignUp';
 import FeedsPageWrapper from './components/feeds/FeedsPageWrapper';
 import StyleSetup from './components/onboarding/StyleSetup';
 import { ZokaiHubShowcase } from './components/ZokaiHubShowcase';
-import { 
-  Sparkles, 
-  Shirt, 
-  Cloud, 
-  MessageCircle, 
+import MobileScreensPreview from './components/mobile/MobileScreensPreview';
+import {
+  Sparkles,
+  Shirt,
+  Cloud,
+  MessageCircle,
   Image as ImageIcon,
   Users,
   ShoppingBag,
@@ -29,9 +30,28 @@ import {
 } from 'lucide-react';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = React.useState<'landing' | 'signin' | 'signup' | 'feeds' | 'style-setup' | 'showcase'>('landing');
+  const [currentPage, setCurrentPage] = React.useState<'mobile-preview' | 'landing' | 'signin' | 'signup' | 'feeds' | 'style-setup' | 'showcase'>('mobile-preview');
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+
+  // Mobile screens preview is the default landing
+  if (currentPage === 'mobile-preview') {
+    return (
+      <ThemeProvider>
+        <div className="fixed top-3 right-3 z-[100]">
+          <Button
+            onClick={() => setCurrentPage('landing')}
+            variant="outline"
+            size="sm"
+            className="shadow-lg text-xs"
+          >
+            Desktop Showcase →
+          </Button>
+        </div>
+        <MobileScreensPreview />
+      </ThemeProvider>
+    );
+  }
 
   // Handle sign in
   const handleSignIn = () => {
