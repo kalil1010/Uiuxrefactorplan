@@ -1,0 +1,510 @@
+{
+  "common": {
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "back": "Back",
+    "next": "Next",
+    "done": "Done",
+    "skip": "Skip",
+    "close": "Close",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success"
+  },
+  "auth": {
+    "splash": {
+      "loading": "Loading your style journey...",
+      "version": "Version 1.0.0"
+    },
+    "landing": {
+      "title": "Your Personal",
+      "titleGradient": "AI Fashion Stylist",
+      "subtitle": "Discover your perfect style with AI-powered recommendations and a vibrant fashion community",
+      "features": {
+        "aiStyling": {
+          "title": "AI Styling",
+          "description": "Personalized outfit recommendations powered by AI"
+        },
+        "digitalCloset": {
+          "title": "Digital Closet",
+          "description": "Organize your wardrobe with smart categorization"
+        },
+        "community": {
+          "title": "Fashion Community",
+          "description": "Connect with style enthusiasts worldwide"
+        },
+        "analytics": {
+          "title": "Style Analytics",
+          "description": "Track your fashion journey and trends"
+        }
+      },
+      "socialProof": {
+        "users": "10K+ users",
+        "rating": "4.9/5 rating",
+        "ratingAria": "4.9 out of 5 stars"
+      },
+      "cta": {
+        "getStarted": "Get Started Free",
+        "signIn": "Sign In"
+      },
+      "legal": "By continuing, you agree to our <terms>Terms</terms> & <privacy>Privacy Policy</privacy>"
+    },
+    "signIn": {
+      "title": "Welcome Back",
+      "subtitle": "Sign in to continue your style journey",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "password": "Password",
+      "passwordPlaceholder": "Enter your password",
+      "showPassword": "Show password",
+      "hidePassword": "Hide password",
+      "forgot": "Forgot password?",
+      "cta": "Sign In",
+      "signingIn": "Signing in...",
+      "divider": "Or continue with",
+      "continueGoogle": "Continue with Google",
+      "continueApple": "Continue with Apple",
+      "noAccount": "Don't have an account?",
+      "signUpLink": "Sign Up",
+      "errors": {
+        "emailRequired": "Email is required",
+        "emailInvalid": "Please enter a valid email",
+        "passwordRequired": "Password is required",
+        "passwordTooShort": "Password must be at least 6 characters"
+      }
+    },
+    "signUp": {
+      "title": "Create Account",
+      "subtitle": "Join the fashion community today",
+      "displayName": "Display Name",
+      "displayNamePlaceholder": "How should we call you?",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "birthYear": "Birth Year",
+      "birthYearPlaceholder": "e.g., {year}",
+      "birthYearHint": "You must be 13 or older to use ZokaiHub",
+      "password": "Password",
+      "passwordPlaceholder": "Create a strong password",
+      "passwordHint": "At least 8 characters with uppercase, lowercase, and number",
+      "confirmPassword": "Confirm Password",
+      "confirmPasswordPlaceholder": "Re-enter your password",
+      "showPassword": "Show password",
+      "hidePassword": "Hide password",
+      "showPasswordConfirmation": "Show password confirmation",
+      "hidePasswordConfirmation": "Hide password confirmation",
+      "cta": "Create Account",
+      "creatingAccount": "Creating Account...",
+      "divider": "Or continue with",
+      "continueGoogle": "Continue with Google",
+      "continueApple": "Continue with Apple",
+      "haveAccount": "Already have an account?",
+      "signInLink": "Sign In",
+      "errors": {
+        "displayNameRequired": "Display name is required",
+        "displayNameTooShort": "Display name must be at least 2 characters",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Please enter a valid email",
+        "birthYearRequired": "Birth year is required",
+        "birthYearInvalid": "You must be at least 13 years old (born in {year} or earlier)",
+        "passwordRequired": "Password is required",
+        "passwordTooShort": "Password must be at least 8 characters",
+        "passwordWeak": "Password must include uppercase, lowercase, and number",
+        "confirmPasswordRequired": "Please confirm your password",
+        "passwordMismatch": "Passwords do not match"
+      }
+    },
+    "forgotPassword": {
+      "title": "Reset Password",
+      "subtitle": "Enter your email to receive a reset link",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "cta": "Send Reset Link",
+      "sending": "Sending...",
+      "backToSignIn": "Back to Sign In",
+      "successTitle": "Check Your Inbox",
+      "successSubtitle": "We've sent you a password reset link",
+      "emailSentTo": "Email sent to {email}",
+      "resend": "Resend Email",
+      "resendCountdown": "Resend in {seconds}s",
+      "errors": {
+        "emailRequired": "Email is required",
+        "emailInvalid": "Please enter a valid email"
+      }
+    },
+    "agreement": {
+      "title": "Terms & Privacy Policy",
+      "decline": "Decline",
+      "accept": "Accept",
+      "introduction": {
+        "title": "Introduction",
+        "content": "Welcome to ZokaiHub. By using our service, you agree to these terms and our privacy policy. Please read them carefully before proceeding."
+      },
+      "dataCollection": {
+        "title": "Data Collection",
+        "intro": "We collect the following information to provide you with personalized fashion recommendations:",
+        "items": {
+          "profile": "Profile information (name, email, birth date)",
+          "photos": "Photos you upload to your digital closet",
+          "preferences": "Style preferences and body measurements",
+          "usage": "App usage data and interaction patterns"
+        }
+      },
+      "dataUsage": {
+        "title": "How We Use Your Data",
+        "content": "Your data is used exclusively to power AI-driven style recommendations, organize your digital wardrobe, and connect you with the fashion community. We never sell your personal information to third parties."
+      },
+      "userRights": {
+        "title": "Your Rights",
+        "items": {
+          "access": "Access your personal data at any time",
+          "delete": "Request deletion of your account and data",
+          "export": "Export your data in a portable format",
+          "optOut": "Opt out of non-essential data collection"
+        }
+      },
+      "thirdParty": {
+        "title": "Third-Party Services",
+        "content": "We use trusted third-party services for authentication (Google, Apple) and analytics. These services have their own privacy policies that govern how they handle your data."
+      },
+      "ageRequirement": {
+        "title": "Age Requirement",
+        "content": "You must be at least 13 years old to use ZokaiHub. If you are under 13, please do not create an account."
+      },
+      "changes": {
+        "title": "Changes to This Agreement",
+        "content": "We may update this agreement from time to time. We will notify you of significant changes via email or in-app notification."
+      },
+      "contact": {
+        "title": "Contact Us",
+        "content": "If you have questions about these terms or our privacy practices, please contact us at privacy@zokaihub.com"
+      }
+    },
+    "styleSetup": {
+      "skip": "Skip",
+      "progress": "Step {current} of {total}",
+      "gender": {
+        "title": "How do you identify?",
+        "subtitle": "Help us personalize your experience",
+        "options": {
+          "male": "Male",
+          "female": "Female",
+          "nonBinary": "Non-binary",
+          "preferNotToSay": "Prefer not to say"
+        }
+      },
+      "bodyType": {
+        "title": "What's your body type?",
+        "subtitle": "This helps us recommend the perfect fit",
+        "options": {
+          "petite": "Petite",
+          "slim": "Slim",
+          "athletic": "Athletic",
+          "curvy": "Curvy",
+          "plus": "Plus Size"
+        }
+      },
+      "style": {
+        "title": "What's your style?",
+        "subtitle": "Select all that apply",
+        "options": {
+          "casual": "Casual",
+          "formal": "Formal",
+          "streetwear": "Streetwear",
+          "bohemian": "Bohemian",
+          "vintage": "Vintage",
+          "minimalist": "Minimalist",
+          "sporty": "Sporty",
+          "elegant": "Elegant"
+        }
+      },
+      "colors": {
+        "title": "Favorite colors?",
+        "subtitle": "Choose the colors you love wearing",
+        "options": {
+          "black": "Black",
+          "white": "White",
+          "gray": "Gray",
+          "beige": "Beige",
+          "navy": "Navy",
+          "red": "Red",
+          "pink": "Pink",
+          "orange": "Orange",
+          "yellow": "Yellow",
+          "green": "Green",
+          "blue": "Blue",
+          "purple": "Purple"
+        }
+      },
+      "occasions": {
+        "title": "Where do you dress for?",
+        "subtitle": "Select your common occasions",
+        "options": {
+          "work": "Work",
+          "casual": "Casual Outings",
+          "party": "Parties",
+          "date": "Date Night",
+          "wedding": "Weddings",
+          "gym": "Gym",
+          "travel": "Travel",
+          "beach": "Beach"
+        }
+      }
+    },
+    "birthdayPicker": {
+      "title": "Select Your Birthday",
+      "day": "Day",
+      "month": "Month",
+      "year": "Year",
+      "ageError": "You must be at least 13 years old to use ZokaiHub",
+      "ageDisplay": "You are {age} years old"
+    }
+  },
+  "bottomNav": {
+    "feeds": "Feeds",
+    "explore": "Explore",
+    "closet": "Closet",
+    "messages": "Messages",
+    "profile": "Profile",
+    "ariaLabel": "Main navigation"
+  },
+  "feeds": {
+    "title": "Feeds",
+    "loading": "Loading posts...",
+    "empty": {
+      "title": "No Posts Yet",
+      "description": "Follow other users to see their posts in your feed. Start exploring!",
+      "cta": "Explore Community"
+    },
+    "error": {
+      "title": "Unable to Load Feed",
+      "description": "We couldn't load your feed. Please check your connection and try again.",
+      "retry": "Try Again",
+      "goHome": "Go to Explore"
+    },
+    "actions": {
+      "moreOptions": "More options",
+      "like": "Like post",
+      "unlike": "Unlike post",
+      "comment": "Comment on post",
+      "share": "Share post",
+      "bookmark": "Bookmark post",
+      "removeBookmark": "Remove bookmark"
+    }
+  },
+  "explore": {
+    "title": "Explore",
+    "searchPlaceholder": "Search styles, users, tags...",
+    "likes": "likes",
+    "categories": {
+      "trending": "Trending",
+      "communities": "Communities",
+      "events": "Events",
+      "challenges": "Challenges"
+    },
+    "loading": "Loading...",
+    "empty": {
+      "title": "Nothing to Explore Yet",
+      "description": "Check back soon for trending styles, communities, and fashion inspiration.",
+      "cta": "Refresh"
+    },
+    "error": {
+      "title": "Unable to Load Content",
+      "description": "We couldn't load explore content. Please check your connection and try again.",
+      "retry": "Try Again",
+      "goHome": "Go to Feeds"
+    }
+  },
+  "closet": {
+    "title": "My Closet",
+    "searchPlaceholder": "Search closet...",
+    "searchAria": "Search closet",
+    "filterAria": "Filter items",
+    "viewModeAria": "Toggle view mode",
+    "addItem": "Add Item to Closet",
+    "wornCount": "Worn {count}x",
+    "categories": {
+      "all": "All",
+      "tops": "Tops",
+      "bottoms": "Bottoms",
+      "dresses": "Dresses",
+      "shoes": "Shoes",
+      "accessories": "Accessories"
+    },
+    "empty": {
+      "title": "Empty Closet",
+      "description": "Start building your digital wardrobe by adding your first item"
+    },
+    "error": {
+      "title": "Unable to Load Closet",
+      "description": "We couldn't load your closet. Please check your connection and try again.",
+      "retry": "Try Again",
+      "goHome": "Go to Explore"
+    }
+  },
+  "messages": {
+    "title": "Messages",
+    "searchPlaceholder": "Search messages...",
+    "newMessage": "New Message",
+    "newMessageAria": "Compose new message",
+    "onlineStatus": "Online",
+    "moreOptionsAria": "More options",
+    "empty": {
+      "title": "No Messages Yet",
+      "description": "Start a conversation with fashion enthusiasts",
+      "cta": "New Message"
+    },
+    "error": {
+      "title": "Unable to Load Messages",
+      "description": "We couldn't load your messages. Please check your connection and try again.",
+      "retry": "Try Again",
+      "goHome": "Go to Explore"
+    }
+  },
+  "profile": {
+    "backAria": "Go back",
+    "moreOptionsAria": "More options",
+    "settingsAria": "Settings",
+    "stats": {
+      "posts": "Posts",
+      "followers": "Followers",
+      "following": "Following"
+    },
+    "actions": {
+      "follow": "Follow",
+      "message": "Message"
+    },
+    "tabs": {
+      "posts": "Posts",
+      "saved": "Saved",
+      "liked": "Liked"
+    },
+    "empty": {
+      "title": "No Posts Yet",
+      "description": "Share your first outfit to start building your fashion profile",
+      "cta": "Create Post"
+    },
+    "error": {
+      "title": "Unable to Load Profile",
+      "description": "We couldn't load this profile. Please check your connection and try again.",
+      "retry": "Try Again",
+      "goHome": "Go to Explore"
+    }
+  },
+  "aiHub": {
+    "title": "AI Fashion Tools",
+    "searchPlaceholder": "Search AI tools...",
+    "proBadge": "PRO",
+    "cards": {
+      "virtualStylist": {
+        "title": "Virtual Stylist",
+        "description": "Get instant outfit recommendations with AI"
+      },
+      "outfitGenerator": {
+        "title": "Outfit Generator",
+        "description": "Create complete looks for any occasion"
+      },
+      "colorAnalyzer": {
+        "title": "Color Analysis",
+        "description": "Find your perfect color palette"
+      },
+      "imageGenerator": {
+        "title": "Image Generator",
+        "description": "Generate fashion images from text"
+      },
+      "browseOutfits": {
+        "title": "Browse AI Outfits",
+        "description": "Explore AI-curated style collections"
+      }
+    }
+  },
+  "serviceSelection": {
+    "title": "Choose AI Service",
+    "subtitle": "Select what you'd like to do",
+    "cta": "Continue",
+    "services": {
+      "stylist": {
+        "title": "Personal Stylist",
+        "description": "Upload a photo and get instant styling advice"
+      },
+      "colorAnalysis": {
+        "title": "Color Analysis",
+        "description": "Discover your perfect color palette"
+      },
+      "outfitGen": {
+        "title": "Outfit Generator",
+        "description": "Create complete looks for any occasion"
+      },
+      "imageGen": {
+        "title": "Image Generator",
+        "description": "Generate fashion images from text prompts"
+      }
+    }
+  },
+  "camera": {
+    "closeAria": "Close camera",
+    "flashAria": "Toggle flash",
+    "flipAria": "Flip camera",
+    "shutterAria": "Take photo",
+    "galleryAria": "Open gallery",
+    "modes": {
+      "photo": "Photo",
+      "video": "Video",
+      "square": "Square"
+    }
+  },
+  "analyzing": {
+    "title": "Analyzing...",
+    "steps": {
+      "detectingStyle": "Detecting style elements",
+      "analyzingColors": "Analyzing colors and patterns",
+      "generatingRecommendations": "Generating recommendations",
+      "almostDone": "Almost done"
+    },
+    "cancel": "Cancel",
+    "cancelConfirmTitle": "Cancel Analysis?",
+    "cancelConfirmMessage": "Are you sure you want to stop? Your progress will be lost.",
+    "yesCancel": "Yes, Cancel",
+    "noStay": "No, Continue"
+  },
+  "preview": {
+    "title": "AI Result",
+    "actions": {
+      "save": "Save",
+      "regenerate": "Regenerate",
+      "share": "Share",
+      "discard": "Discard"
+    },
+    "costHint": "Uses 1 credit",
+    "saved": "Saved to your closet",
+    "discarded": "Result discarded"
+  },
+  "virtualStylist": {
+    "title": "Virtual Stylist",
+    "subtitle": "Get personalized outfit recommendations",
+    "cta": {
+      "takePicture": "Take a Picture",
+      "uploadPhoto": "Upload Photo"
+    },
+    "result": {
+      "title": "Your Style Recommendations",
+      "subtitle": "Based on your photo"
+    },
+    "suggestions": {
+      "title": "Suggested Items"
+    },
+    "empty": {
+      "title": "No Recommendations Yet",
+      "description": "Take a photo to get started with AI styling",
+      "cta": "Open Camera"
+    },
+    "error": {
+      "title": "Analysis Failed",
+      "description": "We couldn't analyze your photo. Please try again.",
+      "retry": "Try Again",
+      "goHome": "Go to AI Hub"
+    }
+  }
+}

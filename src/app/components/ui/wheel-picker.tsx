@@ -15,7 +15,7 @@ interface WheelPickerProps {
   itemHeight?: number;
 }
 
-function WheelPicker({ options, value, onChange, height = 220, itemHeight = 44 }: WheelPickerProps) {
+export function WheelPicker({ options, value, onChange, height = 220, itemHeight = 44 }: WheelPickerProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startY, setStartY] = useState(0);

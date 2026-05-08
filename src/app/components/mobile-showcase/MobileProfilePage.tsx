@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { Button } from '../ui/button';
-import { Badge } from '../ui/badge';
+import { ImageWithFallback } from '../figma/ImageWithFallback';
 import { Settings, Grid3x3, Bookmark, Heart, ChevronLeft, MoreHorizontal, UserPlus } from 'lucide-react';
 
 export default function MobileProfilePage() {
   const [activeTab, setActiveTab] = useState<'posts' | 'saved' | 'liked'>('posts');
 
   const stats = [
-    { label: 'Posts', value: '127' },
-    { label: 'Followers', value: '2.4K' },
-    { label: 'Following', value: '892' },
+    { labelKey: 'posts' as const, label: 'Posts', value: 127 },
+    { labelKey: 'followers' as const, label: 'Followers', value: 2400 },
+    { labelKey: 'following' as const, label: 'Following', value: 892 },
   ];
 
   const posts = Array.from({ length: 12 }, (_, i) => ({
@@ -17,15 +17,32 @@ export default function MobileProfilePage() {
     image: `https://images.unsplash.com/photo-${1490481651871 + i * 1000}?w=300&h=300&fit=crop`,
   }));
 
+  const formatNumber = (num: number) => {
+    if (num >= 1000) {
+      return `${(num / 1000).toFixed(1)}K`;
+    }
+    return num.toString();
+  };
+
   return (
     <div className="h-screen bg-background flex flex-col max-w-md mx-auto border-x">
       {/* Header */}
       <div className="bg-background border-b px-4 py-3 flex items-center justify-between sticky top-0 z-10">
-        <Button variant="ghost" size="icon" className="rounded-full">
+        <Button
+          variant="ghost"
+          size="icon"
+          className="rounded-full"
+          aria-label="Go back"
+        >
           <ChevronLeft className="w-6 h-6" />
         </Button>
         <h1 className="font-semibold text-lg">Sarah Chen</h1>
-        <Button variant="ghost" size="icon" className="rounded-full">
+        <Button
+          variant="ghost"
+          size="icon"
+          className="rounded-full"
+          aria-label="More options"
+        >
           <MoreHorizontal className="w-6 h-6" />
         </Button>
       </div>
@@ -38,9 +55,9 @@ export default function MobileProfilePage() {
           <div className="flex items-center gap-6">
             <div className="w-24 h-24 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 p-1">
               <div className="w-full h-full rounded-full border-2 border-background overflow-hidden">
-                <img
+                <ImageWithFallback
                   src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop"
-                  alt="Profile"
+                  alt="Sarah Chen"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -48,8 +65,8 @@ export default function MobileProfilePage() {
 
             <div className="flex-1 grid grid-cols-3 gap-4 text-center">
               {stats.map((stat) => (
-                <div key={stat.label}>
-                  <p className="font-bold text-lg">{stat.value}</p>
+                <div key={stat.labelKey}>
+                  <p className="font-bold text-lg">{formatNumber(stat.value)}</p>
                   <p className="text-xs text-muted-foreground">{stat.label}</p>
                 </div>
               ))}
@@ -73,14 +90,19 @@ export default function MobileProfilePage() {
 
           {/* Action Buttons */}
           <div className="flex gap-2">
-            <Button className="flex-1 gradient-bg text-white rounded-full">
-              <UserPlus className="w-4 h-4 mr-2" />
+            <Button className="flex-1 gradient-bg text-primary-foreground hover:opacity-90 active:opacity-80 rounded-full">
+              <UserPlus className="w-4 h-4 me-2" />
               Follow
             </Button>
-            <Button variant="outline" className="flex-1 rounded-full">
+            <Button variant="outline" className="flex-1 rounded-full active:bg-muted">
               Message
             </Button>
-            <Button variant="outline" size="icon" className="rounded-full">
+            <Button
+              variant="outline"
+              size="icon"
+              className="rounded-full active:bg-muted"
+              aria-label="Settings"
+            >
               <Settings className="w-5 h-5" />
             </Button>
           </div>
@@ -105,6 +127,8 @@ export default function MobileProfilePage() {
                 : 'border-transparent text-muted-foreground'
             }`}
             onClick={() => setActiveTab('posts')}
+            aria-label="Posts"
+            aria-current={activeTab === 'posts' ? 'page' : undefined}
           >
             <Grid3x3 className="w-5 h-5" />
           </button>
@@ -115,6 +139,8 @@ export default function MobileProfilePage() {
                 : 'border-transparent text-muted-foreground'
             }`}
             onClick={() => setActiveTab('saved')}
+            aria-label="Saved"
+            aria-current={activeTab === 'saved' ? 'page' : undefined}
           >
             <Bookmark className="w-5 h-5" />
           </button>
@@ -125,6 +151,8 @@ export default function MobileProfilePage() {
                 : 'border-transparent text-muted-foreground'
             }`}
             onClick={() => setActiveTab('liked')}
+            aria-label="Liked"
+            aria-current={activeTab === 'liked' ? 'page' : undefined}
           >
             <Heart className="w-5 h-5" />
           </button>
@@ -135,9 +163,13 @@ export default function MobileProfilePage() {
           {posts.map((post) => (
             <div
               key={post.id}
-              className="aspect-square bg-muted cursor-pointer hover:opacity-80 transition-opacity"
+              className="aspect-square bg-muted cursor-pointer hover:opacity-80 active:opacity-60 transition-opacity"
             >
-              <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800" />
+              <ImageWithFallback
+                src={post.image}
+                alt={`Post ${post.id}`}
+                className="w-full h-full object-cover"
+              />
             </div>
           ))}
         </div>

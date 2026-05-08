@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Badge } from '../ui/badge';
+import { ImageWithFallback } from '../figma/ImageWithFallback';
 import { Search, Edit, MoreHorizontal } from 'lucide-react';
 
 export default function MobileMessagesPage() {
@@ -54,17 +55,22 @@ export default function MobileMessagesPage() {
       <div className="bg-background border-b px-4 py-3 sticky top-0 z-10">
         <div className="flex items-center justify-between mb-3">
           <h1 className="text-2xl font-bold">Messages</h1>
-          <Button variant="ghost" size="icon" className="rounded-full">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="rounded-full"
+            aria-label="Compose new message"
+          >
             <Edit className="w-5 h-5" />
           </Button>
         </div>
 
         {/* Search */}
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+          <Search className="absolute start-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
           <Input
             placeholder="Search messages..."
-            className="pl-10 rounded-full bg-muted border-0"
+            className="ps-10 rounded-full bg-muted border-0"
           />
         </div>
       </div>
@@ -74,15 +80,22 @@ export default function MobileMessagesPage() {
         {conversations.map((conv) => (
           <div
             key={conv.id}
-            className="flex items-center gap-3 p-4 hover:bg-muted/50 cursor-pointer border-b transition-colors"
+            className="flex items-center gap-3 p-4 hover:bg-muted/50 active:bg-muted cursor-pointer border-b transition-colors"
           >
             {/* Avatar */}
             <div className="relative flex-shrink-0">
               <div className="w-14 h-14 rounded-full overflow-hidden bg-muted">
-                <img src={conv.user.avatar} alt={conv.user.name} className="w-full h-full object-cover" />
+                <ImageWithFallback
+                  src={conv.user.avatar}
+                  alt={conv.user.name}
+                  className="w-full h-full object-cover"
+                />
               </div>
               {conv.online && (
-                <div className="absolute bottom-0 right-0 w-4 h-4 bg-green-500 rounded-full border-2 border-background" />
+                <div
+                  className="absolute bottom-0 end-0 w-4 h-4 bg-green-500 rounded-full border-2 border-background"
+                  aria-label="Online"
+                />
               )}
             </div>
 
@@ -105,7 +118,12 @@ export default function MobileMessagesPage() {
             </div>
 
             {/* More Options */}
-            <Button variant="ghost" size="icon" className="h-8 w-8 flex-shrink-0">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-8 w-8 flex-shrink-0"
+              aria-label="More options"
+            >
               <MoreHorizontal className="w-5 h-5" />
             </Button>
           </div>
@@ -122,8 +140,8 @@ export default function MobileMessagesPage() {
           <p className="text-muted-foreground mb-6">
             Start a conversation with fashion enthusiasts
           </p>
-          <Button className="gradient-bg text-white rounded-full">
-            <Edit className="w-4 h-4 mr-2" />
+          <Button className="gradient-bg text-primary-foreground hover:opacity-90 active:opacity-80 rounded-full">
+            <Edit className="w-4 h-4 me-2" />
             New Message
           </Button>
         </div>
