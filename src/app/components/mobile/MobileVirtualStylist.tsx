@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { ChevronLeft, Camera, Upload, AlertCircle, Sparkles } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Skeleton } from '../ui/skeleton';
@@ -8,10 +8,12 @@ import MobileBottomNav from './MobileBottomNav';
 
 type LoadingState = 'idle' | 'loading' | 'success' | 'error';
 
+type CategoryKey = 'tops' | 'bottoms' | 'shoes' | 'accessories' | 'dresses' | 'outerwear';
+
 type SuggestionItem = {
   id: string;
   name: string;
-  category: string;
+  categoryKey: CategoryKey;
   image: string;
   matchScore: number;
 };
@@ -19,8 +21,14 @@ type SuggestionItem = {
 export default function MobileVirtualStylist() {
   const t = useTranslations('virtualStylist');
   const tCommon = useTranslations('common');
+  const locale = useLocale();
   const [loadingState, setLoadingState] = useState<LoadingState>('idle');
   const [suggestions, setSuggestions] = useState<SuggestionItem[]>([]);
+
+  const pctFormatter = new Intl.NumberFormat(locale, {
+    style: 'percent',
+    maximumFractionDigits: 0,
+  });
 
   const handleTakePicture = () => {
     // TODO(integration): navigate to camera screen
@@ -46,28 +54,28 @@ export default function MobileVirtualStylist() {
           {
             id: '1',
             name: 'White Linen Shirt',
-            category: 'Tops',
+            categoryKey: 'tops',
             image: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=300&h=300&fit=crop',
             matchScore: 95,
           },
           {
             id: '2',
             name: 'High-Waist Jeans',
-            category: 'Bottoms',
+            categoryKey: 'bottoms',
             image: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=300&h=300&fit=crop',
             matchScore: 92,
           },
           {
             id: '3',
             name: 'Tan Leather Loafers',
-            category: 'Shoes',
+            categoryKey: 'shoes',
             image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=300&h=300&fit=crop',
             matchScore: 88,
           },
           {
             id: '4',
             name: 'Gold Hoop Earrings',
-            category: 'Accessories',
+            categoryKey: 'accessories',
             image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=300&h=300&fit=crop',
             matchScore: 90,
           },
@@ -174,15 +182,24 @@ export default function MobileVirtualStylist() {
                 {/* Item Info */}
                 <div className="flex-1 min-w-0">
                   <p className="font-semibold truncate">{item.name}</p>
-                  <p className="text-sm text-muted-foreground">{item.category}</p>
-                  <div className="flex items-center gap-1 mt-1">
+                  <p className="text-sm text-muted-foreground">{t(`categories.${item.categoryKey}`)}</p>
+                  <div
+                    className="flex items-center gap-1 mt-1"
+                    role="progressbar"
+                    aria-valuenow={item.matchScore}
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                    aria-label={t('matchScoreAria', { score: item.matchScore })}
+                  >
                     <div className="h-1.5 flex-1 bg-muted rounded-full overflow-hidden">
                       <div
                         className="h-full gradient-bg"
                         style={{ width: `${item.matchScore}%` }}
                       />
                     </div>
-                    <span className="text-xs text-muted-foreground">{item.matchScore}%</span>
+                    <span className="text-xs text-muted-foreground">
+                      {pctFormatter.format(item.matchScore / 100)}
+                    </span>
                   </div>
                 </div>
               </div>

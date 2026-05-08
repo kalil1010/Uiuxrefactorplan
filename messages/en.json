@@ -449,6 +449,7 @@
     "flipAria": "Flip camera",
     "shutterAria": "Take photo",
     "galleryAria": "Open gallery",
+    "previewPlaceholder": "Camera Preview",
     "modes": {
       "photo": "Photo",
       "video": "Video",
@@ -471,11 +472,17 @@
   },
   "preview": {
     "title": "AI Result",
+    "heroAlt": "AI generated result",
     "actions": {
       "save": "Save",
+      "saving": "Saving...",
       "regenerate": "Regenerate",
+      "regenerating": "Regenerating...",
       "share": "Share",
       "discard": "Discard"
+    },
+    "stylingTips": {
+      "title": "Styling Tips"
     },
     "costHint": "Uses 1 credit",
     "saved": "Saved to your closet",
@@ -495,6 +502,15 @@
     "suggestions": {
       "title": "Suggested Items"
     },
+    "categories": {
+      "tops": "Tops",
+      "bottoms": "Bottoms",
+      "shoes": "Shoes",
+      "accessories": "Accessories",
+      "dresses": "Dresses",
+      "outerwear": "Outerwear"
+    },
+    "matchScoreAria": "Match score: {score} percent",
     "empty": {
       "title": "No Recommendations Yet",
       "description": "Take a photo to get started with AI styling",

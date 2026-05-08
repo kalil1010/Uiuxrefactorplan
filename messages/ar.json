@@ -449,6 +449,7 @@
     "flipAria": "قلب الكاميرا",
     "shutterAria": "التقاط صورة",
     "galleryAria": "فتح المعرض",
+    "previewPlaceholder": "معاينة الكاميرا",
     "modes": {
       "photo": "صورة",
       "video": "فيديو",
@@ -471,11 +472,17 @@
   },
   "preview": {
     "title": "نتيجة الذكاء الاصطناعي",
+    "heroAlt": "نتيجة الذكاء الاصطناعي",
     "actions": {
       "save": "حفظ",
+      "saving": "جارٍ الحفظ...",
       "regenerate": "إعادة الإنشاء",
+      "regenerating": "جارٍ إعادة الإنشاء...",
       "share": "مشاركة",
       "discard": "تجاهل"
+    },
+    "stylingTips": {
+      "title": "نصائح التنسيق"
     },
     "costHint": "يستخدم رصيد واحد",
     "saved": "تم الحفظ في خزانتك",
@@ -495,6 +502,15 @@
     "suggestions": {
       "title": "العناصر المقترحة"
     },
+    "categories": {
+      "tops": "علوي",
+      "bottoms": "سفلي",
+      "shoes": "أحذية",
+      "accessories": "إكسسوارات",
+      "dresses": "فساتين",
+      "outerwear": "ملابس خارجية"
+    },
+    "matchScoreAria": "درجة التطابق: {score} بالمئة",
     "empty": {
       "title": "لا توجد توصيات بعد",
       "description": "التقط صورة للبدء في التصميم بالذكاء الاصطناعي",

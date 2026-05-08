@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { Loader2 } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Progress } from '../ui/progress';
@@ -18,12 +18,17 @@ type AnalysisStep = 'detectingStyle' | 'analyzingColors' | 'generatingRecommenda
 
 export default function MobileAnalyzingScreen() {
   const t = useTranslations('analyzing');
-  const tCommon = useTranslations('common');
+  const locale = useLocale();
   const [currentStep, setCurrentStep] = useState<AnalysisStep>('detectingStyle');
   const [progress, setProgress] = useState(0);
   const [showCancelDialog, setShowCancelDialog] = useState(false);
 
   const steps: AnalysisStep[] = ['detectingStyle', 'analyzingColors', 'generatingRecommendations', 'almostDone'];
+
+  const pctFormatter = new Intl.NumberFormat(locale, {
+    style: 'percent',
+    maximumFractionDigits: 0,
+  });
 
   // Simulate progress
   useEffect(() => {
@@ -63,12 +68,20 @@ export default function MobileAnalyzingScreen() {
         <h1 className="text-2xl font-bold mb-2 text-center">{t('title')}</h1>
 
         {/* Current Step */}
-        <p className="text-muted-foreground text-center mb-8">{t(`steps.${currentStep}`)}</p>
+        <p
+          role="status"
+          aria-live="polite"
+          className="text-muted-foreground text-center mb-8"
+        >
+          {t(`steps.${currentStep}`)}
+        </p>
 
         {/* Progress Bar */}
         <div className="w-full max-w-xs mb-8">
           <Progress value={progress} className="h-2" />
-          <p className="text-center text-sm text-muted-foreground mt-2">{progress}%</p>
+          <p className="text-center text-sm text-muted-foreground mt-2">
+            {pctFormatter.format(progress / 100)}
+          </p>
         </div>
 
         {/* Step Indicators */}
