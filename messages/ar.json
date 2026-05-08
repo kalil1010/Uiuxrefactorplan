@@ -1048,5 +1048,159 @@
       "retry": "حاول مرة أخرى",
       "goHome": "انتقل إلى الرئيسية"
     }
+  },
+  "createPost": {
+    "title": "منشور جديد",
+    "captionLabel": "النص",
+    "captionPlaceholder": "اكتب وصفًا...",
+    "tagsLabel": "الوسوم",
+    "tagsPlaceholder": "أضف وسومًا (مثل: إطلالة، صيف)",
+    "addTag": "إضافة",
+    "removeTagAria": "إزالة الوسم",
+    "uploadImage": "إضافة صور",
+    "removeImageAria": "إزالة الصورة",
+    "visibility": "الخصوصية",
+    "visibilityOptions": {
+      "public": "عام",
+      "followers": "المتابعون فقط"
+    },
+    "post": "نشر",
+    "posting": "جارٍ النشر...",
+    "errors": {
+      "imageRequired": "أضف صورة واحدة على الأقل",
+      "captionRequired": "أضف وصفًا"
+    }
+  },
+  "notifications": {
+    "title": "الإشعارات",
+    "markAllRead": "تحديد الكل كمقروء",
+    "tabs": {
+      "all": "الكل",
+      "mentions": "الإشارات",
+      "follows": "المتابعات"
+    },
+    "types": {
+      "like": "أعجب {user} بمنشورك",
+      "comment": "علّق {user} على منشورك",
+      "follow": "بدأ {user} بمتابعتك",
+      "mention": "أشار إليك {user}",
+      "challenge": "تحدٍ جديد: {title}"
+    },
+    "dismissAria": "إغلاق الإشعار",
+    "empty": {
+      "title": "لا توجد إشعارات بعد",
+      "description": "عندما يتفاعل الناس معك، ستراه هنا",
+      "cta": "تصفح المنشورات"
+    },
+    "error": {
+      "title": "تعذر تحميل الإشعارات",
+      "description": "لم نتمكن من تحميل إشعاراتك. حاول مرة أخرى.",
+      "retry": "حاول مرة أخرى",
+      "goHome": "انتقل إلى الرئيسية"
+    }
+  },
+  "settings": {
+    "title": "الإعدادات",
+    "sections": {
+      "account": "الحساب",
+      "appearance": "المظهر",
+      "preferences": "التفضيلات",
+      "privacy": "الخصوصية والأمان",
+      "support": "الدعم",
+      "legal": "قانوني"
+    },
+    "items": {
+      "editProfile": "تعديل الملف الشخصي",
+      "changePassword": "تغيير كلمة المرور",
+      "theme": "السمة",
+      "language": "اللغة",
+      "notifications": "الإشعارات",
+      "privacy": "الخصوصية",
+      "blockedUsers": "المستخدمون المحظورون",
+      "twoFactor": "المصادقة الثنائية",
+      "downloadData": "تنزيل بياناتي",
+      "help": "مركز المساعدة",
+      "contact": "تواصل معنا",
+      "about": "نبذة",
+      "terms": "شروط الخدمة",
+      "privacyPolicy": "سياسة الخصوصية",
+      "logout": "تسجيل الخروج",
+      "deleteAccount": "حذف الحساب"
+    },
+    "logoutConfirmTitle": "تسجيل الخروج؟",
+    "logoutConfirmMessage": "ستحتاج إلى تسجيل الدخول مرة أخرى لاحقًا.",
+    "logoutConfirm": "تسجيل الخروج",
+    "deleteConfirmTitle": "حذف الحساب؟",
+    "deleteConfirmMessage": "هذا يحذف حسابك وجميع بياناتك بشكل دائم. لا يمكن التراجع عن هذا الإجراء.",
+    "deleteConfirm": "حذف الحساب",
+    "version": "الإصدار {version}"
+  },
+  "editProfile": {
+    "title": "تعديل الملف الشخصي",
+    "avatarAria": "تغيير صورة الملف الشخصي",
+    "displayName": "الاسم المعروض",
+    "username": "اسم المستخدم",
+    "bio": "السيرة الذاتية",
+    "bioPlaceholder": "أخبر الناس عنك",
+    "website": "الموقع الإلكتروني",
+    "websitePlaceholder": "yoursite.com",
+    "save": "حفظ",
+    "saving": "جارٍ الحفظ...",
+    "saved": "تم تحديث الملف الشخصي",
+    "errors": {
+      "displayNameRequired": "الاسم المعروض مطلوب",
+      "usernameRequired": "اسم المستخدم مطلوب",
+      "usernameInvalid": "يمكن أن يحتوي اسم المستخدم على أحرف وأرقام وشرطات سفلية فقط"
+    }
+  },
+  "languageSwitcher": {
+    "title": "اللغة",
+    "languages": {
+      "en": "English",
+      "ar": "العربية"
+    }
+  },
+  "themeSwitcher": {
+    "title": "السمة",
+    "options": {
+      "light": "فاتح",
+      "dark": "داكن",
+      "system": "افتراضي النظام"
+    }
+  },
+  "contact": {
+    "title": "تواصل معنا",
+    "subtitle": "نحن هنا للمساعدة",
+    "subjectLabel": "الموضوع",
+    "subjectPlaceholder": "ما الموضوع؟",
+    "messageLabel": "الرسالة",
+    "messagePlaceholder": "أخبرنا كيف يمكننا المساعدة...",
+    "categoryLabel": "الفئة",
+    "categoryOptions": {
+      "general": "عام",
+      "bug": "بلاغ خطأ",
+      "feature": "طلب ميزة",
+      "billing": "الفواتير",
+      "account": "الحساب"
+    },
+    "send": "إرسال الرسالة",
+    "sending": "جارٍ الإرسال...",
+    "sentTitle": "تم إرسال الرسالة",
+    "sentDescription": "سنرد عليك خلال 24 ساعة.",
+    "errors": {
+      "subjectRequired": "الموضوع مطلوب",
+      "messageRequired": "الرسالة مطلوبة"
+    }
+  },
+  "notFound": {
+    "title": "الصفحة غير موجودة",
+    "description": "الصفحة التي تبحث عنها غير موجودة أو تم نقلها.",
+    "goHome": "انتقل إلى الرئيسية",
+    "goBack": "العودة"
+  },
+  "offline": {
+    "title": "أنت غير متصل بالإنترنت",
+    "description": "تحقق من اتصالك وحاول مرة أخرى.",
+    "retry": "إعادة المحاولة"
   }
 }

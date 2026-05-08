@@ -1048,5 +1048,159 @@
       "retry": "Try Again",
       "goHome": "Go to Home"
     }
+  },
+  "createPost": {
+    "title": "New Post",
+    "captionLabel": "Caption",
+    "captionPlaceholder": "Write a caption...",
+    "tagsLabel": "Tags",
+    "tagsPlaceholder": "Add tags (e.g., outfit, summer)",
+    "addTag": "Add",
+    "removeTagAria": "Remove tag",
+    "uploadImage": "Add Photos",
+    "removeImageAria": "Remove image",
+    "visibility": "Visibility",
+    "visibilityOptions": {
+      "public": "Public",
+      "followers": "Followers Only"
+    },
+    "post": "Share",
+    "posting": "Sharing...",
+    "errors": {
+      "imageRequired": "Add at least one photo",
+      "captionRequired": "Add a caption"
+    }
+  },
+  "notifications": {
+    "title": "Notifications",
+    "markAllRead": "Mark all as read",
+    "tabs": {
+      "all": "All",
+      "mentions": "Mentions",
+      "follows": "Follows"
+    },
+    "types": {
+      "like": "{user} liked your post",
+      "comment": "{user} commented on your post",
+      "follow": "{user} started following you",
+      "mention": "{user} mentioned you",
+      "challenge": "New challenge: {title}"
+    },
+    "dismissAria": "Dismiss notification",
+    "empty": {
+      "title": "No notifications yet",
+      "description": "When people interact with you, you'll see it here",
+      "cta": "Browse Feed"
+    },
+    "error": {
+      "title": "Unable to Load Notifications",
+      "description": "We couldn't load your notifications. Please try again.",
+      "retry": "Try Again",
+      "goHome": "Go to Home"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "sections": {
+      "account": "Account",
+      "appearance": "Appearance",
+      "preferences": "Preferences",
+      "privacy": "Privacy & Security",
+      "support": "Support",
+      "legal": "Legal"
+    },
+    "items": {
+      "editProfile": "Edit Profile",
+      "changePassword": "Change Password",
+      "theme": "Theme",
+      "language": "Language",
+      "notifications": "Notifications",
+      "privacy": "Privacy",
+      "blockedUsers": "Blocked Users",
+      "twoFactor": "Two-Factor Auth",
+      "downloadData": "Download My Data",
+      "help": "Help Center",
+      "contact": "Contact Us",
+      "about": "About",
+      "terms": "Terms of Service",
+      "privacyPolicy": "Privacy Policy",
+      "logout": "Log Out",
+      "deleteAccount": "Delete Account"
+    },
+    "logoutConfirmTitle": "Log out?",
+    "logoutConfirmMessage": "You'll need to sign in again next time.",
+    "logoutConfirm": "Log Out",
+    "deleteConfirmTitle": "Delete account?",
+    "deleteConfirmMessage": "This permanently deletes your account and all data. This cannot be undone.",
+    "deleteConfirm": "Delete Account",
+    "version": "Version {version}"
+  },
+  "editProfile": {
+    "title": "Edit Profile",
+    "avatarAria": "Change profile photo",
+    "displayName": "Display Name",
+    "username": "Username",
+    "bio": "Bio",
+    "bioPlaceholder": "Tell people about yourself",
+    "website": "Website",
+    "websitePlaceholder": "yoursite.com",
+    "save": "Save",
+    "saving": "Saving...",
+    "saved": "Profile updated",
+    "errors": {
+      "displayNameRequired": "Display name is required",
+      "usernameRequired": "Username is required",
+      "usernameInvalid": "Username can only contain letters, numbers, and underscores"
+    }
+  },
+  "languageSwitcher": {
+    "title": "Language",
+    "languages": {
+      "en": "English",
+      "ar": "العربية"
+    }
+  },
+  "themeSwitcher": {
+    "title": "Theme",
+    "options": {
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System Default"
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We're here to help",
+    "subjectLabel": "Subject",
+    "subjectPlaceholder": "What's this about?",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Tell us how we can help...",
+    "categoryLabel": "Category",
+    "categoryOptions": {
+      "general": "General",
+      "bug": "Bug Report",
+      "feature": "Feature Request",
+      "billing": "Billing",
+      "account": "Account"
+    },
+    "send": "Send Message",
+    "sending": "Sending...",
+    "sentTitle": "Message Sent",
+    "sentDescription": "We'll get back to you within 24 hours.",
+    "errors": {
+      "subjectRequired": "Subject is required",
+      "messageRequired": "Message is required"
+    }
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you're looking for doesn't exist or has been moved.",
+    "goHome": "Go to Home",
+    "goBack": "Go Back"
+  },
+  "offline": {
+    "title": "You're offline",
+    "description": "Check your connection and try again.",
+    "retry": "Retry"
   }
 }
