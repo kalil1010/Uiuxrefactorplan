@@ -1,0 +1,531 @@
+import React, { useState, useMemo } from 'react';
+import MobileSplashScreen from './MobileSplashScreen';
+import MobileLandingPage from './MobileLandingPage';
+import MobileSignIn from './MobileSignIn';
+import MobileSignUp from './MobileSignUp';
+import MobileForgotPassword from './MobileForgotPassword';
+import MobileAgreementDialog from './MobileAgreementDialog';
+import MobileStyleSetup from './MobileStyleSetup';
+import MobileBirthdayPicker from './MobileBirthdayPicker';
+import MobileFeedsPage from './MobileFeedsPage';
+import MobileExplorePage from './MobileExplorePage';
+import MobileClosetPage from './MobileClosetPage';
+import MobileMessagesPage from './MobileMessagesPage';
+import MobileProfilePage from './MobileProfilePage';
+import MobileAIHubPage from './MobileAIHubPage';
+import MobileServiceSelection from './MobileServiceSelection';
+import MobileCameraScreen from './MobileCameraScreen';
+import MobileAnalyzingScreen from './MobileAnalyzingScreen';
+import MobilePreviewScreen from './MobilePreviewScreen';
+import MobileVirtualStylist from './MobileVirtualStylist';
+import MobileBrowseScreen from './MobileBrowseScreen';
+import MobileOutfitGenerator from './MobileOutfitGenerator';
+import MobileColorAnalyzer from './MobileColorAnalyzer';
+import MobileImageGenerator from './MobileImageGenerator';
+import MobileMarketplacePage from './MobileMarketplacePage';
+import MobileProductDetailPage from './MobileProductDetailPage';
+import MobileVendorShopPage from './MobileVendorShopPage';
+import MobileWishlistPage from './MobileWishlistPage';
+import MobileCheckoutPage from './MobileCheckoutPage';
+import MobileOrderConfirmation from './MobileOrderConfirmation';
+import MobileCommunitiesPage from './MobileCommunitiesPage';
+import MobileCommunityDetailPage from './MobileCommunityDetailPage';
+import MobileCreateCommunityPage from './MobileCreateCommunityPage';
+import MobileCollectionsPage from './MobileCollectionsPage';
+import MobileCollectionDetailPage from './MobileCollectionDetailPage';
+import MobileChallengesPage from './MobileChallengesPage';
+import MobileChallengeDetailPage from './MobileChallengeDetailPage';
+import MobileSavedPage from './MobileSavedPage';
+import MobileCreatePostModal from './MobileCreatePostModal';
+import MobileNotificationsPage from './MobileNotificationsPage';
+import MobileSettingsPage from './MobileSettingsPage';
+import MobileEditProfileSheet from './MobileEditProfileSheet';
+import MobileLanguageSwitcher from './MobileLanguageSwitcher';
+import MobileThemeSwitcher from './MobileThemeSwitcher';
+import MobileContactPage from './MobileContactPage';
+import MobileNotFoundPage from './MobileNotFoundPage';
+import MobileOfflineState from './MobileOfflineState';
+
+type ScreenDef = {
+  id: string;
+  label: string;
+  group: string;
+  render: () => React.ReactNode;
+};
+
+const SCREENS: ScreenDef[] = [
+  // Pre-auth & Landing
+  { id: 'splash', label: 'Splash', group: 'Pre-auth', render: () => <MobileSplashScreen /> },
+  {
+    id: 'landing',
+    label: 'Landing',
+    group: 'Pre-auth',
+    render: () => <MobileLandingPage onSignIn={() => {}} onSignUp={() => {}} />,
+  },
+  {
+    id: 'signIn',
+    label: 'Sign In',
+    group: 'Pre-auth',
+    render: () => (
+      <MobileSignIn
+        onBack={() => {}}
+        onSignIn={() => {}}
+        onForgotPassword={() => {}}
+        onSignUp={() => {}}
+      />
+    ),
+  },
+  {
+    id: 'signUp',
+    label: 'Sign Up',
+    group: 'Pre-auth',
+    render: () => <MobileSignUp onBack={() => {}} onSignUp={() => {}} onSignIn={() => {}} />,
+  },
+  {
+    id: 'forgotPassword',
+    label: 'Forgot Password',
+    group: 'Pre-auth',
+    render: () => <MobileForgotPassword onBack={() => {}} />,
+  },
+  {
+    id: 'agreement',
+    label: 'Agreement Dialog',
+    group: 'Pre-auth',
+    render: () => (
+      <AgreementWrapper />
+    ),
+  },
+
+  // Onboarding
+  {
+    id: 'styleSetup',
+    label: 'Style Setup',
+    group: 'Onboarding',
+    render: () => <MobileStyleSetup onComplete={() => {}} onBack={() => {}} />,
+  },
+  {
+    id: 'birthdayPicker',
+    label: 'Birthday Picker',
+    group: 'Onboarding',
+    render: () => <BirthdayPickerWrapper />,
+  },
+
+  // Main tabs
+  { id: 'feeds', label: 'Feeds', group: 'Main Tabs', render: () => <MobileFeedsPage /> },
+  { id: 'explore', label: 'Explore', group: 'Main Tabs', render: () => <MobileExplorePage /> },
+  { id: 'closet', label: 'Closet', group: 'Main Tabs', render: () => <MobileClosetPage /> },
+  { id: 'messages', label: 'Messages', group: 'Main Tabs', render: () => <MobileMessagesPage /> },
+  { id: 'profile', label: 'Profile', group: 'Main Tabs', render: () => <MobileProfilePage /> },
+
+  // AI features
+  { id: 'aiHub', label: 'AI Hub', group: 'AI', render: () => <MobileAIHubPage /> },
+  {
+    id: 'serviceSelection',
+    label: 'Service Selection',
+    group: 'AI',
+    render: () => <MobileServiceSelection />,
+  },
+  { id: 'camera', label: 'Camera', group: 'AI', render: () => <MobileCameraScreen /> },
+  { id: 'analyzing', label: 'Analyzing', group: 'AI', render: () => <MobileAnalyzingScreen /> },
+  { id: 'previewResult', label: 'Preview Result', group: 'AI', render: () => <MobilePreviewScreen /> },
+  {
+    id: 'virtualStylist',
+    label: 'Virtual Stylist',
+    group: 'AI',
+    render: () => <MobileVirtualStylist />,
+  },
+  { id: 'browse', label: 'Browse', group: 'AI', render: () => <MobileBrowseScreen /> },
+  {
+    id: 'outfitGen',
+    label: 'Outfit Generator',
+    group: 'AI',
+    render: () => <MobileOutfitGenerator />,
+  },
+  {
+    id: 'colorAnalyzer',
+    label: 'Color Analyzer',
+    group: 'AI',
+    render: () => <MobileColorAnalyzer />,
+  },
+  {
+    id: 'imageGen',
+    label: 'Image Generator',
+    group: 'AI',
+    render: () => <MobileImageGenerator />,
+  },
+
+  // Marketplace
+  {
+    id: 'marketplace',
+    label: 'Marketplace',
+    group: 'Marketplace',
+    render: () => <MobileMarketplacePage />,
+  },
+  {
+    id: 'productDetail',
+    label: 'Product Detail',
+    group: 'Marketplace',
+    render: () => <MobileProductDetailPage />,
+  },
+  {
+    id: 'vendorShop',
+    label: 'Vendor Shop',
+    group: 'Marketplace',
+    render: () => <MobileVendorShopPage />,
+  },
+  {
+    id: 'wishlist',
+    label: 'Wishlist',
+    group: 'Marketplace',
+    render: () => <MobileWishlistPage />,
+  },
+  { id: 'checkout', label: 'Checkout', group: 'Marketplace', render: () => <MobileCheckoutPage /> },
+  {
+    id: 'orderConfirm',
+    label: 'Order Confirmation',
+    group: 'Marketplace',
+    render: () => <MobileOrderConfirmation />,
+  },
+
+  // Social
+  {
+    id: 'communities',
+    label: 'Communities',
+    group: 'Social',
+    render: () => <MobileCommunitiesPage />,
+  },
+  {
+    id: 'communityDetail',
+    label: 'Community Detail',
+    group: 'Social',
+    render: () => <MobileCommunityDetailPage />,
+  },
+  {
+    id: 'createCommunity',
+    label: 'Create Community',
+    group: 'Social',
+    render: () => <MobileCreateCommunityPage />,
+  },
+  {
+    id: 'collections',
+    label: 'Collections',
+    group: 'Social',
+    render: () => <MobileCollectionsPage />,
+  },
+  {
+    id: 'collectionDetail',
+    label: 'Collection Detail',
+    group: 'Social',
+    render: () => <MobileCollectionDetailPage />,
+  },
+  { id: 'challenges', label: 'Challenges', group: 'Social', render: () => <MobileChallengesPage /> },
+  {
+    id: 'challengeDetail',
+    label: 'Challenge Detail',
+    group: 'Social',
+    render: () => <MobileChallengeDetailPage />,
+  },
+  { id: 'saved', label: 'Saved', group: 'Social', render: () => <MobileSavedPage /> },
+
+  // Creation
+  {
+    id: 'createPost',
+    label: 'Create Post Modal',
+    group: 'Creation',
+    render: () => <CreatePostWrapper />,
+  },
+
+  // System
+  {
+    id: 'notifications',
+    label: 'Notifications',
+    group: 'System',
+    render: () => <MobileNotificationsPage />,
+  },
+  { id: 'settings', label: 'Settings', group: 'System', render: () => <MobileSettingsPage /> },
+  {
+    id: 'editProfile',
+    label: 'Edit Profile Sheet',
+    group: 'System',
+    render: () => <EditProfileWrapper />,
+  },
+  {
+    id: 'languageSwitcher',
+    label: 'Language Switcher',
+    group: 'System',
+    render: () => <LanguageSwitcherWrapper />,
+  },
+  {
+    id: 'themeSwitcher',
+    label: 'Theme Switcher',
+    group: 'System',
+    render: () => <ThemeSwitcherWrapper />,
+  },
+  { id: 'contact', label: 'Contact', group: 'System', render: () => <MobileContactPage /> },
+  { id: 'notFound', label: '404', group: 'System', render: () => <MobileNotFoundPage /> },
+  { id: 'offline', label: 'Offline', group: 'System', render: () => <MobileOfflineState /> },
+];
+
+// --- Sheet wrappers (these are bottom sheets that need an open state) ---
+
+function AgreementWrapper() {
+  const [open, setOpen] = useState(true);
+  return (
+    <div className="h-full w-full flex items-center justify-center bg-muted/30 text-sm text-muted-foreground">
+      Tap below to re-open the sheet
+      <button className="ms-2 underline" onClick={() => setOpen(true)}>
+        Open
+      </button>
+      <MobileAgreementDialog
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        onAccept={() => setOpen(false)}
+        onDecline={() => setOpen(false)}
+      />
+    </div>
+  );
+}
+
+function BirthdayPickerWrapper() {
+  const [open, setOpen] = useState(true);
+  return (
+    <div className="h-full w-full flex items-center justify-center bg-muted/30">
+      <button
+        className="px-4 py-2 rounded-full gradient-bg text-primary-foreground"
+        onClick={() => setOpen(true)}
+      >
+        Open Birthday Picker
+      </button>
+      <MobileBirthdayPicker
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        onConfirm={() => setOpen(false)}
+      />
+    </div>
+  );
+}
+
+function CreatePostWrapper() {
+  const [open, setOpen] = useState(true);
+  return (
+    <div className="h-full w-full flex items-center justify-center bg-muted/30">
+      <button
+        className="px-4 py-2 rounded-full gradient-bg text-primary-foreground"
+        onClick={() => setOpen(true)}
+      >
+        Open Create Post
+      </button>
+      <MobileCreatePostModal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        onSubmit={async () => setOpen(false)}
+      />
+    </div>
+  );
+}
+
+function EditProfileWrapper() {
+  const [open, setOpen] = useState(true);
+  return (
+    <div className="h-full w-full flex items-center justify-center bg-muted/30">
+      <button
+        className="px-4 py-2 rounded-full gradient-bg text-primary-foreground"
+        onClick={() => setOpen(true)}
+      >
+        Open Edit Profile
+      </button>
+      <MobileEditProfileSheet
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        initial={{
+          avatar:
+            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop',
+          displayName: 'Sarah Chen',
+          username: 'sarahc',
+          bio: 'Fashion & Lifestyle 🌸',
+          website: 'linktr.ee/sarahchen',
+        }}
+        onSave={async () => setOpen(false)}
+      />
+    </div>
+  );
+}
+
+function LanguageSwitcherWrapper() {
+  const [open, setOpen] = useState(true);
+  return (
+    <div className="h-full w-full flex items-center justify-center bg-muted/30">
+      <button
+        className="px-4 py-2 rounded-full gradient-bg text-primary-foreground"
+        onClick={() => setOpen(true)}
+      >
+        Open Language
+      </button>
+      <MobileLanguageSwitcher
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        onSelect={() => setOpen(false)}
+      />
+    </div>
+  );
+}
+
+function ThemeSwitcherWrapper() {
+  const [open, setOpen] = useState(true);
+  return (
+    <div className="h-full w-full flex items-center justify-center bg-muted/30">
+      <button
+        className="px-4 py-2 rounded-full gradient-bg text-primary-foreground"
+        onClick={() => setOpen(true)}
+      >
+        Open Theme
+      </button>
+      <MobileThemeSwitcher
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        onSelect={() => setOpen(false)}
+      />
+    </div>
+  );
+}
+
+// --- Top-level Preview UI ---
+
+export default function MobileScreensPreview() {
+  const [activeId, setActiveId] = useState<string>(SCREENS[0].id);
+  const [locale, setLocale] = useState<'en' | 'ar'>(
+    ((typeof window !== 'undefined' && (window as any).__currentLocale) || 'en') as 'en' | 'ar'
+  );
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+
+  const groups = useMemo(() => {
+    const map = new Map<string, ScreenDef[]>();
+    for (const s of SCREENS) {
+      if (!map.has(s.group)) map.set(s.group, []);
+      map.get(s.group)!.push(s);
+    }
+    return Array.from(map.entries());
+  }, []);
+
+  const active = SCREENS.find((s) => s.id === activeId)!;
+
+  const switchLocale = (newLocale: 'en' | 'ar') => {
+    setLocale(newLocale);
+    (window as any).__setAppLocale?.(newLocale);
+  };
+
+  const switchTheme = (newTheme: 'light' | 'dark') => {
+    setTheme(newTheme);
+    if (newTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  };
+
+  return (
+    <div className="min-h-screen w-full bg-gray-100 dark:bg-gray-900 flex flex-col lg:flex-row">
+      {/* Sidebar */}
+      <aside className="w-full lg:w-80 bg-white dark:bg-gray-800 border-b lg:border-b-0 lg:border-e border-gray-200 dark:border-gray-700 lg:max-h-screen lg:overflow-y-auto flex-shrink-0">
+        <div className="p-4 border-b border-gray-200 dark:border-gray-700 sticky top-0 bg-white dark:bg-gray-800 z-10">
+          <h1 className="text-lg font-bold mb-1">ZokaiHub Mobile</h1>
+          <p className="text-xs text-gray-500 dark:text-gray-400 mb-3">
+            {SCREENS.length} screens · click to preview
+          </p>
+
+          {/* Toggles */}
+          <div className="flex gap-2">
+            <div className="flex-1 grid grid-cols-2 gap-1 bg-gray-100 dark:bg-gray-900 rounded-full p-1">
+              <button
+                className={`text-xs font-semibold py-1.5 rounded-full transition-colors ${
+                  locale === 'en' ? 'bg-white dark:bg-gray-700 shadow-sm' : 'text-gray-500'
+                }`}
+                onClick={() => switchLocale('en')}
+              >
+                EN
+              </button>
+              <button
+                className={`text-xs font-semibold py-1.5 rounded-full transition-colors ${
+                  locale === 'ar' ? 'bg-white dark:bg-gray-700 shadow-sm' : 'text-gray-500'
+                }`}
+                onClick={() => switchLocale('ar')}
+              >
+                AR
+              </button>
+            </div>
+            <div className="flex-1 grid grid-cols-2 gap-1 bg-gray-100 dark:bg-gray-900 rounded-full p-1">
+              <button
+                className={`text-xs font-semibold py-1.5 rounded-full transition-colors ${
+                  theme === 'light' ? 'bg-white shadow-sm' : 'text-gray-500'
+                }`}
+                onClick={() => switchTheme('light')}
+              >
+                ☀ Light
+              </button>
+              <button
+                className={`text-xs font-semibold py-1.5 rounded-full transition-colors ${
+                  theme === 'dark' ? 'bg-gray-700 text-white shadow-sm' : 'text-gray-500'
+                }`}
+                onClick={() => switchTheme('dark')}
+              >
+                ☾ Dark
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Screen list */}
+        <div className="p-2">
+          {groups.map(([group, screens]) => (
+            <div key={group} className="mb-4">
+              <h2 className="text-[10px] font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 px-3 py-2">
+                {group}
+              </h2>
+              <ul className="space-y-1">
+                {screens.map((s) => (
+                  <li key={s.id}>
+                    <button
+                      onClick={() => setActiveId(s.id)}
+                      aria-current={activeId === s.id ? 'page' : undefined}
+                      className={`w-full text-start px-3 py-2 rounded-lg text-sm transition-colors ${
+                        activeId === s.id
+                          ? 'bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 font-medium'
+                          : 'hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300'
+                      }`}
+                    >
+                      {s.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </aside>
+
+      {/* Phone preview */}
+      <main className="flex-1 flex items-center justify-center p-6 lg:p-12">
+        <div className="text-center">
+          <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
+            <span className="font-semibold">{active.group}</span> · {active.label}
+          </p>
+          {/* Phone frame */}
+          <div className="relative bg-gray-900 rounded-[44px] p-2 shadow-2xl">
+            {/* Notch */}
+            <div className="absolute top-2 left-1/2 -translate-x-1/2 w-32 h-7 bg-gray-900 rounded-b-3xl z-50" />
+            <div
+              className="bg-background rounded-[36px] overflow-hidden relative"
+              style={{ width: 393, height: 852 }}
+              key={`${active.id}-${locale}-${theme}`}
+            >
+              {active.render()}
+            </div>
+          </div>
+          <p className="text-xs text-gray-400 dark:text-gray-500 mt-3">
+            iPhone 15 Pro · 393 × 852
+          </p>
+        </div>
+      </main>
+    </div>
+  );
+}
