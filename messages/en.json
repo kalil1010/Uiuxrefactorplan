@@ -858,5 +858,195 @@
       "continueShopping": "Continue Shopping",
       "viewOrders": "View My Orders"
     }
+  },
+  "communities": {
+    "title": "Communities",
+    "searchPlaceholder": "Search communities...",
+    "createAria": "Create community",
+    "tabs": {
+      "joined": "Joined",
+      "discover": "Discover"
+    },
+    "members": "{count} members",
+    "join": "Join",
+    "joined": "Joined",
+    "leave": "Leave",
+    "empty": {
+      "joined": {
+        "title": "No communities yet",
+        "description": "Discover communities and join the fashion conversation",
+        "cta": "Discover Communities"
+      },
+      "discover": {
+        "title": "Nothing to discover",
+        "description": "Check back later for new communities",
+        "cta": "Refresh"
+      }
+    },
+    "error": {
+      "title": "Unable to Load Communities",
+      "description": "We couldn't load communities. Please try again.",
+      "retry": "Try Again",
+      "goHome": "Go to Home"
+    }
+  },
+  "communityDetail": {
+    "members": "{count} members",
+    "posts": "{count} posts",
+    "join": "Join",
+    "joined": "Joined",
+    "moreOptionsAria": "More options",
+    "tabs": {
+      "feed": "Feed",
+      "members": "Members",
+      "about": "About"
+    },
+    "newPost": "New Post",
+    "rules": "Community Rules",
+    "empty": {
+      "title": "No posts yet",
+      "description": "Be the first to share something",
+      "cta": "Create Post"
+    },
+    "error": {
+      "title": "Unable to Load Community",
+      "description": "We couldn't load this community. Please try again.",
+      "retry": "Try Again",
+      "goHome": "Go to Communities"
+    }
+  },
+  "createCommunity": {
+    "title": "Create Community",
+    "subtitle": "Build a space for like-minded fashion lovers",
+    "coverLabel": "Cover Image",
+    "uploadCover": "Upload Cover",
+    "removeCoverAria": "Remove cover image",
+    "name": "Community Name",
+    "namePlaceholder": "e.g., Sustainable Fashion",
+    "description": "Description",
+    "descriptionPlaceholder": "Tell people what your community is about",
+    "category": "Category",
+    "categoryOptions": {
+      "general": "General",
+      "sustainable": "Sustainable",
+      "vintage": "Vintage",
+      "streetwear": "Streetwear",
+      "luxury": "Luxury",
+      "diy": "DIY"
+    },
+    "privacy": "Privacy",
+    "privacyOptions": {
+      "public": "Public",
+      "private": "Private",
+      "publicHint": "Anyone can view and join",
+      "privateHint": "Members only, by invite"
+    },
+    "cta": "Create Community",
+    "creating": "Creating...",
+    "errors": {
+      "nameRequired": "Community name is required",
+      "nameTooShort": "Name must be at least 3 characters",
+      "descriptionRequired": "Description is required"
+    }
+  },
+  "collections": {
+    "title": "Collections",
+    "createAria": "Create collection",
+    "items": "{count} items",
+    "empty": {
+      "title": "No collections yet",
+      "description": "Organize your favorite outfits and inspiration into collections",
+      "cta": "Create Collection"
+    },
+    "error": {
+      "title": "Unable to Load Collections",
+      "description": "We couldn't load your collections. Please try again.",
+      "retry": "Try Again",
+      "goHome": "Go to Home"
+    }
+  },
+  "collectionDetail": {
+    "items": "{count} items",
+    "editAria": "Edit collection",
+    "shareAria": "Share collection",
+    "addItem": "Add Item",
+    "removeAria": "Remove item",
+    "empty": {
+      "title": "Empty collection",
+      "description": "Add posts, outfits, or products to this collection",
+      "cta": "Browse Posts"
+    },
+    "error": {
+      "title": "Unable to Load Collection",
+      "description": "We couldn't load this collection. Please try again.",
+      "retry": "Try Again",
+      "goHome": "Go to Collections"
+    }
+  },
+  "challenges": {
+    "title": "Challenges",
+    "tabs": {
+      "active": "Active",
+      "upcoming": "Upcoming",
+      "past": "Past"
+    },
+    "endsIn": "Ends {time}",
+    "startsIn": "Starts {time}",
+    "ended": "Ended",
+    "entries": "{count} entries",
+    "prize": "Prize: {prize}",
+    "join": "Join Challenge",
+    "joined": "Joined",
+    "empty": {
+      "title": "No challenges right now",
+      "description": "Check back soon for new fashion challenges",
+      "cta": "Browse Past Challenges"
+    },
+    "error": {
+      "title": "Unable to Load Challenges",
+      "description": "We couldn't load challenges. Please try again.",
+      "retry": "Try Again",
+      "goHome": "Go to Home"
+    }
+  },
+  "challengeDetail": {
+    "shareAria": "Share challenge",
+    "endsIn": "Ends {time}",
+    "prize": "Prize",
+    "rules": "Rules",
+    "submissions": "Submissions",
+    "submit": "Submit Entry",
+    "submitted": "Entry Submitted",
+    "viewEntry": "View My Entry",
+    "empty": {
+      "title": "No submissions yet",
+      "description": "Be the first to submit your entry",
+      "cta": "Submit Entry"
+    },
+    "error": {
+      "title": "Unable to Load Challenge",
+      "description": "We couldn't load this challenge. Please try again.",
+      "retry": "Try Again",
+      "goHome": "Go to Challenges"
+    }
+  },
+  "saved": {
+    "title": "Saved",
+    "tabs": {
+      "posts": "Posts",
+      "products": "Products",
+      "outfits": "Outfits"
+    },
+    "empty": {
+      "title": "Nothing saved yet",
+      "description": "Save posts, products, and outfits to find them here later",
+      "cta": "Browse Feed"
+    },
+    "error": {
+      "title": "Unable to Load Saved Items",
+      "description": "We couldn't load your saved items. Please try again.",
+      "retry": "Try Again",
+      "goHome": "Go to Home"
+    }
   }
 }
