@@ -684,5 +684,179 @@
       "retry": "Try Again",
       "goHome": "Go to AI Hub"
     }
+  },
+  "marketplace": {
+    "title": "Marketplace",
+    "searchPlaceholder": "Search products...",
+    "filterAria": "Open filters",
+    "wishlistAria": "Open wishlist",
+    "cartAria": "Open cart",
+    "categories": {
+      "all": "All",
+      "tops": "Tops",
+      "bottoms": "Bottoms",
+      "dresses": "Dresses",
+      "shoes": "Shoes",
+      "accessories": "Accessories",
+      "bags": "Bags"
+    },
+    "sortAria": "Sort products",
+    "sort": {
+      "trending": "Trending",
+      "newest": "Newest",
+      "priceLow": "Price: Low to High",
+      "priceHigh": "Price: High to Low"
+    },
+    "addToWishlistAria": "Add to wishlist",
+    "removeFromWishlistAria": "Remove from wishlist",
+    "byVendor": "by {vendor}",
+    "empty": {
+      "title": "No products found",
+      "description": "Try adjusting your filters or search terms",
+      "cta": "Clear Filters"
+    },
+    "error": {
+      "title": "Unable to Load Products",
+      "description": "We couldn't load the marketplace. Please check your connection.",
+      "retry": "Try Again",
+      "goHome": "Go to Home"
+    }
+  },
+  "productDetail": {
+    "imageAria": "Product image {index} of {total}",
+    "byVendor": "Sold by {vendor}",
+    "viewVendor": "View shop",
+    "rating": "{rating} ({reviews} reviews)",
+    "size": "Size",
+    "color": "Color",
+    "quantity": "Quantity",
+    "increaseQuantityAria": "Increase quantity",
+    "decreaseQuantityAria": "Decrease quantity",
+    "description": "Description",
+    "details": "Details",
+    "shipping": "Shipping",
+    "shippingDetails": "Free shipping over $50. Delivered in 3-5 business days.",
+    "returns": "Returns",
+    "returnsDetails": "Free returns within 30 days.",
+    "addToCart": "Add to Cart",
+    "buyNow": "Buy Now",
+    "addToWishlist": "Add to Wishlist",
+    "removeFromWishlist": "In Wishlist",
+    "shareAria": "Share product",
+    "outOfStock": "Out of Stock",
+    "lowStock": "Only {count} left in stock",
+    "addedToCart": "Added to cart",
+    "error": {
+      "title": "Product Unavailable",
+      "description": "We couldn't load this product. Please try again.",
+      "retry": "Try Again",
+      "goHome": "Go to Marketplace"
+    }
+  },
+  "vendorShop": {
+    "followers": "{count} followers",
+    "products": "{count} products",
+    "rating": "{rating} rating",
+    "follow": "Follow",
+    "unfollow": "Following",
+    "messageVendor": "Message",
+    "tabs": {
+      "products": "Products",
+      "about": "About",
+      "reviews": "Reviews"
+    },
+    "about": {
+      "established": "Established {year}",
+      "location": "Based in {city}"
+    },
+    "empty": {
+      "title": "No products yet",
+      "description": "This shop hasn't added any products. Check back soon.",
+      "cta": "Browse Marketplace"
+    },
+    "error": {
+      "title": "Unable to Load Shop",
+      "description": "We couldn't load this vendor's shop. Please try again.",
+      "retry": "Try Again",
+      "goHome": "Go to Marketplace"
+    }
+  },
+  "wishlist": {
+    "title": "Wishlist",
+    "removeAria": "Remove from wishlist",
+    "addToCart": "Add to Cart",
+    "moveAllToCart": "Move All to Cart",
+    "empty": {
+      "title": "Your wishlist is empty",
+      "description": "Save products you love to keep track of them here",
+      "cta": "Browse Marketplace"
+    },
+    "error": {
+      "title": "Unable to Load Wishlist",
+      "description": "We couldn't load your wishlist. Please try again.",
+      "retry": "Try Again",
+      "goHome": "Go to Marketplace"
+    }
+  },
+  "checkout": {
+    "title": "Checkout",
+    "sections": {
+      "items": "Order Items",
+      "shipping": "Shipping Address",
+      "payment": "Payment Method",
+      "summary": "Order Summary"
+    },
+    "address": {
+      "name": "Full Name",
+      "namePlaceholder": "Jane Doe",
+      "phone": "Phone Number",
+      "phonePlaceholder": "+1 (555) 000-0000",
+      "street": "Street Address",
+      "streetPlaceholder": "123 Main St",
+      "city": "City",
+      "cityPlaceholder": "New York",
+      "postalCode": "Postal Code",
+      "postalCodePlaceholder": "10001",
+      "country": "Country",
+      "saveAddress": "Save this address for future orders"
+    },
+    "payment": {
+      "card": "Credit / Debit Card",
+      "applePay": "Apple Pay",
+      "googlePay": "Google Pay",
+      "cardNumber": "Card Number",
+      "cardNumberPlaceholder": "1234 5678 9012 3456",
+      "expiry": "Expiry",
+      "expiryPlaceholder": "MM/YY",
+      "cvc": "CVC",
+      "cvcPlaceholder": "123"
+    },
+    "summary": {
+      "subtotal": "Subtotal",
+      "shipping": "Shipping",
+      "tax": "Tax",
+      "total": "Total",
+      "free": "Free"
+    },
+    "placeOrder": "Place Order",
+    "placing": "Placing order...",
+    "error": {
+      "title": "Checkout Failed",
+      "description": "We couldn't process your order. Please verify your details and try again.",
+      "retry": "Try Again",
+      "goHome": "Go to Cart"
+    }
+  },
+  "orderConfirmation": {
+    "title": "Order Confirmed",
+    "subtitle": "Thank you for your purchase!",
+    "orderNumber": "Order #{number}",
+    "estimatedDelivery": "Estimated delivery: {date}",
+    "summary": "Order Summary",
+    "actions": {
+      "trackOrder": "Track Order",
+      "continueShopping": "Continue Shopping",
+      "viewOrders": "View My Orders"
+    }
   }
 }

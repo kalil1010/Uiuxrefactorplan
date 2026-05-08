@@ -684,5 +684,179 @@
       "retry": "حاول مرة أخرى",
       "goHome": "انتقل إلى مركز الذكاء الاصطناعي"
     }
+  },
+  "marketplace": {
+    "title": "المتجر",
+    "searchPlaceholder": "ابحث عن منتجات...",
+    "filterAria": "فتح الفلاتر",
+    "wishlistAria": "فتح قائمة الرغبات",
+    "cartAria": "فتح السلة",
+    "categories": {
+      "all": "الكل",
+      "tops": "ملابس علوية",
+      "bottoms": "ملابس سفلية",
+      "dresses": "فساتين",
+      "shoes": "أحذية",
+      "accessories": "إكسسوارات",
+      "bags": "حقائب"
+    },
+    "sortAria": "ترتيب المنتجات",
+    "sort": {
+      "trending": "رائج",
+      "newest": "الأحدث",
+      "priceLow": "السعر: من الأقل للأعلى",
+      "priceHigh": "السعر: من الأعلى للأقل"
+    },
+    "addToWishlistAria": "إضافة لقائمة الرغبات",
+    "removeFromWishlistAria": "إزالة من قائمة الرغبات",
+    "byVendor": "بواسطة {vendor}",
+    "empty": {
+      "title": "لا توجد منتجات",
+      "description": "حاول تعديل الفلاتر أو كلمات البحث",
+      "cta": "مسح الفلاتر"
+    },
+    "error": {
+      "title": "تعذر تحميل المنتجات",
+      "description": "لم نتمكن من تحميل المتجر. تحقق من اتصالك.",
+      "retry": "حاول مرة أخرى",
+      "goHome": "انتقل إلى الرئيسية"
+    }
+  },
+  "productDetail": {
+    "imageAria": "صورة المنتج {index} من {total}",
+    "byVendor": "يبيعها {vendor}",
+    "viewVendor": "عرض المتجر",
+    "rating": "{rating} ({reviews} تقييم)",
+    "size": "المقاس",
+    "color": "اللون",
+    "quantity": "الكمية",
+    "increaseQuantityAria": "زيادة الكمية",
+    "decreaseQuantityAria": "تقليل الكمية",
+    "description": "الوصف",
+    "details": "التفاصيل",
+    "shipping": "الشحن",
+    "shippingDetails": "شحن مجاني للطلبات فوق 50$. التسليم خلال 3-5 أيام عمل.",
+    "returns": "الإرجاع",
+    "returnsDetails": "إرجاع مجاني خلال 30 يومًا.",
+    "addToCart": "إضافة إلى السلة",
+    "buyNow": "اشترِ الآن",
+    "addToWishlist": "إضافة لقائمة الرغبات",
+    "removeFromWishlist": "في قائمة الرغبات",
+    "shareAria": "مشاركة المنتج",
+    "outOfStock": "غير متوفر",
+    "lowStock": "متبقي {count} فقط في المخزون",
+    "addedToCart": "تمت الإضافة إلى السلة",
+    "error": {
+      "title": "المنتج غير متوفر",
+      "description": "لم نتمكن من تحميل هذا المنتج. حاول مرة أخرى.",
+      "retry": "حاول مرة أخرى",
+      "goHome": "انتقل إلى المتجر"
+    }
+  },
+  "vendorShop": {
+    "followers": "{count} متابع",
+    "products": "{count} منتج",
+    "rating": "تقييم {rating}",
+    "follow": "متابعة",
+    "unfollow": "متابَع",
+    "messageVendor": "رسالة",
+    "tabs": {
+      "products": "المنتجات",
+      "about": "نبذة",
+      "reviews": "التقييمات"
+    },
+    "about": {
+      "established": "تأسس عام {year}",
+      "location": "في {city}"
+    },
+    "empty": {
+      "title": "لا توجد منتجات بعد",
+      "description": "هذا المتجر لم يُضف منتجات بعد. عُد قريبًا.",
+      "cta": "تصفح المتجر"
+    },
+    "error": {
+      "title": "تعذر تحميل المتجر",
+      "description": "لم نتمكن من تحميل متجر هذا البائع. حاول مرة أخرى.",
+      "retry": "حاول مرة أخرى",
+      "goHome": "انتقل إلى المتجر"
+    }
+  },
+  "wishlist": {
+    "title": "قائمة الرغبات",
+    "removeAria": "إزالة من قائمة الرغبات",
+    "addToCart": "إضافة إلى السلة",
+    "moveAllToCart": "نقل الكل إلى السلة",
+    "empty": {
+      "title": "قائمة رغباتك فارغة",
+      "description": "احفظ المنتجات التي تحبها لتتبعها هنا",
+      "cta": "تصفح المتجر"
+    },
+    "error": {
+      "title": "تعذر تحميل قائمة الرغبات",
+      "description": "لم نتمكن من تحميل قائمة رغباتك. حاول مرة أخرى.",
+      "retry": "حاول مرة أخرى",
+      "goHome": "انتقل إلى المتجر"
+    }
+  },
+  "checkout": {
+    "title": "إتمام الطلب",
+    "sections": {
+      "items": "عناصر الطلب",
+      "shipping": "عنوان الشحن",
+      "payment": "طريقة الدفع",
+      "summary": "ملخص الطلب"
+    },
+    "address": {
+      "name": "الاسم الكامل",
+      "namePlaceholder": "محمد أحمد",
+      "phone": "رقم الهاتف",
+      "phonePlaceholder": "+20 100 000 0000",
+      "street": "عنوان الشارع",
+      "streetPlaceholder": "شارع رقم 123",
+      "city": "المدينة",
+      "cityPlaceholder": "القاهرة",
+      "postalCode": "الرمز البريدي",
+      "postalCodePlaceholder": "11511",
+      "country": "الدولة",
+      "saveAddress": "حفظ هذا العنوان للطلبات المستقبلية"
+    },
+    "payment": {
+      "card": "بطاقة ائتمان / خصم",
+      "applePay": "Apple Pay",
+      "googlePay": "Google Pay",
+      "cardNumber": "رقم البطاقة",
+      "cardNumberPlaceholder": "1234 5678 9012 3456",
+      "expiry": "الصلاحية",
+      "expiryPlaceholder": "شهر/سنة",
+      "cvc": "CVC",
+      "cvcPlaceholder": "123"
+    },
+    "summary": {
+      "subtotal": "المجموع الفرعي",
+      "shipping": "الشحن",
+      "tax": "الضريبة",
+      "total": "الإجمالي",
+      "free": "مجاني"
+    },
+    "placeOrder": "تأكيد الطلب",
+    "placing": "جارٍ تأكيد الطلب...",
+    "error": {
+      "title": "فشل إتمام الطلب",
+      "description": "لم نتمكن من معالجة طلبك. تحقق من بياناتك وحاول مرة أخرى.",
+      "retry": "حاول مرة أخرى",
+      "goHome": "انتقل إلى السلة"
+    }
+  },
+  "orderConfirmation": {
+    "title": "تم تأكيد الطلب",
+    "subtitle": "شكرًا لشرائك!",
+    "orderNumber": "طلب رقم {number}",
+    "estimatedDelivery": "موعد التسليم المتوقع: {date}",
+    "summary": "ملخص الطلب",
+    "actions": {
+      "trackOrder": "تتبع الطلب",
+      "continueShopping": "متابعة التسوق",
+      "viewOrders": "عرض طلباتي"
+    }
   }
 }
