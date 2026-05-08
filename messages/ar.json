@@ -684,5 +684,523 @@
       "retry": "حاول مرة أخرى",
       "goHome": "انتقل إلى مركز الذكاء الاصطناعي"
     }
+  },
+  "marketplace": {
+    "title": "المتجر",
+    "searchPlaceholder": "ابحث عن منتجات...",
+    "filterAria": "فتح الفلاتر",
+    "wishlistAria": "فتح قائمة الرغبات",
+    "cartAria": "فتح السلة",
+    "categories": {
+      "all": "الكل",
+      "tops": "ملابس علوية",
+      "bottoms": "ملابس سفلية",
+      "dresses": "فساتين",
+      "shoes": "أحذية",
+      "accessories": "إكسسوارات",
+      "bags": "حقائب"
+    },
+    "sortAria": "ترتيب المنتجات",
+    "sort": {
+      "trending": "رائج",
+      "newest": "الأحدث",
+      "priceLow": "السعر: من الأقل للأعلى",
+      "priceHigh": "السعر: من الأعلى للأقل"
+    },
+    "addToWishlistAria": "إضافة لقائمة الرغبات",
+    "removeFromWishlistAria": "إزالة من قائمة الرغبات",
+    "byVendor": "بواسطة {vendor}",
+    "empty": {
+      "title": "لا توجد منتجات",
+      "description": "حاول تعديل الفلاتر أو كلمات البحث",
+      "cta": "مسح الفلاتر"
+    },
+    "error": {
+      "title": "تعذر تحميل المنتجات",
+      "description": "لم نتمكن من تحميل المتجر. تحقق من اتصالك.",
+      "retry": "حاول مرة أخرى",
+      "goHome": "انتقل إلى الرئيسية"
+    }
+  },
+  "productDetail": {
+    "imageAria": "صورة المنتج {index} من {total}",
+    "byVendor": "يبيعها {vendor}",
+    "viewVendor": "عرض المتجر",
+    "rating": "{rating} ({reviews} تقييم)",
+    "size": "المقاس",
+    "color": "اللون",
+    "quantity": "الكمية",
+    "increaseQuantityAria": "زيادة الكمية",
+    "decreaseQuantityAria": "تقليل الكمية",
+    "description": "الوصف",
+    "details": "التفاصيل",
+    "shipping": "الشحن",
+    "shippingDetails": "شحن مجاني للطلبات فوق 50$. التسليم خلال 3-5 أيام عمل.",
+    "returns": "الإرجاع",
+    "returnsDetails": "إرجاع مجاني خلال 30 يومًا.",
+    "addToCart": "إضافة إلى السلة",
+    "buyNow": "اشترِ الآن",
+    "addToWishlist": "إضافة لقائمة الرغبات",
+    "removeFromWishlist": "في قائمة الرغبات",
+    "shareAria": "مشاركة المنتج",
+    "outOfStock": "غير متوفر",
+    "lowStock": "متبقي {count} فقط في المخزون",
+    "addedToCart": "تمت الإضافة إلى السلة",
+    "error": {
+      "title": "المنتج غير متوفر",
+      "description": "لم نتمكن من تحميل هذا المنتج. حاول مرة أخرى.",
+      "retry": "حاول مرة أخرى",
+      "goHome": "انتقل إلى المتجر"
+    }
+  },
+  "vendorShop": {
+    "followers": "{count} متابع",
+    "products": "{count} منتج",
+    "rating": "تقييم {rating}",
+    "follow": "متابعة",
+    "unfollow": "متابَع",
+    "messageVendor": "رسالة",
+    "tabs": {
+      "products": "المنتجات",
+      "about": "نبذة",
+      "reviews": "التقييمات"
+    },
+    "about": {
+      "established": "تأسس عام {year}",
+      "location": "في {city}"
+    },
+    "empty": {
+      "title": "لا توجد منتجات بعد",
+      "description": "هذا المتجر لم يُضف منتجات بعد. عُد قريبًا.",
+      "cta": "تصفح المتجر"
+    },
+    "error": {
+      "title": "تعذر تحميل المتجر",
+      "description": "لم نتمكن من تحميل متجر هذا البائع. حاول مرة أخرى.",
+      "retry": "حاول مرة أخرى",
+      "goHome": "انتقل إلى المتجر"
+    }
+  },
+  "wishlist": {
+    "title": "قائمة الرغبات",
+    "removeAria": "إزالة من قائمة الرغبات",
+    "addToCart": "إضافة إلى السلة",
+    "moveAllToCart": "نقل الكل إلى السلة",
+    "empty": {
+      "title": "قائمة رغباتك فارغة",
+      "description": "احفظ المنتجات التي تحبها لتتبعها هنا",
+      "cta": "تصفح المتجر"
+    },
+    "error": {
+      "title": "تعذر تحميل قائمة الرغبات",
+      "description": "لم نتمكن من تحميل قائمة رغباتك. حاول مرة أخرى.",
+      "retry": "حاول مرة أخرى",
+      "goHome": "انتقل إلى المتجر"
+    }
+  },
+  "checkout": {
+    "title": "إتمام الطلب",
+    "sections": {
+      "items": "عناصر الطلب",
+      "shipping": "عنوان الشحن",
+      "payment": "طريقة الدفع",
+      "summary": "ملخص الطلب"
+    },
+    "address": {
+      "name": "الاسم الكامل",
+      "namePlaceholder": "محمد أحمد",
+      "phone": "رقم الهاتف",
+      "phonePlaceholder": "+20 100 000 0000",
+      "street": "عنوان الشارع",
+      "streetPlaceholder": "شارع رقم 123",
+      "city": "المدينة",
+      "cityPlaceholder": "القاهرة",
+      "postalCode": "الرمز البريدي",
+      "postalCodePlaceholder": "11511",
+      "country": "الدولة",
+      "saveAddress": "حفظ هذا العنوان للطلبات المستقبلية"
+    },
+    "payment": {
+      "card": "بطاقة ائتمان / خصم",
+      "applePay": "Apple Pay",
+      "googlePay": "Google Pay",
+      "cardNumber": "رقم البطاقة",
+      "cardNumberPlaceholder": "1234 5678 9012 3456",
+      "expiry": "الصلاحية",
+      "expiryPlaceholder": "شهر/سنة",
+      "cvc": "CVC",
+      "cvcPlaceholder": "123"
+    },
+    "summary": {
+      "subtotal": "المجموع الفرعي",
+      "shipping": "الشحن",
+      "tax": "الضريبة",
+      "total": "الإجمالي",
+      "free": "مجاني"
+    },
+    "placeOrder": "تأكيد الطلب",
+    "placing": "جارٍ تأكيد الطلب...",
+    "error": {
+      "title": "فشل إتمام الطلب",
+      "description": "لم نتمكن من معالجة طلبك. تحقق من بياناتك وحاول مرة أخرى.",
+      "retry": "حاول مرة أخرى",
+      "goHome": "انتقل إلى السلة"
+    }
+  },
+  "orderConfirmation": {
+    "title": "تم تأكيد الطلب",
+    "subtitle": "شكرًا لشرائك!",
+    "orderNumber": "طلب رقم {number}",
+    "estimatedDelivery": "موعد التسليم المتوقع: {date}",
+    "summary": "ملخص الطلب",
+    "actions": {
+      "trackOrder": "تتبع الطلب",
+      "continueShopping": "متابعة التسوق",
+      "viewOrders": "عرض طلباتي"
+    }
+  },
+  "communities": {
+    "title": "المجتمعات",
+    "searchPlaceholder": "ابحث عن مجتمعات...",
+    "createAria": "إنشاء مجتمع",
+    "tabs": {
+      "joined": "المنضم إليها",
+      "discover": "اكتشف"
+    },
+    "members": "{count} عضو",
+    "join": "انضم",
+    "joined": "منضم",
+    "leave": "مغادرة",
+    "empty": {
+      "joined": {
+        "title": "لا توجد مجتمعات بعد",
+        "description": "اكتشف مجتمعات وانضم إلى محادثات الأزياء",
+        "cta": "اكتشف المجتمعات"
+      },
+      "discover": {
+        "title": "لا يوجد ما تكتشفه",
+        "description": "عُد لاحقًا لرؤية مجتمعات جديدة",
+        "cta": "تحديث"
+      }
+    },
+    "error": {
+      "title": "تعذر تحميل المجتمعات",
+      "description": "لم نتمكن من تحميل المجتمعات. حاول مرة أخرى.",
+      "retry": "حاول مرة أخرى",
+      "goHome": "انتقل إلى الرئيسية"
+    }
+  },
+  "communityDetail": {
+    "members": "{count} عضو",
+    "posts": "{count} منشور",
+    "join": "انضم",
+    "joined": "منضم",
+    "moreOptionsAria": "المزيد من الخيارات",
+    "tabs": {
+      "feed": "المنشورات",
+      "members": "الأعضاء",
+      "about": "نبذة"
+    },
+    "newPost": "منشور جديد",
+    "rules": "قواعد المجتمع",
+    "empty": {
+      "title": "لا توجد منشورات بعد",
+      "description": "كن أول من يشارك شيئًا",
+      "cta": "إنشاء منشور"
+    },
+    "error": {
+      "title": "تعذر تحميل المجتمع",
+      "description": "لم نتمكن من تحميل هذا المجتمع. حاول مرة أخرى.",
+      "retry": "حاول مرة أخرى",
+      "goHome": "انتقل إلى المجتمعات"
+    }
+  },
+  "createCommunity": {
+    "title": "إنشاء مجتمع",
+    "subtitle": "أنشئ مساحة لمحبي الأزياء ذوي الاهتمامات المشتركة",
+    "coverLabel": "صورة الغلاف",
+    "uploadCover": "رفع غلاف",
+    "removeCoverAria": "إزالة صورة الغلاف",
+    "name": "اسم المجتمع",
+    "namePlaceholder": "مثلاً: الأزياء المستدامة",
+    "description": "الوصف",
+    "descriptionPlaceholder": "أخبر الناس عن مجتمعك",
+    "category": "الفئة",
+    "categoryOptions": {
+      "general": "عام",
+      "sustainable": "مستدام",
+      "vintage": "فينتاج",
+      "streetwear": "ستريت وير",
+      "luxury": "فاخر",
+      "diy": "اصنعها بنفسك"
+    },
+    "privacy": "الخصوصية",
+    "privacyOptions": {
+      "public": "عام",
+      "private": "خاص",
+      "publicHint": "يمكن لأي شخص المشاهدة والانضمام",
+      "privateHint": "للأعضاء فقط، بدعوة"
+    },
+    "cta": "إنشاء المجتمع",
+    "creating": "جارٍ الإنشاء...",
+    "errors": {
+      "nameRequired": "اسم المجتمع مطلوب",
+      "nameTooShort": "يجب أن يكون الاسم 3 أحرف على الأقل",
+      "descriptionRequired": "الوصف مطلوب"
+    }
+  },
+  "collections": {
+    "title": "المجموعات",
+    "createAria": "إنشاء مجموعة",
+    "items": "{count} عنصر",
+    "empty": {
+      "title": "لا توجد مجموعات بعد",
+      "description": "نظم إطلالاتك المفضلة وإلهامك في مجموعات",
+      "cta": "إنشاء مجموعة"
+    },
+    "error": {
+      "title": "تعذر تحميل المجموعات",
+      "description": "لم نتمكن من تحميل مجموعاتك. حاول مرة أخرى.",
+      "retry": "حاول مرة أخرى",
+      "goHome": "انتقل إلى الرئيسية"
+    }
+  },
+  "collectionDetail": {
+    "items": "{count} عنصر",
+    "editAria": "تعديل المجموعة",
+    "shareAria": "مشاركة المجموعة",
+    "addItem": "إضافة عنصر",
+    "removeAria": "إزالة العنصر",
+    "empty": {
+      "title": "مجموعة فارغة",
+      "description": "أضف منشورات أو إطلالات أو منتجات إلى هذه المجموعة",
+      "cta": "تصفح المنشورات"
+    },
+    "error": {
+      "title": "تعذر تحميل المجموعة",
+      "description": "لم نتمكن من تحميل هذه المجموعة. حاول مرة أخرى.",
+      "retry": "حاول مرة أخرى",
+      "goHome": "انتقل إلى المجموعات"
+    }
+  },
+  "challenges": {
+    "title": "التحديات",
+    "tabs": {
+      "active": "نشط",
+      "upcoming": "قادم",
+      "past": "سابق"
+    },
+    "endsIn": "ينتهي {time}",
+    "startsIn": "يبدأ {time}",
+    "ended": "انتهى",
+    "entries": "{count} مشاركة",
+    "prize": "الجائزة: {prize}",
+    "join": "انضم للتحدي",
+    "joined": "منضم",
+    "empty": {
+      "title": "لا توجد تحديات حاليًا",
+      "description": "عُد قريبًا للتحديات الجديدة",
+      "cta": "تصفح التحديات السابقة"
+    },
+    "error": {
+      "title": "تعذر تحميل التحديات",
+      "description": "لم نتمكن من تحميل التحديات. حاول مرة أخرى.",
+      "retry": "حاول مرة أخرى",
+      "goHome": "انتقل إلى الرئيسية"
+    }
+  },
+  "challengeDetail": {
+    "shareAria": "مشاركة التحدي",
+    "endsIn": "ينتهي {time}",
+    "prize": "الجائزة",
+    "rules": "القواعد",
+    "submissions": "المشاركات",
+    "submit": "إرسال مشاركة",
+    "submitted": "تم إرسال المشاركة",
+    "viewEntry": "عرض مشاركتي",
+    "empty": {
+      "title": "لا توجد مشاركات بعد",
+      "description": "كن أول من يرسل مشاركة",
+      "cta": "إرسال مشاركة"
+    },
+    "error": {
+      "title": "تعذر تحميل التحدي",
+      "description": "لم نتمكن من تحميل هذا التحدي. حاول مرة أخرى.",
+      "retry": "حاول مرة أخرى",
+      "goHome": "انتقل إلى التحديات"
+    }
+  },
+  "saved": {
+    "title": "المحفوظات",
+    "tabs": {
+      "posts": "المنشورات",
+      "products": "المنتجات",
+      "outfits": "الإطلالات"
+    },
+    "empty": {
+      "title": "لا توجد محفوظات بعد",
+      "description": "احفظ المنشورات والمنتجات والإطلالات للعثور عليها هنا لاحقًا",
+      "cta": "تصفح المنشورات"
+    },
+    "error": {
+      "title": "تعذر تحميل المحفوظات",
+      "description": "لم نتمكن من تحميل محفوظاتك. حاول مرة أخرى.",
+      "retry": "حاول مرة أخرى",
+      "goHome": "انتقل إلى الرئيسية"
+    }
+  },
+  "createPost": {
+    "title": "منشور جديد",
+    "captionLabel": "النص",
+    "captionPlaceholder": "اكتب وصفًا...",
+    "tagsLabel": "الوسوم",
+    "tagsPlaceholder": "أضف وسومًا (مثل: إطلالة، صيف)",
+    "addTag": "إضافة",
+    "removeTagAria": "إزالة الوسم",
+    "uploadImage": "إضافة صور",
+    "removeImageAria": "إزالة الصورة",
+    "visibility": "الخصوصية",
+    "visibilityOptions": {
+      "public": "عام",
+      "followers": "المتابعون فقط"
+    },
+    "post": "نشر",
+    "posting": "جارٍ النشر...",
+    "errors": {
+      "imageRequired": "أضف صورة واحدة على الأقل",
+      "captionRequired": "أضف وصفًا"
+    }
+  },
+  "notifications": {
+    "title": "الإشعارات",
+    "markAllRead": "تحديد الكل كمقروء",
+    "tabs": {
+      "all": "الكل",
+      "mentions": "الإشارات",
+      "follows": "المتابعات"
+    },
+    "types": {
+      "like": "أعجب {user} بمنشورك",
+      "comment": "علّق {user} على منشورك",
+      "follow": "بدأ {user} بمتابعتك",
+      "mention": "أشار إليك {user}",
+      "challenge": "تحدٍ جديد: {title}"
+    },
+    "dismissAria": "إغلاق الإشعار",
+    "empty": {
+      "title": "لا توجد إشعارات بعد",
+      "description": "عندما يتفاعل الناس معك، ستراه هنا",
+      "cta": "تصفح المنشورات"
+    },
+    "error": {
+      "title": "تعذر تحميل الإشعارات",
+      "description": "لم نتمكن من تحميل إشعاراتك. حاول مرة أخرى.",
+      "retry": "حاول مرة أخرى",
+      "goHome": "انتقل إلى الرئيسية"
+    }
+  },
+  "settings": {
+    "title": "الإعدادات",
+    "sections": {
+      "account": "الحساب",
+      "appearance": "المظهر",
+      "preferences": "التفضيلات",
+      "privacy": "الخصوصية والأمان",
+      "support": "الدعم",
+      "legal": "قانوني"
+    },
+    "items": {
+      "editProfile": "تعديل الملف الشخصي",
+      "changePassword": "تغيير كلمة المرور",
+      "theme": "السمة",
+      "language": "اللغة",
+      "notifications": "الإشعارات",
+      "privacy": "الخصوصية",
+      "blockedUsers": "المستخدمون المحظورون",
+      "twoFactor": "المصادقة الثنائية",
+      "downloadData": "تنزيل بياناتي",
+      "help": "مركز المساعدة",
+      "contact": "تواصل معنا",
+      "about": "نبذة",
+      "terms": "شروط الخدمة",
+      "privacyPolicy": "سياسة الخصوصية",
+      "logout": "تسجيل الخروج",
+      "deleteAccount": "حذف الحساب"
+    },
+    "logoutConfirmTitle": "تسجيل الخروج؟",
+    "logoutConfirmMessage": "ستحتاج إلى تسجيل الدخول مرة أخرى لاحقًا.",
+    "logoutConfirm": "تسجيل الخروج",
+    "deleteConfirmTitle": "حذف الحساب؟",
+    "deleteConfirmMessage": "هذا يحذف حسابك وجميع بياناتك بشكل دائم. لا يمكن التراجع عن هذا الإجراء.",
+    "deleteConfirm": "حذف الحساب",
+    "version": "الإصدار {version}"
+  },
+  "editProfile": {
+    "title": "تعديل الملف الشخصي",
+    "avatarAria": "تغيير صورة الملف الشخصي",
+    "displayName": "الاسم المعروض",
+    "username": "اسم المستخدم",
+    "bio": "السيرة الذاتية",
+    "bioPlaceholder": "أخبر الناس عنك",
+    "website": "الموقع الإلكتروني",
+    "websitePlaceholder": "yoursite.com",
+    "save": "حفظ",
+    "saving": "جارٍ الحفظ...",
+    "saved": "تم تحديث الملف الشخصي",
+    "errors": {
+      "displayNameRequired": "الاسم المعروض مطلوب",
+      "usernameRequired": "اسم المستخدم مطلوب",
+      "usernameInvalid": "يمكن أن يحتوي اسم المستخدم على أحرف وأرقام وشرطات سفلية فقط"
+    }
+  },
+  "languageSwitcher": {
+    "title": "اللغة",
+    "languages": {
+      "en": "English",
+      "ar": "العربية"
+    }
+  },
+  "themeSwitcher": {
+    "title": "السمة",
+    "options": {
+      "light": "فاتح",
+      "dark": "داكن",
+      "system": "افتراضي النظام"
+    }
+  },
+  "contact": {
+    "title": "تواصل معنا",
+    "subtitle": "نحن هنا للمساعدة",
+    "subjectLabel": "الموضوع",
+    "subjectPlaceholder": "ما الموضوع؟",
+    "messageLabel": "الرسالة",
+    "messagePlaceholder": "أخبرنا كيف يمكننا المساعدة...",
+    "categoryLabel": "الفئة",
+    "categoryOptions": {
+      "general": "عام",
+      "bug": "بلاغ خطأ",
+      "feature": "طلب ميزة",
+      "billing": "الفواتير",
+      "account": "الحساب"
+    },
+    "send": "إرسال الرسالة",
+    "sending": "جارٍ الإرسال...",
+    "sentTitle": "تم إرسال الرسالة",
+    "sentDescription": "سنرد عليك خلال 24 ساعة.",
+    "errors": {
+      "subjectRequired": "الموضوع مطلوب",
+      "messageRequired": "الرسالة مطلوبة"
+    }
+  },
+  "notFound": {
+    "title": "الصفحة غير موجودة",
+    "description": "الصفحة التي تبحث عنها غير موجودة أو تم نقلها.",
+    "goHome": "انتقل إلى الرئيسية",
+    "goBack": "العودة"
+  },
+  "offline": {
+    "title": "أنت غير متصل بالإنترنت",
+    "description": "تحقق من اتصالك وحاول مرة أخرى.",
+    "retry": "إعادة المحاولة"
   }
 }
