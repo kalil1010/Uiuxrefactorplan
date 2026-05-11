@@ -28,6 +28,12 @@ export default function MobileSplashScreen({ onComplete }: MobileSplashScreenPro
 
   return (
     <div className="relative h-[100dvh] w-full bg-background flex flex-col px-6 pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]">
+      {/* Store listing / brand graphic — very subtle behind content */}
+      <div
+        className="pointer-events-none absolute inset-0 bg-[length:auto_55%] bg-center bg-no-repeat opacity-[0.07] dark:opacity-[0.12]"
+        style={{ backgroundImage: "url('/brand/feature-graphic.png')" }}
+        aria-hidden
+      />
       {/* Gradient Orbs Background */}
       <div className="absolute top-1/4 start-1/4 w-64 h-64 gradient-bg-purple-pink opacity-20 blur-3xl rounded-full animate-pulse" />
       <div className="absolute bottom-1/4 end-1/4 w-64 h-64 gradient-bg-coral-yellow opacity-20 blur-3xl rounded-full animate-pulse" style={{ animationDelay: '1s' }} />

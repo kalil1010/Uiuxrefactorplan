@@ -1,89 +1,66 @@
 import React from 'react';
 
+/** Served from `public/brand/` — used across web + mobile preview (screenshots pick this up). */
+export const BRAND_WORDMARK_SRC = '/brand/wordmark.png';
+export const BRAND_MARK_SRC = '/brand/mark.png';
+
 interface LogoProps {
   size?: 'sm' | 'md' | 'lg';
   showText?: boolean;
   className?: string;
 }
 
-export function Logo({ size = 'md', showText = true, className = '' }: LogoProps) {
-  const sizeClasses = {
-    sm: 'h-8',
-    md: 'h-10',
-    lg: 'h-16'
-  };
+const sizeToClass: Record<NonNullable<LogoProps['size']>, string> = {
+  sm: 'h-7 sm:h-8',
+  md: 'h-9 sm:h-10',
+  lg: 'h-14 sm:h-16',
+};
 
-  const textSizeClasses = {
-    sm: 'text-lg',
-    md: 'text-xl',
-    lg: 'text-3xl'
-  };
+export function Logo({ size = 'md', showText = true, className = '' }: LogoProps) {
+  const h = sizeToClass[size];
+  const src = showText ? BRAND_WORDMARK_SRC : BRAND_MARK_SRC;
 
   return (
-    <div className={`flex items-center gap-2 ${className}`}>
-      {/* Logo Icon/Text with Gradient */}
-      <div className="relative">
-        <svg 
-          className={sizeClasses[size]} 
-          viewBox="0 0 200 60" 
-          fill="none" 
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" style={{ stopColor: '#6556C6', stopOpacity: 1 }} />
-              <stop offset="33%" style={{ stopColor: '#D20EC1', stopOpacity: 1 }} />
-              <stop offset="66%" style={{ stopColor: '#F04050', stopOpacity: 1 }} />
-              <stop offset="100%" style={{ stopColor: '#FFC600', stopOpacity: 1 }} />
-            </linearGradient>
-          </defs>
-          
-          {showText ? (
-            <text
-              x="0"
-              y="45"
-              fontFamily="system-ui, -apple-system, sans-serif"
-              fontSize="48"
-              fontWeight="700"
-              fill="url(#logoGradient)"
-              letterSpacing="-0.02em"
-            >
-              ZokaiHub
-            </text>
-          ) : (
-            // Just the "Z" icon version
-            <text
-              x="0"
-              y="50"
-              fontFamily="system-ui, -apple-system, sans-serif"
-              fontSize="56"
-              fontWeight="800"
-              fill="url(#logoGradient)"
-            >
-              Z
-            </text>
-          )}
-        </svg>
-      </div>
+    <div className={`flex items-center justify-center ${className}`}>
+      <img
+        src={src}
+        alt={showText ? 'ZokaiHub' : ''}
+        aria-hidden={!showText}
+        decoding="async"
+        className={`${h} w-auto max-w-[min(100%,280px)] object-contain object-center`}
+        draggable={false}
+      />
     </div>
   );
 }
 
-// Compact logo for small spaces
+/** App icon mark (adaptive icon source from brand kit). */
 export function LogoIcon({ className = '' }: { className?: string }) {
   return (
-    <div className={`w-10 h-10 rounded-xl gradient-bg flex items-center justify-center ${className}`}>
-      <span className="text-white text-xl font-bold">Z</span>
+    <div className={`relative flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-xl ${className}`}>
+      <img
+        src={BRAND_MARK_SRC}
+        alt=""
+        aria-hidden
+        decoding="async"
+        className="size-9 object-contain"
+        draggable={false}
+      />
     </div>
   );
 }
 
-// Logo with custom styling
+/** Header / footer: wordmark image (includes full brand lockup from design assets). */
 export function LogoFull({ className = '' }: { className?: string }) {
   return (
     <div className={`flex items-center gap-2 ${className}`}>
-      <LogoIcon />
-      <span className="text-xl font-bold gradient-text">ZokaiHub</span>
+      <img
+        src={BRAND_WORDMARK_SRC}
+        alt="ZokaiHub"
+        decoding="async"
+        className="h-9 w-auto max-w-[220px] object-contain object-start sm:h-10 sm:max-w-[260px]"
+        draggable={false}
+      />
     </div>
   );
 }

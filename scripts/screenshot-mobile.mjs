@@ -15,6 +15,9 @@
  * Output:
  *   screenshots/<platform>/<variant>/<group>/<id>.png
  *   screenshots/index.html  (gallery overview — platform row + locale/theme row)
+ *
+ * Branding in shots comes from the live app: `public/brand/wordmark.png` + `mark.png`
+ * and `Logo.tsx` — no logo injection here; keep assets in sync with design exports.
  */
 
 import { mkdir, writeFile } from 'node:fs/promises';

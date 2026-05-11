@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
-import { LogoFull } from './Logo';
+import { LogoFull } from '../Logo';
 import { Mail, ArrowRight, ArrowLeft, CheckCircle } from 'lucide-react';
 
 export default function ForgotPassword() {
