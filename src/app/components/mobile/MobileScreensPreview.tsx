@@ -399,13 +399,14 @@ export default function MobileScreensPreview() {
     ((typeof window !== 'undefined' && (window as any).__currentLocale) || 'en') as 'en' | 'ar'
   );
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [platform, setPlatform] = useState<'ios' | 'android'>('ios');
   const phoneRef = useRef<HTMLDivElement>(null);
   const [phoneEl, setPhoneEl] = useState<HTMLElement | null>(null);
 
-  // Set the portal container after first paint so refs are populated
+  // Keep portal container in sync when the phone frame remounts (screen / locale / theme / platform)
   useEffect(() => {
     setPhoneEl(phoneRef.current);
-  }, []);
+  }, [activeId, locale, theme, platform]);
 
   const groups = useMemo(() => {
     const map = new Map<string, ScreenDef[]>();
@@ -443,41 +444,63 @@ export default function MobileScreensPreview() {
           </p>
 
           {/* Toggles */}
-          <div className="flex gap-2">
-            <div className="flex-1 grid grid-cols-2 gap-1 bg-gray-100 dark:bg-gray-900 rounded-full p-1">
-              <button
-                className={`text-xs font-semibold py-1.5 rounded-full transition-colors ${
-                  locale === 'en' ? 'bg-white dark:bg-gray-700 shadow-sm' : 'text-gray-500'
-                }`}
-                onClick={() => switchLocale('en')}
-              >
-                EN
-              </button>
-              <button
-                className={`text-xs font-semibold py-1.5 rounded-full transition-colors ${
-                  locale === 'ar' ? 'bg-white dark:bg-gray-700 shadow-sm' : 'text-gray-500'
-                }`}
-                onClick={() => switchLocale('ar')}
-              >
-                AR
-              </button>
+          <div className="flex flex-col gap-2">
+            <div className="flex gap-2">
+              <div className="flex-1 grid grid-cols-2 gap-1 bg-gray-100 dark:bg-gray-900 rounded-full p-1">
+                <button
+                  className={`text-xs font-semibold py-1.5 rounded-full transition-colors ${
+                    locale === 'en' ? 'bg-white dark:bg-gray-700 shadow-sm' : 'text-gray-500'
+                  }`}
+                  onClick={() => switchLocale('en')}
+                >
+                  EN
+                </button>
+                <button
+                  className={`text-xs font-semibold py-1.5 rounded-full transition-colors ${
+                    locale === 'ar' ? 'bg-white dark:bg-gray-700 shadow-sm' : 'text-gray-500'
+                  }`}
+                  onClick={() => switchLocale('ar')}
+                >
+                  AR
+                </button>
+              </div>
+              <div className="flex-1 grid grid-cols-2 gap-1 bg-gray-100 dark:bg-gray-900 rounded-full p-1">
+                <button
+                  className={`text-xs font-semibold py-1.5 rounded-full transition-colors ${
+                    theme === 'light' ? 'bg-white shadow-sm' : 'text-gray-500'
+                  }`}
+                  onClick={() => switchTheme('light')}
+                >
+                  ☀ Light
+                </button>
+                <button
+                  className={`text-xs font-semibold py-1.5 rounded-full transition-colors ${
+                    theme === 'dark' ? 'bg-gray-700 text-white shadow-sm' : 'text-gray-500'
+                  }`}
+                  onClick={() => switchTheme('dark')}
+                >
+                  ☾ Dark
+                </button>
+              </div>
             </div>
-            <div className="flex-1 grid grid-cols-2 gap-1 bg-gray-100 dark:bg-gray-900 rounded-full p-1">
+            <div className="grid grid-cols-2 gap-1 bg-gray-100 dark:bg-gray-900 rounded-full p-1">
               <button
+                type="button"
                 className={`text-xs font-semibold py-1.5 rounded-full transition-colors ${
-                  theme === 'light' ? 'bg-white shadow-sm' : 'text-gray-500'
+                  platform === 'ios' ? 'bg-white dark:bg-gray-700 shadow-sm' : 'text-gray-500'
                 }`}
-                onClick={() => switchTheme('light')}
+                onClick={() => setPlatform('ios')}
               >
-                ☀ Light
+                iOS
               </button>
               <button
+                type="button"
                 className={`text-xs font-semibold py-1.5 rounded-full transition-colors ${
-                  theme === 'dark' ? 'bg-gray-700 text-white shadow-sm' : 'text-gray-500'
+                  platform === 'android' ? 'bg-white dark:bg-gray-700 shadow-sm' : 'text-gray-500'
                 }`}
-                onClick={() => switchTheme('dark')}
+                onClick={() => setPlatform('android')}
               >
-                ☾ Dark
+                Android
               </button>
             </div>
           </div>
@@ -521,22 +544,38 @@ export default function MobileScreensPreview() {
           <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
             <span className="font-semibold">{active.group}</span> · {active.label}
           </p>
-          {/* Phone frame */}
-          <div className="relative bg-gray-900 rounded-[44px] p-2 shadow-2xl" data-testid="phone-shell">
-            {/* Notch */}
-            <div className="absolute top-2 left-1/2 -translate-x-1/2 w-32 h-7 bg-gray-900 rounded-b-3xl z-[60]" />
+          {/* Phone frame — iOS (notch) vs Android (punch-hole, tighter radius) */}
+          <div
+            className={
+              platform === 'ios'
+                ? 'relative bg-gray-900 rounded-[44px] p-2 shadow-2xl'
+                : 'relative rounded-[32px] p-[10px] shadow-2xl bg-[#2d2d2d] ring-1 ring-black/40'
+            }
+            data-testid="phone-shell"
+          >
+            {platform === 'ios' ? (
+              <div className="absolute top-2 left-1/2 -translate-x-1/2 w-32 h-7 bg-gray-900 rounded-b-3xl z-[60]" />
+            ) : (
+              <div className="absolute top-[14px] left-1/2 -translate-x-1/2 z-[60] flex items-center justify-center">
+                <div className="h-[10px] w-[10px] rounded-full bg-black ring-2 ring-[#2d2d2d]" aria-hidden />
+              </div>
+            )}
             <div
               ref={phoneRef}
               data-testid="phone-frame"
-              className="bg-background rounded-[36px] overflow-hidden relative"
+              className={
+                platform === 'ios'
+                  ? 'bg-background rounded-[36px] overflow-hidden relative'
+                  : 'bg-background rounded-[22px] overflow-hidden relative'
+              }
               style={{
-                width: 393,
-                height: 852,
+                width: platform === 'ios' ? 393 : 412,
+                height: platform === 'ios' ? 852 : 892,
                 // translateZ creates a containing block so position:fixed
                 // descendants (BottomNav, sticky CTAs) stay inside the frame.
                 transform: 'translateZ(0)',
               }}
-              key={`${active.id}-${locale}-${theme}`}
+              key={`${active.id}-${locale}-${theme}-${platform}`}
             >
               <DrawerContainerProvider value={phoneEl}>
                 <AlertDialogContainerProvider value={phoneEl}>
@@ -546,7 +585,7 @@ export default function MobileScreensPreview() {
             </div>
           </div>
           <p className="text-xs text-gray-400 dark:text-gray-500 mt-3">
-            iPhone 15 Pro · 393 × 852
+            {platform === 'ios' ? 'iPhone 15 Pro · 393 × 852' : 'Android reference · 412 × 892'}
           </p>
         </div>
       </main>
