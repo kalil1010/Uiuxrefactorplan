@@ -486,6 +486,7 @@ export default function MobileScreensPreview() {
             <div className="grid grid-cols-2 gap-1 bg-gray-100 dark:bg-gray-900 rounded-full p-1">
               <button
                 type="button"
+                data-testid="preview-platform-ios"
                 className={`text-xs font-semibold py-1.5 rounded-full transition-colors ${
                   platform === 'ios' ? 'bg-white dark:bg-gray-700 shadow-sm' : 'text-gray-500'
                 }`}
@@ -495,6 +496,7 @@ export default function MobileScreensPreview() {
               </button>
               <button
                 type="button"
+                data-testid="preview-platform-android"
                 className={`text-xs font-semibold py-1.5 rounded-full transition-colors ${
                   platform === 'android' ? 'bg-white dark:bg-gray-700 shadow-sm' : 'text-gray-500'
                 }`}
