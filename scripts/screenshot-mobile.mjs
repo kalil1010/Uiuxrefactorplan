@@ -110,14 +110,21 @@ async function main() {
       await mkdir(dirname(outFile), { recursive: true });
 
       // Some auto-opened sheets (Agreement, BirthdayPicker, CreatePost…)
-      // leave Vaul's body lock / overlay around. Force-clean before switching.
+      // leave Vaul's body lock / overlay around. Unlock scroll/pointer-events.
+      // Do NOT call .remove() on Vaul nodes — that breaks React reconciliation (removeChild errors).
       await page.evaluate(() => {
-        document.querySelectorAll('[data-vaul-overlay]').forEach((el) => el.remove());
+        document.querySelectorAll('[data-vaul-overlay]').forEach((el) => {
+          el.style.setProperty('display', 'none', 'important');
+          el.style.setProperty('pointer-events', 'none', 'important');
+        });
         document.body.removeAttribute('data-scroll-locked');
         document.body.style.removeProperty('pointer-events');
         document.documentElement.style.removeProperty('pointer-events');
       });
-      await page.keyboard.press('Escape').catch(() => {});
+      for (let i = 0; i < 3; i++) {
+        await page.keyboard.press('Escape').catch(() => {});
+        await page.waitForTimeout(80);
+      }
 
       // Click the sidebar button (force=true bypasses any leftover overlay)
       await page.click(`[data-screen-id="${s.id}"]`, { force: true, timeout: 10000 });
