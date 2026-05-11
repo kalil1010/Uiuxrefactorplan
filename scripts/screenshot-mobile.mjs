@@ -3,8 +3,8 @@
  * Batch screenshot every mobile screen from the live preview.
  *
  * Prereqs: dev server running (default http://localhost:5174).
- *   pnpm install
- *   ./node_modules/.bin/vite
+ *   npm install   (or pnpm install)
+ *   npm run dev -- --port 5174 --host 127.0.0.1
  *
  * Usage:
  *   node scripts/screenshot-mobile.mjs
