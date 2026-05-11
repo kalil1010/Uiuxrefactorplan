@@ -496,6 +496,9 @@ export default function MobileScreensPreview() {
                     <button
                       onClick={() => setActiveId(s.id)}
                       aria-current={activeId === s.id ? 'page' : undefined}
+                      data-screen-id={s.id}
+                      data-screen-group={s.group}
+                      data-screen-label={s.label}
                       className={`w-full text-start px-3 py-2 rounded-lg text-sm transition-colors ${
                         activeId === s.id
                           ? 'bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 font-medium'
@@ -519,11 +522,12 @@ export default function MobileScreensPreview() {
             <span className="font-semibold">{active.group}</span> · {active.label}
           </p>
           {/* Phone frame */}
-          <div className="relative bg-gray-900 rounded-[44px] p-2 shadow-2xl">
+          <div className="relative bg-gray-900 rounded-[44px] p-2 shadow-2xl" data-testid="phone-shell">
             {/* Notch */}
             <div className="absolute top-2 left-1/2 -translate-x-1/2 w-32 h-7 bg-gray-900 rounded-b-3xl z-[60]" />
             <div
               ref={phoneRef}
+              data-testid="phone-frame"
               className="bg-background rounded-[36px] overflow-hidden relative"
               style={{
                 width: 393,
