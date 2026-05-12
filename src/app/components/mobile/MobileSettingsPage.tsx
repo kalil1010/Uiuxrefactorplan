@@ -45,9 +45,15 @@ type Item = {
 
 interface MobileSettingsPageProps {
   appVersion?: string;
+  onOpenLanguage?: () => void;
+  onOpenTheme?: () => void;
 }
 
-export default function MobileSettingsPage({ appVersion = '1.0.0' }: MobileSettingsPageProps) {
+export default function MobileSettingsPage({
+  appVersion = '1.0.0',
+  onOpenLanguage,
+  onOpenTheme,
+}: MobileSettingsPageProps) {
   const t = useTranslations('settings');
   const tCommon = useTranslations('common');
   const [logoutOpen, setLogoutOpen] = useState(false);
@@ -104,6 +110,14 @@ export default function MobileSettingsPage({ appVersion = '1.0.0' }: MobileSetti
       <button
         key={item.id}
         onClick={() => {
+          if (item.id === 'language') {
+            onOpenLanguage?.();
+            return;
+          }
+          if (item.id === 'theme') {
+            onOpenTheme?.();
+            return;
+          }
           // TODO(integration): wire to navigation
           item.onPress?.();
         }}

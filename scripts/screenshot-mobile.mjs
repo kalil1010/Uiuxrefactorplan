@@ -18,6 +18,9 @@
  *
  * Branding in shots comes from the live app: `public/brand/wordmark.png` + `mark.png`
  * and `Logo.tsx` — no logo injection here; keep assets in sync with design exports.
+ *
+ * Locale/theme variants (en-light, …) are still applied via evaluate() for batch shots;
+ * in the preview UI, language/theme are changed from Settings only.
  */
 
 import { mkdir, writeFile } from 'node:fs/promises';

@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useRef, useEffect } from 'react';
+import { useLocale } from 'next-intl';
 import { DrawerContainerProvider } from '../ui/drawer';
 import { AlertDialogContainerProvider } from '../ui/alert-dialog';
 import MobileSplashScreen from './MobileSplashScreen';
@@ -54,6 +55,57 @@ type ScreenDef = {
   group: string;
   render: () => React.ReactNode;
 };
+
+function applyPreviewTheme(theme: 'light' | 'dark' | 'system') {
+  if (theme === 'dark') {
+    document.documentElement.classList.add('dark');
+  } else if (theme === 'light') {
+    document.documentElement.classList.remove('dark');
+  } else {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.classList.toggle('dark', prefersDark);
+  }
+}
+
+/** Settings is the single entry for language + theme in the wireframe. */
+function SettingsScreenWrapper() {
+  const [langOpen, setLangOpen] = useState(false);
+  const [themeOpen, setThemeOpen] = useState(false);
+  const [themeSheetKey, setThemeSheetKey] = useState(0);
+
+  const themeSheetCurrent =
+    typeof document !== 'undefined' && document.documentElement.classList.contains('dark')
+      ? 'dark'
+      : 'light';
+
+  return (
+    <>
+      <MobileSettingsPage
+        onOpenLanguage={() => setLangOpen(true)}
+        onOpenTheme={() => {
+          setThemeSheetKey((k) => k + 1);
+          setThemeOpen(true);
+        }}
+      />
+      <MobileLanguageSwitcher
+        isOpen={langOpen}
+        onClose={() => setLangOpen(false)}
+        onSelect={(loc) => {
+          (window as any).__setAppLocale?.(loc);
+        }}
+      />
+      <MobileThemeSwitcher
+        key={themeSheetKey}
+        isOpen={themeOpen}
+        onClose={() => setThemeOpen(false)}
+        current={themeSheetCurrent}
+        onSelect={(key) => {
+          applyPreviewTheme(key);
+        }}
+      />
+    </>
+  );
+}
 
 const SCREENS: ScreenDef[] = [
   // Pre-auth & Landing
@@ -244,24 +296,12 @@ const SCREENS: ScreenDef[] = [
     group: 'System',
     render: () => <MobileNotificationsPage />,
   },
-  { id: 'settings', label: 'Settings', group: 'System', render: () => <MobileSettingsPage /> },
+  { id: 'settings', label: 'Settings', group: 'System', render: () => <SettingsScreenWrapper /> },
   {
     id: 'editProfile',
     label: 'Edit Profile Sheet',
     group: 'System',
     render: () => <EditProfileWrapper />,
-  },
-  {
-    id: 'languageSwitcher',
-    label: 'Language Switcher',
-    group: 'System',
-    render: () => <LanguageSwitcherWrapper />,
-  },
-  {
-    id: 'themeSwitcher',
-    label: 'Theme Switcher',
-    group: 'System',
-    render: () => <ThemeSwitcherWrapper />,
   },
   { id: 'contact', label: 'Contact', group: 'System', render: () => <MobileContactPage /> },
   { id: 'notFound', label: '404', group: 'System', render: () => <MobileNotFoundPage /> },
@@ -353,60 +393,19 @@ function EditProfileWrapper() {
   );
 }
 
-function LanguageSwitcherWrapper() {
-  const [open, setOpen] = useState(true);
-  return (
-    <div className="h-full w-full flex items-center justify-center bg-muted/30">
-      <button
-        className="px-4 py-2 rounded-full gradient-bg text-primary-foreground"
-        onClick={() => setOpen(true)}
-      >
-        Open Language
-      </button>
-      <MobileLanguageSwitcher
-        isOpen={open}
-        onClose={() => setOpen(false)}
-        onSelect={() => setOpen(false)}
-      />
-    </div>
-  );
-}
-
-function ThemeSwitcherWrapper() {
-  const [open, setOpen] = useState(true);
-  return (
-    <div className="h-full w-full flex items-center justify-center bg-muted/30">
-      <button
-        className="px-4 py-2 rounded-full gradient-bg text-primary-foreground"
-        onClick={() => setOpen(true)}
-      >
-        Open Theme
-      </button>
-      <MobileThemeSwitcher
-        isOpen={open}
-        onClose={() => setOpen(false)}
-        onSelect={() => setOpen(false)}
-      />
-    </div>
-  );
-}
-
 // --- Top-level Preview UI ---
 
 export default function MobileScreensPreview() {
   const [activeId, setActiveId] = useState<string>(SCREENS[0].id);
-  const [locale, setLocale] = useState<'en' | 'ar'>(
-    ((typeof window !== 'undefined' && (window as any).__currentLocale) || 'en') as 'en' | 'ar'
-  );
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const locale = useLocale();
   const [platform, setPlatform] = useState<'ios' | 'android'>('ios');
   const phoneRef = useRef<HTMLDivElement>(null);
   const [phoneEl, setPhoneEl] = useState<HTMLElement | null>(null);
 
-  // Keep portal container in sync when the phone frame remounts (screen / locale / theme / platform)
+  // Keep portal container in sync when the phone frame remounts (screen / locale / platform)
   useEffect(() => {
     setPhoneEl(phoneRef.current);
-  }, [activeId, locale, theme, platform]);
+  }, [activeId, locale, platform]);
 
   const groups = useMemo(() => {
     const map = new Map<string, ScreenDef[]>();
@@ -419,20 +418,6 @@ export default function MobileScreensPreview() {
 
   const active = SCREENS.find((s) => s.id === activeId)!;
 
-  const switchLocale = (newLocale: 'en' | 'ar') => {
-    setLocale(newLocale);
-    (window as any).__setAppLocale?.(newLocale);
-  };
-
-  const switchTheme = (newTheme: 'light' | 'dark') => {
-    setTheme(newTheme);
-    if (newTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  };
-
   return (
     <div className="min-h-screen w-full bg-gray-100 dark:bg-gray-900 flex flex-col lg:flex-row">
       {/* Sidebar */}
@@ -443,46 +428,8 @@ export default function MobileScreensPreview() {
             {SCREENS.length} screens · click to preview
           </p>
 
-          {/* Toggles */}
+          {/* Device frame (locale & theme: Settings inside the phone preview) */}
           <div className="flex flex-col gap-2">
-            <div className="flex gap-2">
-              <div className="flex-1 grid grid-cols-2 gap-1 bg-gray-100 dark:bg-gray-900 rounded-full p-1">
-                <button
-                  className={`text-xs font-semibold py-1.5 rounded-full transition-colors ${
-                    locale === 'en' ? 'bg-white dark:bg-gray-700 shadow-sm' : 'text-gray-500'
-                  }`}
-                  onClick={() => switchLocale('en')}
-                >
-                  EN
-                </button>
-                <button
-                  className={`text-xs font-semibold py-1.5 rounded-full transition-colors ${
-                    locale === 'ar' ? 'bg-white dark:bg-gray-700 shadow-sm' : 'text-gray-500'
-                  }`}
-                  onClick={() => switchLocale('ar')}
-                >
-                  AR
-                </button>
-              </div>
-              <div className="flex-1 grid grid-cols-2 gap-1 bg-gray-100 dark:bg-gray-900 rounded-full p-1">
-                <button
-                  className={`text-xs font-semibold py-1.5 rounded-full transition-colors ${
-                    theme === 'light' ? 'bg-white shadow-sm' : 'text-gray-500'
-                  }`}
-                  onClick={() => switchTheme('light')}
-                >
-                  ☀ Light
-                </button>
-                <button
-                  className={`text-xs font-semibold py-1.5 rounded-full transition-colors ${
-                    theme === 'dark' ? 'bg-gray-700 text-white shadow-sm' : 'text-gray-500'
-                  }`}
-                  onClick={() => switchTheme('dark')}
-                >
-                  ☾ Dark
-                </button>
-              </div>
-            </div>
             <div className="grid grid-cols-2 gap-1 bg-gray-100 dark:bg-gray-900 rounded-full p-1">
               <button
                 type="button"
@@ -577,7 +524,7 @@ export default function MobileScreensPreview() {
                 // descendants (BottomNav, sticky CTAs) stay inside the frame.
                 transform: 'translateZ(0)',
               }}
-              key={`${active.id}-${locale}-${theme}-${platform}`}
+              key={`${active.id}-${locale}-${platform}`}
             >
               <DrawerContainerProvider value={phoneEl}>
                 <AlertDialogContainerProvider value={phoneEl}>
