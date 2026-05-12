@@ -97,7 +97,11 @@
       "continueApple": "المتابعة باستخدام Apple",
       "haveAccount": "هل لديك حساب بالفعل؟",
       "signInLink": "تسجيل الدخول",
+      "captchaLabel": "لستُ روبوتًا",
+      "captchaHint": "محاكاة للتحقق الأمني (مثل Turnstile) — للعرض فقط في الـ wireframe.",
+      "captchaAria": "التحقق الأمني",
       "errors": {
+        "captchaRequired": "يرجى إكمال التحقق الأمني",
         "displayNameRequired": "الاسم المعروض مطلوب",
         "displayNameTooShort": "يجب أن يكون الاسم المعروض حرفين على الأقل",
         "emailRequired": "البريد الإلكتروني مطلوب",

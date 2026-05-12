@@ -3,6 +3,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
+import { Checkbox } from '../ui/checkbox';
 import { Logo } from '../Logo';
 import { ChevronLeft, Eye, EyeOff, AlertCircle, Loader2, Calendar } from 'lucide-react';
 import MobileBirthdayPicker, { calculateAge } from './MobileBirthdayPicker';
@@ -34,6 +35,7 @@ export default function MobileSignUp({ onBack, onSignUp, onSignIn }: MobileSignU
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isBirthdayPickerOpen, setIsBirthdayPickerOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [captchaVerified, setCaptchaVerified] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const validateForm = () => {
@@ -82,6 +84,10 @@ export default function MobileSignUp({ onBack, onSignUp, onSignIn }: MobileSignU
       newErrors.confirmPassword = t('errors.confirmPasswordRequired');
     } else if (formData.password !== formData.confirmPassword) {
       newErrors.confirmPassword = t('errors.passwordMismatch');
+    }
+
+    if (!captchaVerified) {
+      newErrors.captcha = t('errors.captchaRequired');
     }
 
     setErrors(newErrors);
@@ -133,7 +139,8 @@ export default function MobileSignUp({ onBack, onSignUp, onSignIn }: MobileSignU
     formData.password.length >= 8 &&
     formData.password === formData.confirmPassword &&
     formData.dateOfBirth &&
-    calculateAge(formData.dateOfBirth.year, formData.dateOfBirth.month, formData.dateOfBirth.day) >= 13;
+    calculateAge(formData.dateOfBirth.year, formData.dateOfBirth.month, formData.dateOfBirth.day) >= 13 &&
+    captchaVerified;
 
   return (
     <div className="flex min-h-0 flex-1 flex-col w-full bg-background">
@@ -314,6 +321,42 @@ export default function MobileSignUp({ onBack, onSignUp, onSignIn }: MobileSignU
               <p id="confirmPassword-error" className="text-sm text-destructive flex items-center gap-1">
                 <AlertCircle className="w-4 h-4" />
                 {errors.confirmPassword}
+              </p>
+            )}
+          </div>
+
+          {/* CAPTCHA — wireframe stand-in for Turnstile / similar (ZokaiHub uses Turnstile when configured) */}
+          <div className="space-y-2">
+            <Label className="sr-only">{t('captchaAria')}</Label>
+            <div
+              className={`flex items-start gap-3 rounded-xl border p-4 min-h-[3.25rem] ${
+                errors.captcha ? 'border-destructive' : 'border-border bg-muted/30'
+              }`}
+            >
+              <Checkbox
+                id="sign-up-captcha"
+                checked={captchaVerified}
+                onCheckedChange={(v) => {
+                  setCaptchaVerified(v === true);
+                  setErrors((prev) => ({ ...prev, captcha: undefined }));
+                }}
+                aria-invalid={!!errors.captcha}
+                aria-describedby={errors.captcha ? 'captcha-error' : 'captcha-hint'}
+                className="mt-0.5 size-5"
+              />
+              <div className="min-w-0 flex-1 space-y-1">
+                <label htmlFor="sign-up-captcha" className="text-sm font-medium leading-snug cursor-pointer">
+                  {t('captchaLabel')}
+                </label>
+                <p id="captcha-hint" className="text-xs text-muted-foreground">
+                  {t('captchaHint')}
+                </p>
+              </div>
+            </div>
+            {errors.captcha && (
+              <p id="captcha-error" className="text-sm text-destructive flex items-center gap-1">
+                <AlertCircle className="w-4 h-4 shrink-0" />
+                {errors.captcha}
               </p>
             )}
           </div>

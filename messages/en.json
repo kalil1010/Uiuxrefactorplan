@@ -97,7 +97,11 @@
       "continueApple": "Continue with Apple",
       "haveAccount": "Already have an account?",
       "signInLink": "Sign In",
+      "captchaLabel": "I'm not a robot",
+      "captchaHint": "Simulates Turnstile / CAPTCHA (wireframe only).",
+      "captchaAria": "Security verification",
       "errors": {
+        "captchaRequired": "Please complete the security verification",
         "displayNameRequired": "Display name is required",
         "displayNameTooShort": "Display name must be at least 2 characters",
         "emailRequired": "Email is required",
