@@ -199,9 +199,7 @@ export default function MobileExplorePage() {
   return (
     <div className="h-[100dvh] w-full bg-background flex flex-col">
       {/* Header with Safe Area */}
-      <header className="sticky top-0 z-40 bg-background border-b border-border pt-[env(safe-area-inset-top)] px-4 pb-4 space-y-3">
-        <h1 className="text-xl font-bold">{t('title')}</h1>
-
+      <header className="sticky top-0 z-40 bg-background border-b border-border pt-[env(safe-area-inset-top)] px-4 pb-4">
         {/* Search */}
         <div className="relative">
           <Search className="absolute start-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground pointer-events-none" />

@@ -126,6 +126,10 @@ export default function MobileProfilePage() {
     <>
       {/* Profile Header */}
       <div className="p-6 space-y-4">
+        <div>
+          <p className="text-xl font-bold">Sarah Chen</p>
+          <p className="text-sm text-muted-foreground">@sarahc</p>
+        </div>
         {/* Avatar & Stats */}
         <div className="flex items-center gap-6">
           <div className="w-24 h-24 rounded-full gradient-bg-purple-pink p-1">
@@ -265,7 +269,6 @@ export default function MobileProfilePage() {
         >
           <ChevronLeft className="w-6 h-6" />
         </Button>
-        <h1 className="font-semibold text-lg">Sarah Chen</h1>
         <Button
           variant="ghost"
           size="icon"

@@ -204,8 +204,7 @@ export default function MobileMessagesPage() {
     <div className="h-[100dvh] w-full bg-background flex flex-col">
       {/* Header with Safe Area */}
       <header className="sticky top-0 z-40 bg-background border-b border-border pt-[env(safe-area-inset-top)] px-4 pb-3">
-        <div className="flex items-center justify-between mb-3">
-          <h1 className="text-xl font-bold">{t('title')}</h1>
+        <div className="flex justify-end mb-3">
           <Button
             variant="ghost"
             size="icon"

@@ -203,35 +203,32 @@ export default function MobileClosetPage() {
     <div className="flex min-h-0 w-full flex-1 flex-col bg-background">
       {/* Header with Safe Area */}
       <header className="sticky top-0 z-40 bg-background border-b border-border pt-[env(safe-area-inset-top)] px-4 pb-3">
-        <div className="flex items-center justify-between mb-3">
-          <h1 className="text-xl font-bold">{t('title')}</h1>
-          <div className="flex items-center gap-2">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="rounded-full min-h-11 min-w-11"
-              aria-label={t('searchAria')}
-            >
-              <Search className="w-5 h-5" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="rounded-full min-h-11 min-w-11"
-              aria-label={t('filterAria')}
-            >
-              <Filter className="w-5 h-5" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="rounded-full min-h-11 min-w-11"
-              onClick={() => setViewMode(viewMode === 'grid' ? 'list' : 'grid')}
-              aria-label={t('viewModeAria')}
-            >
-              {viewMode === 'grid' ? <List className="w-5 h-5" /> : <Grid3x3 className="w-5 h-5" />}
-            </Button>
-          </div>
+        <div className="flex items-center justify-end gap-2 mb-3">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="rounded-full min-h-11 min-w-11"
+            aria-label={t('searchAria')}
+          >
+            <Search className="w-5 h-5" />
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="rounded-full min-h-11 min-w-11"
+            aria-label={t('filterAria')}
+          >
+            <Filter className="w-5 h-5" />
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="rounded-full min-h-11 min-w-11"
+            onClick={() => setViewMode(viewMode === 'grid' ? 'list' : 'grid')}
+            aria-label={t('viewModeAria')}
+          >
+            {viewMode === 'grid' ? <List className="w-5 h-5" /> : <Grid3x3 className="w-5 h-5" />}
+          </Button>
         </div>
 
         {/* Categories */}

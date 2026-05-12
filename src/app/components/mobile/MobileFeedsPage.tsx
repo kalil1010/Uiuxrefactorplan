@@ -245,13 +245,8 @@ export default function MobileFeedsPage() {
 
   return (
     <div className="h-[100dvh] w-full bg-background flex flex-col">
-      {/* Header with Safe Area */}
-      <header className="sticky top-0 z-40 bg-background border-b border-border pt-[env(safe-area-inset-top)] px-4 pb-4">
-        <h1 className="text-xl font-bold">{t('title')}</h1>
-      </header>
-
-      {/* Content */}
-      <div className="flex-1 overflow-y-auto pb-[calc(3.5rem+env(safe-area-inset-bottom))]">
+      {/* Content — safe area top; no duplicate tab title (bottom nav labels the screen) */}
+      <div className="flex-1 overflow-y-auto pt-[env(safe-area-inset-top)] pb-[calc(3.5rem+env(safe-area-inset-bottom))]">
         {/* Pull-to-refresh indicator */}
         {isRefreshing && (
           <div className="flex items-center justify-center py-4">
