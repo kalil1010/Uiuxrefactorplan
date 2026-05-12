@@ -21,10 +21,7 @@ import MobileCameraScreen from './MobileCameraScreen';
 import MobileAnalyzingScreen from './MobileAnalyzingScreen';
 import MobilePreviewScreen from './MobilePreviewScreen';
 import MobileVirtualStylist from './MobileVirtualStylist';
-import MobileBrowseScreen from './MobileBrowseScreen';
-import MobileOutfitGenerator from './MobileOutfitGenerator';
-import MobileColorAnalyzer from './MobileColorAnalyzer';
-import MobileImageGenerator from './MobileImageGenerator';
+import MobileAiToolEntryPage from './MobileAiToolEntryPage';
 import MobileMarketplacePage from './MobileMarketplacePage';
 import MobileProductDetailPage from './MobileProductDetailPage';
 import MobileVendorShopPage from './MobileVendorShopPage';
@@ -184,28 +181,27 @@ const SCREENS: ScreenDef[] = [
   { id: 'previewResult', label: 'Preview Result', group: 'AI', render: () => <MobilePreviewScreen /> },
   {
     id: 'virtualStylist',
-    label: 'Virtual Stylist',
+    label: 'AI Stylist',
     group: 'AI',
     render: () => <MobileVirtualStylist />,
   },
-  { id: 'browse', label: 'Browse', group: 'AI', render: () => <MobileBrowseScreen /> },
   {
-    id: 'outfitGen',
-    label: 'Outfit Generator',
+    id: 'hairStylist',
+    label: 'Hair stylist',
     group: 'AI',
-    render: () => <MobileOutfitGenerator />,
+    render: () => <MobileAiToolEntryPage tool="hairStylist" />,
   },
   {
-    id: 'colorAnalyzer',
-    label: 'Color Analyzer',
+    id: 'nailStylist',
+    label: 'Nail stylist',
     group: 'AI',
-    render: () => <MobileColorAnalyzer />,
+    render: () => <MobileAiToolEntryPage tool="nailStylist" />,
   },
   {
-    id: 'imageGen',
-    label: 'Image Generator',
+    id: 'virtualTryOn',
+    label: 'Virtual try-on',
     group: 'AI',
-    render: () => <MobileImageGenerator />,
+    render: () => <MobileAiToolEntryPage tool="virtualTryOn" />,
   },
 
   // Marketplace

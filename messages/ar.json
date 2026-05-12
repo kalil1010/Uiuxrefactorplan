@@ -398,25 +398,21 @@
     "searchPlaceholder": "ابحث في أدوات الذكاء الاصطناعي...",
     "proBadge": "احترافي",
     "cards": {
-      "virtualStylist": {
-        "title": "المصمم الافتراضي",
-        "description": "احصل على توصيات فورية للملابس مع الذكاء الاصطناعي"
+      "stylist": {
+        "title": "مصمم الذكاء الاصطناعي",
+        "description": "محادثة وإرشاد لتنسيق الملابس بشكل شخصي"
       },
-      "outfitGenerator": {
-        "title": "مولد الإطلالات",
-        "description": "أنشئ إطلالات كاملة لأي مناسبة"
+      "hairStylist": {
+        "title": "مصفف الشعر",
+        "description": "جرب القصات والألوان والأنماط من صورتك"
       },
-      "colorAnalyzer": {
-        "title": "تحليل الألوان",
-        "description": "اكتشف لوحة الألوان المثالية لك"
+      "nailStylist": {
+        "title": "مصمم الأظافر",
+        "description": "استكشف أشكال الألوان وفن الأظافر بالذكاء الاصطناعي"
       },
-      "imageGenerator": {
-        "title": "مولد الصور",
-        "description": "أنشئ صور أزياء من النص"
-      },
-      "browseOutfits": {
-        "title": "تصفح إطلالات الذكاء الاصطناعي",
-        "description": "استكشف مجموعات الأنماط المنسقة بالذكاء الاصطناعي"
+      "virtualTryOn": {
+        "title": "تجربة افتراضية",
+        "description": "شاهد الملابس على صورتك قبل الشراء"
       }
     }
   },
@@ -426,20 +422,46 @@
     "cta": "متابعة",
     "services": {
       "stylist": {
-        "title": "مصمم شخصي",
-        "description": "ارفع صورة واحصل على نصائح تصميم فورية"
+        "title": "مصمم الذكاء الاصطناعي",
+        "description": "محادثة وتوصيات إطلالات"
       },
-      "colorAnalysis": {
-        "title": "تحليل الألوان",
-        "description": "اكتشف لوحة الألوان المثالية لك"
+      "hairStylist": {
+        "title": "مصفف الشعر",
+        "description": "قصات وألوان وأنماط شعر من الصورة بالذكاء الاصطناعي"
       },
-      "outfitGen": {
-        "title": "مولد الإطلالات",
-        "description": "أنشئ إطلالات كاملة لأي مناسبة"
+      "nailStylist": {
+        "title": "مصمم الأظافر",
+        "description": "إطلالات أظافر وإلهام بالذكاء الاصطناعي"
       },
-      "imageGen": {
-        "title": "مولد الصور",
-        "description": "أنشئ صور أزياء من النص"
+      "virtualTryOn": {
+        "title": "تجربة افتراضية",
+        "description": "معاينة القطع على صورتك"
+      }
+    }
+  },
+  "aiTools": {
+    "hairStylist": {
+      "title": "مصفف الشعر",
+      "subtitle": "ارفع أو التقط صورة لاستكشاف القصات والألوان والأنماط.",
+      "cta": {
+        "takePicture": "التقاط صورة",
+        "uploadPhoto": "رفع صورة"
+      }
+    },
+    "nailStylist": {
+      "title": "مصمم الأظافر",
+      "subtitle": "أظهر يديك للحصول على أفكار شكل ولون وفن الأظافر.",
+      "cta": {
+        "takePicture": "التقاط صورة",
+        "uploadPhoto": "رفع صورة"
+      }
+    },
+    "virtualTryOn": {
+      "title": "تجربة افتراضية",
+      "subtitle": "استخدم صورة للجسم أو الجذع لمعاينة الإطلالات.",
+      "cta": {
+        "takePicture": "التقاط صورة",
+        "uploadPhoto": "رفع صورة"
       }
     }
   },
@@ -489,7 +511,7 @@
     "discarded": "تم تجاهل النتيجة"
   },
   "virtualStylist": {
-    "title": "المصمم الافتراضي",
+    "title": "مصمم الذكاء الاصطناعي",
     "subtitle": "احصل على توصيات ملابس مخصصة",
     "cta": {
       "takePicture": "التقاط صورة",

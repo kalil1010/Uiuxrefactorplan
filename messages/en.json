@@ -398,25 +398,21 @@
     "searchPlaceholder": "Search AI tools...",
     "proBadge": "PRO",
     "cards": {
-      "virtualStylist": {
-        "title": "Virtual Stylist",
-        "description": "Get instant outfit recommendations with AI"
+      "stylist": {
+        "title": "AI Stylist",
+        "description": "Chat and get personalized outfit guidance"
       },
-      "outfitGenerator": {
-        "title": "Outfit Generator",
-        "description": "Create complete looks for any occasion"
+      "hairStylist": {
+        "title": "Hair stylist",
+        "description": "Try cuts, colors, and styles from your photo"
       },
-      "colorAnalyzer": {
-        "title": "Color Analysis",
-        "description": "Find your perfect color palette"
+      "nailStylist": {
+        "title": "Nail stylist",
+        "description": "Explore nail shapes, colors, and nail art ideas"
       },
-      "imageGenerator": {
-        "title": "Image Generator",
-        "description": "Generate fashion images from text"
-      },
-      "browseOutfits": {
-        "title": "Browse AI Outfits",
-        "description": "Explore AI-curated style collections"
+      "virtualTryOn": {
+        "title": "Virtual try-on",
+        "description": "See outfits on your photo before you buy"
       }
     }
   },
@@ -426,20 +422,46 @@
     "cta": "Continue",
     "services": {
       "stylist": {
-        "title": "Personal Stylist",
-        "description": "Upload a photo and get instant styling advice"
+        "title": "AI Stylist",
+        "description": "Conversational styling and outfit recommendations"
       },
-      "colorAnalysis": {
-        "title": "Color Analysis",
-        "description": "Discover your perfect color palette"
+      "hairStylist": {
+        "title": "Hair stylist",
+        "description": "AI hair cuts, colors, and styles from a photo"
       },
-      "outfitGen": {
-        "title": "Outfit Generator",
-        "description": "Create complete looks for any occasion"
+      "nailStylist": {
+        "title": "Nail stylist",
+        "description": "Nail looks and inspiration powered by AI"
       },
-      "imageGen": {
-        "title": "Image Generator",
-        "description": "Generate fashion images from text prompts"
+      "virtualTryOn": {
+        "title": "Virtual try-on",
+        "description": "Preview garments on your image"
+      }
+    }
+  },
+  "aiTools": {
+    "hairStylist": {
+      "title": "Hair stylist",
+      "subtitle": "Upload or capture a photo to explore cuts, colors, and styles.",
+      "cta": {
+        "takePicture": "Take a picture",
+        "uploadPhoto": "Upload photo"
+      }
+    },
+    "nailStylist": {
+      "title": "Nail stylist",
+      "subtitle": "Show your hands and get nail shape, color, and art ideas.",
+      "cta": {
+        "takePicture": "Take a picture",
+        "uploadPhoto": "Upload photo"
+      }
+    },
+    "virtualTryOn": {
+      "title": "Virtual try-on",
+      "subtitle": "Use a full-body or torso photo to preview outfits.",
+      "cta": {
+        "takePicture": "Take a picture",
+        "uploadPhoto": "Upload photo"
       }
     }
   },
@@ -489,7 +511,7 @@
     "discarded": "Result discarded"
   },
   "virtualStylist": {
-    "title": "Virtual Stylist",
+    "title": "AI Stylist",
     "subtitle": "Get personalized outfit recommendations",
     "cta": {
       "takePicture": "Take a Picture",
