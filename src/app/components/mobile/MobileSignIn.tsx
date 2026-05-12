@@ -62,26 +62,28 @@ export default function MobileSignIn({
   const isFormValid = email && password && password.length >= 6;
 
   return (
-    <div className="h-[100dvh] w-full bg-background flex flex-col">
-      {/* Header with Safe Area */}
-      <div className="pt-[env(safe-area-inset-top)] px-4 pb-4 border-b border-border">
-        <div className="flex items-center justify-between">
+    <div className="flex min-h-0 flex-1 flex-col w-full bg-background">
+      {/* Header — shrink-0; avoid 100dvh (uses viewport height and clips inside phone frame) */}
+      <div className="shrink-0 pt-[env(safe-area-inset-top)] px-4 pb-3 border-b border-border">
+        <div className="flex items-center justify-between gap-2 min-h-11">
           <Button
             variant="ghost"
             size="icon"
             onClick={onBack}
-            className="min-h-11 min-w-11 active:bg-muted"
+            className="min-h-11 min-w-11 shrink-0 active:bg-muted"
             aria-label={tCommon('back')}
           >
             <ChevronLeft className="w-6 h-6" />
           </Button>
-          <Logo size="md" showText={true} />
-          <div className="w-11" /> {/* Spacer for centering */}
+          <div className="min-w-0 flex-1 flex justify-center py-0.5">
+            <Logo size="md" showText className="max-w-full" />
+          </div>
+          <div className="w-11 shrink-0" aria-hidden />
         </div>
       </div>
 
       {/* Content - Scrollable with keyboard inset */}
-      <div className="flex-1 overflow-y-auto px-6 py-8 pb-[env(keyboard-inset-height,0px)]">
+      <div className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden px-6 py-6 pb-[max(env(keyboard-inset-height,0px),env(safe-area-inset-bottom),1rem)]">
         {/* Title */}
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold mb-2">{t('title')}</h1>
@@ -251,9 +253,6 @@ export default function MobileSignIn({
           </p>
         </div>
       </div>
-
-      {/* Bottom Safe Area Spacer */}
-      <div className="pb-[env(safe-area-inset-bottom)]" />
     </div>
   );
 }
