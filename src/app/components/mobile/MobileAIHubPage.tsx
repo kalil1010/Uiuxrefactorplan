@@ -3,6 +3,7 @@ import { useTranslations } from 'next-intl';
 import { Sparkles, Scissors, Brush, Shirt } from 'lucide-react';
 import { Input } from '../ui/input';
 import MobileBottomNav from './MobileBottomNav';
+import { MobileMainTopBar } from './MobileMainTopBar';
 
 type AIService = {
   id: string;
@@ -47,7 +48,7 @@ export default function MobileAIHubPage() {
   return (
     <div className="h-[100dvh] w-full bg-background flex flex-col">
       <header className="sticky top-0 z-40 bg-background border-b border-border pt-[env(safe-area-inset-top)] px-4 pb-4">
-        <h1 className="text-xl font-bold mb-3">{t('title')}</h1>
+        <MobileMainTopBar title={t('title')} showSearch={false} className="mb-3" />
 
         <Input
           type="search"
@@ -58,7 +59,7 @@ export default function MobileAIHubPage() {
         />
       </header>
 
-      <div className="flex-1 overflow-y-auto pb-[calc(3.5rem+env(safe-area-inset-bottom))] px-4">
+      <div className="flex-1 overflow-y-auto pb-[calc(4rem+env(safe-area-inset-bottom))] px-4">
         <div className="grid grid-cols-2 gap-4 py-6">
           {services.map((service) => (
             <button
@@ -83,9 +84,12 @@ export default function MobileAIHubPage() {
       </div>
 
       <MobileBottomNav
-        activeTab="explore"
+        activeTab={null}
         onTabChange={(tab) => {
           // TODO(integration): wire to next-intl router
+        }}
+        onCreatePost={() => {
+          // TODO(integration): open create-post flow / composer
         }}
       />
     </div>

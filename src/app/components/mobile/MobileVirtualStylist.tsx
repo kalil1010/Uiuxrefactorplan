@@ -238,7 +238,7 @@ export default function MobileVirtualStylist() {
       </header>
 
       {/* Content */}
-      <div className="flex-1 overflow-y-auto pb-[calc(3.5rem+env(safe-area-inset-bottom))]">
+      <div className="flex-1 overflow-y-auto pb-[calc(4rem+env(safe-area-inset-bottom))]">
         {loadingState === 'loading' && renderLoadingState()}
         {loadingState === 'idle' && renderIdleState()}
         {loadingState === 'error' && renderErrorState()}
@@ -247,10 +247,13 @@ export default function MobileVirtualStylist() {
 
       {/* Bottom Navigation */}
       <MobileBottomNav
-        activeTab="explore"
+        activeTab={null}
         onTabChange={(tab) => {
           // TODO(integration): wire to next-intl router
           // router.push(`/${tab}`)
+        }}
+        onCreatePost={() => {
+          // TODO(integration): open create-post flow / composer
         }}
       />
     </div>

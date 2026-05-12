@@ -7,6 +7,7 @@ import { Badge } from '../ui/badge';
 import { Skeleton } from '../ui/skeleton';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 import MobileBottomNav from './MobileBottomNav';
+import { MobileHeaderIconActions } from './MobileMainTopBar';
 
 type CategoryKey = 'all' | 'tops' | 'bottoms' | 'dresses' | 'shoes' | 'accessories' | 'bags';
 type SortKey = 'trending' | 'newest' | 'priceLow' | 'priceHigh';
@@ -218,12 +219,13 @@ export default function MobileMarketplacePage() {
   return (
     <div className="h-[100dvh] w-full bg-background flex flex-col">
       <header className="sticky top-0 z-40 bg-background border-b border-border pt-[env(safe-area-inset-top)] px-4 pb-3 space-y-3">
-        <div className="flex items-center gap-3">
-          <h1 className="flex-1 text-xl font-bold">{t('title')}</h1>
+        <div className="flex items-center gap-2">
+          <h1 className="min-w-0 flex-1 truncate text-xl font-bold">{t('title')}</h1>
+          <MobileHeaderIconActions showSearch={false} className="shrink-0" />
           <Button
             variant="ghost"
             size="icon"
-            className="rounded-full min-h-11 min-w-11"
+            className="rounded-full min-h-11 min-w-11 shrink-0"
             aria-label={t('wishlistAria')}
             onClick={() => {
               // TODO(integration): navigate to wishlist
@@ -234,7 +236,7 @@ export default function MobileMarketplacePage() {
           <Button
             variant="ghost"
             size="icon"
-            className="rounded-full min-h-11 min-w-11"
+            className="rounded-full min-h-11 min-w-11 shrink-0"
             aria-label={t('cartAria')}
             onClick={() => {
               // TODO(integration): navigate to cart
@@ -289,7 +291,7 @@ export default function MobileMarketplacePage() {
         </div>
       </header>
 
-      <div className="flex-1 overflow-y-auto pb-[calc(3.5rem+env(safe-area-inset-bottom))]">
+      <div className="flex-1 overflow-y-auto pb-[calc(4rem+env(safe-area-inset-bottom))]">
         {loadingState === 'loading' && renderLoadingState()}
         {loadingState === 'empty' && renderEmptyState()}
         {loadingState === 'error' && renderErrorState()}
@@ -297,9 +299,12 @@ export default function MobileMarketplacePage() {
       </div>
 
       <MobileBottomNav
-        activeTab="explore"
+        activeTab={null}
         onTabChange={() => {
           // TODO(integration): wire to next-intl router
+        }}
+        onCreatePost={() => {
+          // TODO(integration): open create-post flow / composer
         }}
       />
     </div>

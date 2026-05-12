@@ -7,6 +7,7 @@ import { Skeleton } from '../ui/skeleton';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 import { formatRelativeTime } from '../../lib/format-time';
 import MobileBottomNav from './MobileBottomNav';
+import { MobileMainTopBar } from './MobileMainTopBar';
 
 type FeedPost = {
   id: string;
@@ -245,8 +246,12 @@ export default function MobileFeedsPage() {
 
   return (
     <div className="h-[100dvh] w-full bg-background flex flex-col">
-      {/* Content — safe area top; no duplicate tab title (bottom nav labels the screen) */}
-      <div className="flex-1 overflow-y-auto pt-[env(safe-area-inset-top)] pb-[calc(3.5rem+env(safe-area-inset-bottom))]">
+      <header className="sticky top-0 z-40 border-b border-border bg-background pt-[env(safe-area-inset-top)] px-4 pb-3">
+        <MobileMainTopBar title={t('title')} />
+      </header>
+
+      {/* Content — bottom inset clears FAB nav */}
+      <div className="flex-1 overflow-y-auto pb-[calc(4rem+env(safe-area-inset-bottom))]">
         {/* Pull-to-refresh indicator */}
         {isRefreshing && (
           <div className="flex items-center justify-center py-4">
@@ -268,6 +273,9 @@ export default function MobileFeedsPage() {
         onTabChange={(tab) => {
           // TODO(integration): wire to next-intl router
           // router.push(`/${tab}`)
+        }}
+        onCreatePost={() => {
+          // TODO(integration): open create-post flow / composer
         }}
       />
     </div>

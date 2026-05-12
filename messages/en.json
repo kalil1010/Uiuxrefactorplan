@@ -265,9 +265,13 @@
     "feeds": "Feeds",
     "explore": "Explore",
     "closet": "Closet",
-    "messages": "Messages",
     "profile": "Profile",
+    "createPost": "Create post",
     "ariaLabel": "Main navigation"
+  },
+  "mainHeader": {
+    "search": "Search",
+    "notifications": "Notifications"
   },
   "feeds": {
     "title": "Feeds",

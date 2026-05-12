@@ -7,6 +7,7 @@ import { Badge } from '../ui/badge';
 import { Skeleton } from '../ui/skeleton';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 import MobileBottomNav from './MobileBottomNav';
+import { MobileMainTopBar } from './MobileMainTopBar';
 
 type Category = {
   id: string;
@@ -200,7 +201,10 @@ export default function MobileExplorePage() {
     <div className="h-[100dvh] w-full bg-background flex flex-col">
       {/* Header with Safe Area */}
       <header className="sticky top-0 z-40 bg-background border-b border-border pt-[env(safe-area-inset-top)] px-4 pb-4">
-        {/* Search */}
+        <div className="mb-3">
+          <MobileMainTopBar title={t('title')} showSearch={false} />
+        </div>
+        {/* Search — primary discovery entry on Explore */}
         <div className="relative">
           <Search className="absolute start-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground pointer-events-none" />
           <Input
@@ -216,7 +220,7 @@ export default function MobileExplorePage() {
       </header>
 
       {/* Content */}
-      <div className="flex-1 overflow-y-auto pb-[calc(3.5rem+env(safe-area-inset-bottom))]">
+      <div className="flex-1 overflow-y-auto pb-[calc(4rem+env(safe-area-inset-bottom))]">
         {loadingState === 'loading' && renderLoadingState()}
         {loadingState === 'empty' && renderEmptyState()}
         {loadingState === 'error' && renderErrorState()}
@@ -229,6 +233,9 @@ export default function MobileExplorePage() {
         onTabChange={(tab) => {
           // TODO(integration): wire to next-intl router
           // router.push(`/${tab}`)
+        }}
+        onCreatePost={() => {
+          // TODO(integration): open create-post flow / composer
         }}
       />
     </div>

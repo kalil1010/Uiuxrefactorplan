@@ -5,6 +5,7 @@ import { Button } from '../ui/button';
 import { Skeleton } from '../ui/skeleton';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 import MobileBottomNav from './MobileBottomNav';
+import { MobileHeaderIconActions } from './MobileMainTopBar';
 
 type TabType = 'posts' | 'saved' | 'liked';
 type LoadingState = 'idle' | 'loading' | 'success' | 'error' | 'empty';
@@ -260,19 +261,29 @@ export default function MobileProfilePage() {
   return (
     <div className="h-[100dvh] w-full bg-background flex flex-col">
       {/* Header with Safe Area */}
-      <header className="sticky top-0 z-40 bg-background border-b border-border pt-[env(safe-area-inset-top)] px-4 py-3 flex items-center justify-between">
+      <header className="sticky top-0 z-40 bg-background border-b border-border pt-[env(safe-area-inset-top)] px-4 py-3 flex items-center gap-2">
         <Button
           variant="ghost"
           size="icon"
-          className="rounded-full min-h-11 min-w-11"
+          className="rounded-full min-h-11 min-w-11 shrink-0"
           aria-label={t('backAria')}
         >
           <ChevronLeft className="w-6 h-6" />
         </Button>
+        <div className="min-w-0 flex-1" />
+        <MobileHeaderIconActions
+          className="shrink-0"
+          onSearch={() => {
+            // TODO(integration): open global search / Explore
+          }}
+          onNotifications={() => {
+            // TODO(integration): open notifications
+          }}
+        />
         <Button
           variant="ghost"
           size="icon"
-          className="rounded-full min-h-11 min-w-11"
+          className="rounded-full min-h-11 min-w-11 shrink-0"
           aria-label={t('moreOptionsAria')}
         >
           <MoreHorizontal className="w-6 h-6" />
@@ -280,7 +291,7 @@ export default function MobileProfilePage() {
       </header>
 
       {/* Scrollable Content */}
-      <div className="flex-1 overflow-y-auto pb-[calc(3.5rem+env(safe-area-inset-bottom))]">
+      <div className="flex-1 overflow-y-auto pb-[calc(4rem+env(safe-area-inset-bottom))]">
         {loadingState === 'loading' && renderLoadingState()}
         {loadingState === 'error' && renderErrorState()}
         {loadingState === 'empty' && renderEmptyState()}
@@ -293,6 +304,9 @@ export default function MobileProfilePage() {
         onTabChange={(tab) => {
           // TODO(integration): wire to next-intl router
           // router.push(`/${tab}`)
+        }}
+        onCreatePost={() => {
+          // TODO(integration): open create-post flow / composer
         }}
       />
     </div>

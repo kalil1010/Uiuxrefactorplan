@@ -265,9 +265,13 @@
     "feeds": "الأخبار",
     "explore": "استكشف",
     "closet": "الخزانة",
-    "messages": "الرسائل",
     "profile": "الملف الشخصي",
+    "createPost": "منشور جديد",
     "ariaLabel": "التنقل الرئيسي"
+  },
+  "mainHeader": {
+    "search": "بحث",
+    "notifications": "الإشعارات"
   },
   "feeds": {
     "title": "الأخبار",

@@ -7,6 +7,7 @@ import { Input } from '../ui/input';
 import { Skeleton } from '../ui/skeleton';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 import MobileBottomNav from './MobileBottomNav';
+import { MobileMainTopBar } from './MobileMainTopBar';
 
 type ViewMode = 'grid' | 'list';
 type CategoryKey = 'all' | 'tops' | 'bottoms' | 'dresses' | 'shoes' | 'accessories';
@@ -203,6 +204,7 @@ export default function MobileClosetPage() {
     <div className="flex min-h-0 w-full flex-1 flex-col bg-background">
       {/* Header with Safe Area */}
       <header className="sticky top-0 z-40 bg-background border-b border-border pt-[env(safe-area-inset-top)] px-4 pb-3">
+        <MobileMainTopBar title={t('title')} showSearch={false} className="mb-3" />
         <div className="flex items-center justify-end gap-2 mb-3">
           <Button
             variant="ghost"
@@ -249,7 +251,7 @@ export default function MobileClosetPage() {
       </header>
 
       {/* Content — flex column + min-h-0 so the add bar stays above the bottom nav (not clipped by overflow-hidden) */}
-      <div className="flex min-h-0 flex-1 flex-col overflow-hidden pb-[calc(3.5rem+env(safe-area-inset-bottom))]">
+      <div className="flex min-h-0 flex-1 flex-col overflow-hidden pb-[calc(4rem+env(safe-area-inset-bottom))]">
         {/* Pull-to-refresh indicator */}
         {isRefreshing && (
           <div className="flex items-center justify-center py-4">
@@ -269,6 +271,9 @@ export default function MobileClosetPage() {
         onTabChange={(tab) => {
           // TODO(integration): wire to next-intl router
           // router.push(`/${tab}`)
+        }}
+        onCreatePost={() => {
+          // TODO(integration): open create-post flow / composer
         }}
       />
     </div>

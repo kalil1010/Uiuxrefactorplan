@@ -18,7 +18,7 @@ export default function MobileAiToolEntryPage({ tool }: { tool: AiToolEntryId })
 
   return (
     <div className="h-[100dvh] w-full bg-background flex flex-col">
-      <div className="flex-1 flex flex-col items-center justify-center px-6 py-12 text-center pt-[env(safe-area-inset-top)] pb-[calc(3.5rem+env(safe-area-inset-bottom))]">
+      <div className="flex-1 flex flex-col items-center justify-center px-6 py-12 text-center pt-[env(safe-area-inset-top)] pb-[calc(4rem+env(safe-area-inset-bottom))]">
         <div className="w-20 h-20 rounded-full gradient-bg flex items-center justify-center mb-4">
           <Icon className="w-10 h-10 text-primary-foreground" />
         </div>
@@ -49,9 +49,12 @@ export default function MobileAiToolEntryPage({ tool }: { tool: AiToolEntryId })
       </div>
 
       <MobileBottomNav
-        activeTab="explore"
+        activeTab={null}
         onTabChange={() => {
           // TODO(integration): wire to router
+        }}
+        onCreatePost={() => {
+          // TODO(integration): open create-post flow / composer
         }}
       />
     </div>

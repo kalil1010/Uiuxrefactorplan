@@ -8,6 +8,7 @@ import { Skeleton } from '../ui/skeleton';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 import { formatRelativeTime } from '../../lib/format-time';
 import MobileBottomNav from './MobileBottomNav';
+import { MobileHeaderIconActions } from './MobileMainTopBar';
 
 type LoadingState = 'idle' | 'loading' | 'success' | 'error' | 'empty';
 
@@ -204,15 +205,24 @@ export default function MobileMessagesPage() {
     <div className="h-[100dvh] w-full bg-background flex flex-col">
       {/* Header with Safe Area */}
       <header className="sticky top-0 z-40 bg-background border-b border-border pt-[env(safe-area-inset-top)] px-4 pb-3">
-        <div className="flex justify-end mb-3">
-          <Button
-            variant="ghost"
-            size="icon"
-            className="rounded-full min-h-11 min-w-11"
-            aria-label={t('newMessageAria')}
-          >
-            <Edit className="w-5 h-5" />
-          </Button>
+        <div className="mb-3 flex min-h-11 items-center justify-between gap-2">
+          <h1 className="truncate text-lg font-semibold">{t('title')}</h1>
+          <div className="flex shrink-0 items-center gap-0.5">
+            <MobileHeaderIconActions
+              showSearch={false}
+              onNotifications={() => {
+                // TODO(integration): open notifications inbox
+              }}
+            />
+            <Button
+              variant="ghost"
+              size="icon"
+              className="rounded-full min-h-11 min-w-11"
+              aria-label={t('newMessageAria')}
+            >
+              <Edit className="w-5 h-5" />
+            </Button>
+          </div>
         </div>
 
         {/* Search */}
@@ -229,7 +239,7 @@ export default function MobileMessagesPage() {
       </header>
 
       {/* Content */}
-      <div className="flex-1 overflow-hidden pb-[calc(3.5rem+env(safe-area-inset-bottom))]">
+      <div className="flex-1 overflow-hidden pb-[calc(4rem+env(safe-area-inset-bottom))]">
         {/* Pull-to-refresh indicator */}
         {isRefreshing && (
           <div className="flex items-center justify-center py-4">
@@ -245,10 +255,13 @@ export default function MobileMessagesPage() {
 
       {/* Bottom Navigation */}
       <MobileBottomNav
-        activeTab="messages"
+        activeTab={null}
         onTabChange={(tab) => {
           // TODO(integration): wire to next-intl router
           // router.push(`/${tab}`)
+        }}
+        onCreatePost={() => {
+          // TODO(integration): open create-post flow / composer
         }}
       />
     </div>
