@@ -41,11 +41,6 @@
           "description": "Track your fashion journey and trends"
         }
       },
-      "socialProof": {
-        "users": "10K+ users",
-        "rating": "4.9/5 rating",
-        "ratingAria": "4.9 out of 5 stars"
-      },
       "cta": {
         "getStarted": "Get Started Free",
         "signIn": "Sign In"

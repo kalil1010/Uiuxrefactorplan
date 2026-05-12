@@ -58,7 +58,7 @@ export default function MobileLandingPage({ onSignIn, onSignUp }: MobileLandingP
         </div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-2 gap-3 mb-8">
+        <div className="grid grid-cols-2 gap-3 pb-2">
           {features.map((feature, index) => (
             <div
               key={index}
@@ -73,27 +73,6 @@ export default function MobileLandingPage({ onSignIn, onSignUp }: MobileLandingP
               </p>
             </div>
           ))}
-        </div>
-
-        {/* Social Proof */}
-        <div className="text-center mb-2">
-          <div className="flex justify-center items-center gap-2 mb-2">
-            <div className="flex -space-x-2">
-              {[1, 2, 3, 4].map((i) => (
-                <div
-                  key={i}
-                  className="w-8 h-8 rounded-full gradient-bg border-2 border-background"
-                />
-              ))}
-            </div>
-            <span className="text-sm text-muted-foreground">{t('socialProof.users')}</span>
-          </div>
-          <div className="flex justify-center gap-1" aria-label={t('socialProof.ratingAria')}>
-            {[1, 2, 3, 4, 5].map((i) => (
-              <span key={i} className="text-accent" aria-hidden="true">★</span>
-            ))}
-            <span className="text-sm text-muted-foreground ms-2">{t('socialProof.rating')}</span>
-          </div>
         </div>
       </div>
 
