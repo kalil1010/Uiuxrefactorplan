@@ -200,7 +200,7 @@ export default function MobileClosetPage() {
   );
 
   return (
-    <div className="h-[100dvh] w-full bg-background flex flex-col">
+    <div className="flex min-h-0 w-full flex-1 flex-col bg-background">
       {/* Header with Safe Area */}
       <header className="sticky top-0 z-40 bg-background border-b border-border pt-[env(safe-area-inset-top)] px-4 pb-3">
         <div className="flex items-center justify-between mb-3">

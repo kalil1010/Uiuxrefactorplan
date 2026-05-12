@@ -514,8 +514,8 @@ export default function MobileScreensPreview() {
               data-testid="phone-frame"
               className={
                 platform === 'ios'
-                  ? 'bg-background rounded-[36px] overflow-hidden relative'
-                  : 'bg-background rounded-[22px] overflow-hidden relative'
+                  ? 'relative flex min-h-0 flex-col overflow-hidden rounded-[36px] bg-background'
+                  : 'relative flex min-h-0 flex-col overflow-hidden rounded-[22px] bg-background'
               }
               style={{
                 width: platform === 'ios' ? 393 : 412,
