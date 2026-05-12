@@ -271,6 +271,7 @@
   },
   "mainHeader": {
     "search": "Search",
+    "messages": "Messages",
     "notifications": "Notifications"
   },
   "feeds": {

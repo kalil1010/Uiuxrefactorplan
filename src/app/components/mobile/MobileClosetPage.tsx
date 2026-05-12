@@ -204,7 +204,17 @@ export default function MobileClosetPage() {
     <div className="flex min-h-0 w-full flex-1 flex-col bg-background">
       {/* Header with Safe Area */}
       <header className="sticky top-0 z-40 bg-background border-b border-border pt-[env(safe-area-inset-top)] px-4 pb-3">
-        <MobileMainTopBar title={t('title')} showSearch={false} className="mb-3" />
+        <MobileMainTopBar
+          title={t('title')}
+          showSearch={false}
+          className="mb-3"
+          onMessages={() => {
+            // TODO(integration): navigate to messages
+          }}
+          onNotifications={() => {
+            // TODO(integration): open notifications
+          }}
+        />
         <div className="flex items-center justify-end gap-2 mb-3">
           <Button
             variant="ghost"

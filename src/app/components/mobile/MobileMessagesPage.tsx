@@ -210,6 +210,7 @@ export default function MobileMessagesPage() {
           <div className="flex shrink-0 items-center gap-0.5">
             <MobileHeaderIconActions
               showSearch={false}
+              showMessages={false}
               onNotifications={() => {
                 // TODO(integration): open notifications inbox
               }}

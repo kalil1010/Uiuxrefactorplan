@@ -276,6 +276,9 @@ export default function MobileProfilePage() {
           onSearch={() => {
             // TODO(integration): open global search / Explore
           }}
+          onMessages={() => {
+            // TODO(integration): navigate to messages
+          }}
           onNotifications={() => {
             // TODO(integration): open notifications
           }}

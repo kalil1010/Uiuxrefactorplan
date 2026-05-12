@@ -202,7 +202,16 @@ export default function MobileExplorePage() {
       {/* Header with Safe Area */}
       <header className="sticky top-0 z-40 bg-background border-b border-border pt-[env(safe-area-inset-top)] px-4 pb-4">
         <div className="mb-3">
-          <MobileMainTopBar title={t('title')} showSearch={false} />
+          <MobileMainTopBar
+            title={t('title')}
+            showSearch={false}
+            onMessages={() => {
+              // TODO(integration): navigate to messages
+            }}
+            onNotifications={() => {
+              // TODO(integration): open notifications
+            }}
+          />
         </div>
         {/* Search — primary discovery entry on Explore */}
         <div className="relative">

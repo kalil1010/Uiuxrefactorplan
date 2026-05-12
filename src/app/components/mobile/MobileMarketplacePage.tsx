@@ -221,7 +221,16 @@ export default function MobileMarketplacePage() {
       <header className="sticky top-0 z-40 bg-background border-b border-border pt-[env(safe-area-inset-top)] px-4 pb-3 space-y-3">
         <div className="flex items-center gap-2">
           <h1 className="min-w-0 flex-1 truncate text-xl font-bold">{t('title')}</h1>
-          <MobileHeaderIconActions showSearch={false} className="shrink-0" />
+          <MobileHeaderIconActions
+            showSearch={false}
+            className="shrink-0"
+            onMessages={() => {
+              // TODO(integration): navigate to messages
+            }}
+            onNotifications={() => {
+              // TODO(integration): open notifications
+            }}
+          />
           <Button
             variant="ghost"
             size="icon"

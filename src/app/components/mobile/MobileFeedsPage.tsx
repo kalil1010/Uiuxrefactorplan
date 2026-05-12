@@ -247,7 +247,18 @@ export default function MobileFeedsPage() {
   return (
     <div className="h-[100dvh] w-full bg-background flex flex-col">
       <header className="sticky top-0 z-40 border-b border-border bg-background pt-[env(safe-area-inset-top)] px-4 pb-3">
-        <MobileMainTopBar title={t('title')} />
+        <MobileMainTopBar
+          title={t('title')}
+          onSearch={() => {
+            // TODO(integration): open global search / Explore
+          }}
+          onMessages={() => {
+            // TODO(integration): navigate to messages
+          }}
+          onNotifications={() => {
+            // TODO(integration): open notifications
+          }}
+        />
       </header>
 
       {/* Content — bottom inset clears FAB nav */}

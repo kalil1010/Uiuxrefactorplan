@@ -48,7 +48,17 @@ export default function MobileAIHubPage() {
   return (
     <div className="h-[100dvh] w-full bg-background flex flex-col">
       <header className="sticky top-0 z-40 bg-background border-b border-border pt-[env(safe-area-inset-top)] px-4 pb-4">
-        <MobileMainTopBar title={t('title')} showSearch={false} className="mb-3" />
+        <MobileMainTopBar
+          title={t('title')}
+          showSearch={false}
+          className="mb-3"
+          onMessages={() => {
+            // TODO(integration): navigate to messages
+          }}
+          onNotifications={() => {
+            // TODO(integration): open notifications
+          }}
+        />
 
         <Input
           type="search"
