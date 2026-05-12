@@ -121,9 +121,9 @@ export default function MobileClosetPage() {
   );
 
   const renderContent = () => (
-    <>
-      {/* Items Grid/List */}
-      <div className="flex-1 overflow-y-auto p-4">
+    <div className="flex min-h-0 flex-1 flex-col">
+      {/* Items Grid/List — only this region scrolls */}
+      <div className="min-h-0 flex-1 overflow-y-auto p-4">
         {viewMode === 'grid' ? (
           <div className="grid grid-cols-2 gap-4">
             {items.map((item) => (
@@ -189,14 +189,14 @@ export default function MobileClosetPage() {
         )}
       </div>
 
-      {/* Add Button */}
-      <div className="p-4 border-t">
+      {/* Add Button — pinned above bottom nav */}
+      <div className="shrink-0 border-t bg-background p-4">
         <Button className="w-full gradient-bg text-primary-foreground hover:opacity-90 active:opacity-80 rounded-full" size="lg">
           <Plus className="w-5 h-5 me-2" />
           {t('addItem')}
         </Button>
       </div>
-    </>
+    </div>
   );
 
   return (
@@ -251,8 +251,8 @@ export default function MobileClosetPage() {
         </div>
       </header>
 
-      {/* Content */}
-      <div className="flex-1 overflow-hidden pb-[calc(3.5rem+env(safe-area-inset-bottom))]">
+      {/* Content — flex column + min-h-0 so the add bar stays above the bottom nav (not clipped by overflow-hidden) */}
+      <div className="flex min-h-0 flex-1 flex-col overflow-hidden pb-[calc(3.5rem+env(safe-area-inset-bottom))]">
         {/* Pull-to-refresh indicator */}
         {isRefreshing && (
           <div className="flex items-center justify-center py-4">
